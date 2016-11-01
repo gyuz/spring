@@ -1,0 +1,107 @@
+<!DOCTYPE web-app PUBLIC
+ "-//Sun Microsystems, Inc.//DTD Web Application 2.3//EN"
+ "http://java.sun.com/dtd/web-app_2_3.dtd" >
+
+<web-app>
+    <display-name>Crud Application</display-name>
+    <servlet>
+        <servlet-name>MainServlet</servlet-name>
+        <servlet-class>crud.app.MainServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>PersonOps</servlet-name>
+        <servlet-class>crud.app.PersonOps</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>PersonDetails</servlet-name>
+        <servlet-class>crud.app.PersonDetails</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>PersonMain</servlet-name>
+        <servlet-class>crud.app.PersonMain</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>NewPerson</servlet-name>
+        <servlet-class>crud.app.NewPerson</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>PersonDispatch</servlet-name>
+        <servlet-class>crud.app.PersonDispatch</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>PersonList</servlet-name>
+        <servlet-class>crud.app.PersonList</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>RoleDetails</servlet-name>
+        <servlet-class>crud.app.RoleDetails</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>RoleOps</servlet-name>
+        <servlet-class>crud.app.RoleOps</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>MainServlet</servlet-name>
+        <url-pattern>/crud/MainServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>PersonOps</servlet-name>
+        <url-pattern>/crud/PersonOps</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>PersonMain</servlet-name>
+        <url-pattern>/crud/PersonMain</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>NewPerson</servlet-name>
+        <url-pattern>/crud/NewPerson</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>PersonList</servlet-name>
+        <url-pattern>/crud/PersonList</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>PersonDetails</servlet-name>
+        <url-pattern>/crud/PersonDetails</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>PersonDispatch</servlet-name>
+        <url-pattern>/crud/PersonDispatch</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>RoleDetails</servlet-name>
+        <url-pattern>/crud/RoleDetails</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>RoleOps</servlet-name>
+        <url-pattern>/crud/RoleOps</url-pattern>
+    </servlet-mapping>
+    <servlet>
+        <servlet-name>mvc-dispatcher</servlet-name>
+        <servlet-class>
+            org.springframework.web.servlet.DispatcherServlet
+        </servlet-class>
+        <load-on-startup>1</load-on-startup>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>mvc-dispatcher</servlet-name>
+        <url-pattern>/</url-pattern>
+    </servlet-mapping>
+
+    <context-param>
+        <param-name>contextConfigLocation</param-name>
+        <param-value>
+          /WEB-INF/mvc-dispatcher-servlet.xml
+          /WEB-INF/data-source-cfg.xml
+          /WEB-INF/daoService-cfg.xml
+          /WEB-INF/transaction-cfg.xml
+        </param-value>   
+    </context-param>
+
+    <listener>
+        <listener-class>
+            org.springframework.web.context.ContextLoaderListener
+        </listener-class>
+    </listener>
+</web-app>
