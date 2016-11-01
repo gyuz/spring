@@ -1,50 +1,48 @@
 package crud.core.dao;
 
 import org.hibernate.Session;
+import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
 import java.util.List;
 import org.springframework.stereotype.Repository;
+import org.springframework.beans.factory.annotation.Autowired;
 
 @SuppressWarnings("unchecked")
 @Repository
 public abstract class CrudImpl<T> implements CrudInterface<T> {
-	SessionGroup sessionGroup = new SessionGroup();
-    Session session;
-   
-    public void startSession(){
-        session = sessionGroup.getSession();    
-    }    
+	@Autowired
+    private SessionFactory sessionFactory;
+    
+    protected Session getSession() {
+        Session sess = sessionFactory.getCurrentSession();
+        if (sess == null) {
+            sess = sessionFactory.openSession();
+        }
+        return sess;
+    }
+    
+    private SessionFactory getSessionFactory() {
+        return sessionFactory;
+    }  
 
     public void closeSession(){
-        session.close();    
+        getSession().close();    
     }
     
     public void add(T entity) {
-        session = sessionGroup.getSession();
-        Transaction tx = session.beginTransaction();
-		session.save(entity);
-        tx.commit();
-        session.close();
+        getSession().save(entity);
 	}
 
 	public void update(T entity) {
-        Transaction tx = session.beginTransaction();
-		session.update(entity);
-		tx.commit();  
+       getSession().update(entity);
 	}
 
 	public void delete(T entity) {
-        Transaction tx = session.beginTransaction();
-        session.delete(entity);
-        tx.commit(); 
+       getSession().delete(entity);
 	}
      
     public List<T> getList(String refObj) {
-        session = sessionGroup.getSession();
-        Transaction tx = session.beginTransaction();
-		List<T> entity = (List<T>) session.createQuery("from "+refObj).list();      
-        tx.rollback();
-        session.close();
+		List<T> entity = (List<T>) getSession().createQuery("from "+refObj).list();      
         return entity; 
 	}
 }

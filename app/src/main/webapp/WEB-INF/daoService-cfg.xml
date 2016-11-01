@@ -13,6 +13,9 @@
      <bean id="contactDao" class="crud.core.dao.ContactDao">
          <property name="sessionFactory" ref="sessionFactory" />
      </bean>
+     <bean id="sessionGroup" class="crud.core.dao.SessionGroup">
+         <property name="sessionFactory" ref="sessionFactory" />
+     </bean>
      
      <bean id="personService" class="crud.core.service.PersonOperations">
          <property name="personDao" ref="personDao" />

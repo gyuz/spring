@@ -8,7 +8,6 @@
         http://www.springframework.org/schema/mvc
         http://www.springframework.org/schema/mvc/spring-mvc.xsd">
 
-    <context:annotation-config />
     <context:component-scan base-package="crud.*"/>
     <mvc:resources mapping="/resources/**" location="/resources/"/>
     <mvc:annotation-driven/>

@@ -7,4 +7,5 @@ public interface CrudInterface <T> {
     public void update(T t);
     public void delete(T t);
     public List<T> getList(String refObj);
+    public void closeSession();
 }

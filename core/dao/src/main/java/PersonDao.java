@@ -13,37 +13,21 @@ public class PersonDao extends CrudImpl<Person> implements PersonInterface {
     }   
     
     public List<Person> listAscending(String column){
-        Session session2 = sessionGroup.getSession();
-        Transaction tx = session2.beginTransaction();
-        List<Person> personList = session2.createCriteria(Person.class)
+        List<Person> personList = getSession().createCriteria(Person.class)
                               .addOrder(Order.asc(column))
                               .list();
-        tx.rollback();
-        session2.close();
         return personList;
     }
 
      public List<Person> listDescending(String column){
-        Session session2 = sessionGroup.getSession();
-        Transaction tx = session2.beginTransaction();
-        List<Person> personList = session2.createCriteria(Person.class)
+        List<Person> personList = getSession().createCriteria(Person.class)
                               .addOrder(Order.desc(column))
                               .list();
-        tx.rollback();
-        session2.close();
         return personList;
     }
 
     public Person getPersonById(int id) {
-        session = sessionGroup.getSession();
-        Transaction tx = session.beginTransaction();
-        Person person = (Person) session.get(Person.class, id);
-        if(person != null){
-            tx.rollback();
-        } else {
-            tx.rollback();
-            session.close();
-        }    
+        Person person = (Person) getSession().get(Person.class, id); 
         return person;
     }  
 }

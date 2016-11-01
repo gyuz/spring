@@ -9,11 +9,7 @@ public class ContactDao extends CrudImpl<Contact> implements ContactInterface {
     } 
 
     public void delete(Contact contact) {
-        Session session2 = sessionGroup.getSession();
-        Transaction tx = session2.beginTransaction();
-        session2.delete(contact);
-        tx.commit();
-        session2.close();
+        getSession().delete(contact);
 	}
 
 }
