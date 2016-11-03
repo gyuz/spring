@@ -21,13 +21,10 @@ import javax.persistence.ManyToMany;
 import org.hibernate.annotations.Type;
 import org.hibernate.annotations.Fetch;
 import org.hibernate.annotations.FetchMode;
-import org.hibernate.annotations.Cache;
-import org.hibernate.annotations.CacheConcurrencyStrategy;
 import org.joda.time.LocalDate;
 
 @Entity
 @Table(name = "PERSON")
-@Cache(usage=CacheConcurrencyStrategy.READ_WRITE, region="Person")
 public class Person implements Comparable<Person>{
     @Id 
     @SequenceGenerator(

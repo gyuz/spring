@@ -1,10 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans"
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xmlns:context="http://www.springframework.org/schema/context"
   xsi:schemaLocation="http://www.springframework.org/schema/beans
-      http://www.springframework.org/schema/beans/spring-beans.xsd">
+      http://www.springframework.org/schema/beans/spring-beans.xsd
+      http://www.springframework.org/schema/context
+      http://www.springframework.org/schema/context/spring-context-3.0.xsd">
       
-    <bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource"
+    <bean id="dataSource" class="org.apache.commons.dbcp2.BasicDataSource"
           destroy-method="close">
         <property name="driverClassName" value="${connection.driver}" />
         <property name="url" value="${connection.url}"/>
@@ -15,7 +18,8 @@
     <bean id="sessionFactory"
           class="org.springframework.orm.hibernate4.LocalSessionFactoryBean">
         <property name="dataSource" ref="dataSource"/>
-        <property name="packagesToScan" value="crud.core.model"/>
+        <property name="configLocation" value="classpath:hibernate.cfg.xml" />
+        <!--property name="packagesToScan" value="crud.core.model"/>
         <property name="hibernateProperties">
             <props>
                 <prop key="hibernate.hbm2ddl.auto">create-drop</prop>
@@ -39,9 +43,8 @@
               <value>crud.core.model.Name</value>
               <value>crud.core.model.Address</value>
           </list>
-      </property>
-        </property>
+          </property>
+       </property-->
 
     </bean>
-
-    
+</beans>

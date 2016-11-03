@@ -1,6 +1,8 @@
 <beans xmlns="http://www.springframework.org/schema/beans"
        xmlns:context="http://www.springframework.org/schema/context"
        xmlns:mvc="http://www.springframework.org/schema/mvc"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:p="http://www.springframework.org/schema/p"
        xsi:schemaLocation="http://www.springframework.org/schema/beans
         http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
         http://www.springframework.org/schema/context
@@ -10,10 +12,14 @@
 
     <context:component-scan base-package="crud.*"/>
     <mvc:resources mapping="/resources/**" location="/resources/"/>
-    <mvc:annotation-driven/>
+    <mvc:view-controller path="/" view-name="index"/>
   
     <bean id="viewResolver" class="org.springframework.web.servlet.view.InternalResourceViewResolver">
         <property name="prefix" value="/"/>
-        <property name="suffix" value=".html"/>
+        <property name="suffix" value=".jsp"/>
     </bean>
+
+    <bean name="indexController" class="crud.app.IndexController" p:formView="index" />
+    <bean name="personController" class="crud.app.PersonController" />
+    <bean name="roleController" class="crud.app.RoleController" p:formView="RoleDetails" p:successView="RoleDetails"/>
 </beans>

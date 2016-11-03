@@ -5,37 +5,58 @@ import crud.core.dao.RoleInterface;
 import crud.core.dao.CrudInterface;
 import java.util.List;
 import java.util.ArrayList;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
-import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Propagation;
-import org.springframework.transaction.annotation.Transactional;
 
-@Service
 public class RoleOperations extends GenericServiceImpl<Role> implements RoleService {
     private RoleInterface roleDao;
+    private Role role;
+    private RoleDto roleDto;
     
-    @Autowired
-    public RoleOperations(
-            @Qualifier("roleDao") CrudInterface<Role> crudInterface) {
-        super(crudInterface);
-        this.roleDao = (RoleInterface) crudInterface;
+    public RoleDto getRoleDto(){
+        return roleDto;
+    }
+    
+    public void setRoleDto(RoleDto roleDto){
+        this.roleDto = roleDto;
+    }
+    
+    public RoleInterface getRoleInterface(){
+        return roleDao;
+    }
+    
+    public void setRoleInterface(RoleInterface roleDao){
+        this.roleDao = roleDao;
+    }
+    
+    public Role getRole(){
+        return role;
+    }
+    
+    public void setRole(Role role){
+        this.role = role;
     }
     
     public void closeSession(){
         roleDao.closeSession();    
     }
     
-    @Transactional(propagation = Propagation.REQUIRED, readOnly = true)
+    public void addRole(String roleName){
+        role.setRoleName(roleName);
+        add(role);
+    }
+    
     public boolean idExist(int id) {
-        Role role = roleDao.getRoleById(id); 
+        role = roleDao.getRoleById(id); 
         if (role != null) {
             return true;
         }
         return false;     
     }
     
-    @Transactional(propagation = Propagation.REQUIRED, readOnly = false)
+    public void DtoToEntity(RoleDto roleDto){
+        role.setRoleId(roleDto.getRoleId());
+        role.setRoleName(roleDto.getRoleName());
+    }
+    
     public boolean update(int id, String newRoleName) {
         newRoleName = newRoleName.toUpperCase();
         boolean exist = isDuplicate(newRoleName); 
@@ -47,17 +68,15 @@ public class RoleOperations extends GenericServiceImpl<Role> implements RoleServ
         return !exist;    
     }
     
-    @Transactional(propagation = Propagation.REQUIRED, readOnly = false)
-    public boolean delete(int id) {
-       Role role = roleDao.loadRole(id);
+    public boolean deleteRole(){
+       //role = roleDao.loadRole(id);
        if (role != null && role.getPersons().isEmpty()) {
-            roleDao.delete(role);
+            delete(role);
             return true;
         } 
         return false;  
     }
 
-    @Transactional(propagation = Propagation.REQUIRED, readOnly = true)
     public boolean isDuplicate(String roleName){    
         List roleList = roleDao.getList("Role where roleName = '"+roleName.toUpperCase()+"'"); 
         if(roleList.isEmpty()) {
@@ -66,9 +85,11 @@ public class RoleOperations extends GenericServiceImpl<Role> implements RoleServ
         return true;
     }
     
-    @Transactional(propagation = Propagation.REQUIRED, readOnly = true)
-    public List printRoleList(){
+    public void printRoleList(){
        List<Role> roleList = roleDao.getList("Role ORDER BY ROLE_ID");
-       return roleList; 
+       for (Role roles : roleList){
+            roleDto.getRoleIdList().add(roles.getRoleId());
+            roleDto.getRoleNameList().add(roles.getRoleName());
+       }  
     }
 }

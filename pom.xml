@@ -8,11 +8,11 @@
   
   	<packaging>pom</packaging>
 
-  	<name>Hibernate-Activity</name>
+  	<name>Spring-Activity</name>
 
   	<properties>	
     	<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <hb-core.version>4.3.11.Final</hb-core.version>
+        <hb-core.version>4.2.11.Final</hb-core.version>
         <postgresql.version>9.4.1211</postgresql.version>
         <assembly.version>2.6</assembly.version>
         <joda.time.version>2.9.4</joda.time.version>
@@ -35,6 +35,8 @@
         <cache.factory>org.hibernate.cache.ehcache.EhCacheRegionFactory</cache.factory>
         <cache.resource>ehcache.xml</cache.resource>
         <c3p0.version>5.2.3.Final</c3p0.version>
+        <aspectj.version>1.8.9</aspectj.version>
+        <dbcp.version>2.1.1</dbcp.version>
   	</properties>
 
 	<modules>
@@ -59,6 +61,7 @@
                 <groupId>org.hibernate</groupId>
                 <artifactId>ejb3-persistence</artifactId>
                 <version>${ejb3.persistence.version}</version>
+                <scope>provided</scope>
             </dependency>
              <dependency>
               <groupId>org.hibernate</groupId>
@@ -144,6 +147,16 @@
                 <groupId>org.hibernate</groupId>
                 <artifactId>hibernate-c3p0</artifactId>
                 <version>${c3p0.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.aspectj</groupId>
+                <artifactId>aspectjweaver</artifactId>
+                <version>${aspectj.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.apache.commons</groupId>
+                <artifactId>commons-dbcp2</artifactId>
+                <version>${dbcp.version}</version>
             </dependency>
         </dependencies>
     </dependencyManagement>

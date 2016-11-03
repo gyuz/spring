@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+ xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+ xsi:schemaLocation="http://www.springframework.org/schema/beans
+ http://www.springframework.org/schema/beans/spring-beans-4.1.xsd">
+  
+     <import resource="data-source-cfg.xml"/>
+     <import resource="transaction-cfg.xml"/>
+     
+     <!--repositories base-package="crud.core.dao.CrudInterface" /-->
+      
+     <bean id="personDao" class="crud.core.dao.PersonDao">
+         <property name="sessionFactory" ref="sessionFactory" />
+     </bean>
+     <bean id="roleDao" class="crud.core.dao.RoleDao">
+         <property name="sessionFactory" ref="sessionFactory" />
+     </bean>
+     <bean id="contactDao" class="crud.core.dao.ContactDao">
+         <property name="sessionFactory" ref="sessionFactory" />
+     </bean>
+     
+    <bean id="person" class="crud.core.model.Person" />
+    <bean id="role" class="crud.core.model.Role" />
+    <bean id="contact" class="crud.core.model.Contact" />  
+    <bean id="personDto" class="crud.core.service.PersonDto" />
+    <bean id="roleDto" class="crud.core.service.RoleDto" />    
+    
+    <bean id="personOperations" class="crud.core.service.PersonOperations" autowire="byType" />
+    <bean id="roleOperations" class="crud.core.service.RoleOperations" autowire="byType" />
+    <bean id="contactOperations" class="crud.core.service.ContactOperations" autowire="byType" />
+ 
+</beans>

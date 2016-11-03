@@ -16,9 +16,12 @@ import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import org.hibernate.annotations.Fetch;
 import org.hibernate.annotations.FetchMode;
+import org.hibernate.annotations.Cache;
+import org.hibernate.annotations.CacheConcurrencyStrategy;
 
 @Entity
 @Table(name = "ROLE")
+@Cache(usage=CacheConcurrencyStrategy.READ_WRITE, region="Role")
 public class Role {
     @Id 
     @SequenceGenerator(

@@ -12,7 +12,7 @@
  /> 
  
 <cache 
-    name="Person" 
+    name="Role" 
     maxElementsInMemory="500" 
     eternal="true" 
     timeToIdleSeconds="0" 

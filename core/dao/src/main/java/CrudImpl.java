@@ -4,13 +4,8 @@ import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
 import java.util.List;
-import org.springframework.stereotype.Repository;
-import org.springframework.beans.factory.annotation.Autowired;
 
-@SuppressWarnings("unchecked")
-@Repository
 public abstract class CrudImpl<T> implements CrudInterface<T> {
-	@Autowired
     private SessionFactory sessionFactory;
     
     protected Session getSession() {
@@ -21,16 +16,20 @@ public abstract class CrudImpl<T> implements CrudInterface<T> {
         return sess;
     }
     
-    private SessionFactory getSessionFactory() {
+    public SessionFactory getSessionFactory() {
         return sessionFactory;
     }  
+    
+    public void setSessionFactory(SessionFactory sessionFactory) {
+        this.sessionFactory = sessionFactory;
+    } 
 
     public void closeSession(){
         getSession().close();    
     }
     
     public void add(T entity) {
-        getSession().save(entity);
+        getSession().saveOrUpdate(entity);
 	}
 
 	public void update(T entity) {

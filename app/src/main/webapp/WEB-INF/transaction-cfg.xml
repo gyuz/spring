@@ -12,11 +12,29 @@
  
    <import resource="data-source-cfg.xml"/>
  
-   <tx:annotation-driven proxy-target-class="true" transaction-manager="txManager"/>
+   <!--tx:annotation-driven proxy-target-class="true" transaction-manager="txManager"/-->
  
    <bean id="txManager"
        class="org.springframework.orm.hibernate4.HibernateTransactionManager">
        <property name="sessionFactory" ref="sessionFactory"/>
    </bean>
+   
+   <tx:advice id="txAdvice" transaction-manager="txManager">
+	    <tx:attributes>
+		<tx:method name="get*" read-only="true" />
+		<tx:method name="print*" read-only="true" />
+		<tx:method name="load*" read-only="true" />
+		<tx:method name="*idExist*" read-only="true" />
+		<tx:method name="isDuplicate" read-only="true" />
+		<tx:method name="*" />
+	    </tx:attributes>
+	</tx:advice>
+
+	<aop:config>
+	    <aop:pointcut id="servicePointCut"
+		expression="execution(* crud.core.service.*Service.*(..))" />
+	    <aop:advisor advice-ref="txAdvice" pointcut-ref="servicePointCut" />
+	</aop:config>
+
  
 </beans>
