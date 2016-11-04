@@ -10,7 +10,7 @@ import crud.core.dao.CrudInterface;
 
 public class ContactOperations extends GenericServiceImpl<Contact> implements ContactService {
     private ContactInterface contactDao;
-    protected Contact contact;
+    private Contact contact;
     
     public ContactInterface getContactInterface(){
         return contactDao;

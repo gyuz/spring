@@ -10,11 +10,11 @@ import crud.core.service.RoleService;
 import crud.core.service.RoleDto;
 
 @SuppressWarnings("deprecation")
-public class RoleController extends SimpleFormController {
+public class RoleSaveController extends SimpleFormController {
 	private RoleService roleOps;
 	private RoleDto roleDto;
 
-	public RoleController() {
+	public RoleSaveController() {
 		setCommandClass(RoleDto.class);
 		setCommandName("roleDto");
 	}
@@ -25,15 +25,6 @@ public class RoleController extends SimpleFormController {
     
     public void setRole(RoleDto roleDto) {
         this.roleDto = roleDto;
-    }
-    
-    @Override
-    public ModelAndView handleRequest(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, Exception {
-        if(roleDto.getRoleIdList().isEmpty()) {
-            roleOps.printRoleList();
-        }
-        return new ModelAndView("RoleDetails", "roleDto", roleDto);
     }
     
     @Override

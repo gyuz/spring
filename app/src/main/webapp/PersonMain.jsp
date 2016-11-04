@@ -22,9 +22,9 @@
                     Sort By: <br>
                     <input type="radio" name="order" value="1" checked>Ascending
                     <input type="radio" name="order" value="2">Descending<br>
-                    <input type="submit" name="action" value="LIST"><br><br>  
-                    <button type="submit" name="action" value="BACK">BACK TO MAIN</button>   
+                    <input type="submit" name="action" value="LIST"><br><br>
                 </form> 
+                <a href="index.jsp"><button type="submit" name="action" value="BACK">BACK TO MAIN</button></a> 
             </div>
         </div>
     </body>

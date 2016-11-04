@@ -1,12 +1,13 @@
 package crud.core.service;
 
 import java.util.List;
+import java.util.ArrayList;
 
 public class RoleDto{
     private int roleId;
     private String roleName;
-    private List<Integer> roleIdList;
-    private List<String> roleNameList;
+    private List<Integer> roleIdList = new ArrayList<Integer>();
+    private List<String> roleNameList = new ArrayList<String>();
     
     public int getRoleId(){
         return roleId;    

@@ -21,6 +21,10 @@
                 <groupId>javax.servlet</groupId>
                 <artifactId>javax.servlet-api</artifactId>
          </dependency>
+         <dependency>
+            <groupId>javax.servlet.jsp.jstl</groupId>
+            <artifactId>jstl-api</artifactId>
+        </dependency>
 		 <dependency>
 		        <groupId>crud</groupId>
 		        <artifactId>service</artifactId>
@@ -57,10 +61,10 @@
                 <groupId>org.springframework</groupId>
                 <artifactId>spring-orm</artifactId>
             </dependency>   
-            <dependency>
+            <!--dependency>
                 <groupId>org.hibernate</groupId>
                 <artifactId>hibernate-c3p0</artifactId>
-            </dependency>
+            </dependency-->
             <dependency>
                 <groupId>org.aspectj</groupId>
                 <artifactId>aspectjweaver</artifactId>
@@ -68,11 +72,34 @@
              <dependency>
                 <groupId>org.apache.commons</groupId>
                 <artifactId>commons-dbcp2</artifactId>
-            </dependency>           
+            </dependency> 
+        
 	</dependencies>
 
 	<build>
 		<plugins>
+		    <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>3.6.0</version>
+                <configuration>
+                  <source>1.8</source>
+                  <target>1.8</target>
+                </configuration>
+            </plugin>
+		    <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-war-plugin</artifactId>
+                <configuration>
+                    <webResources>
+                        <resource>
+                            <directory>${basedir}/src/main/webapp/WEB-INF/</directory>
+                            <filtering>true</filtering>
+                            <targetPath>WEB-INF</targetPath>
+                        </resource>
+                    </webResources>
+                </configuration>
+            </plugin>
 			<plugin>
                 <groupId>org.eclipse.jetty</groupId>
                 <artifactId>jetty-maven-plugin</artifactId>

@@ -10,16 +10,16 @@
         http://www.springframework.org/schema/mvc
         http://www.springframework.org/schema/mvc/spring-mvc.xsd">
 
-    <context:component-scan base-package="crud.*"/>
-    <mvc:resources mapping="/resources/**" location="/resources/"/>
-    <mvc:view-controller path="/" view-name="index"/>
+    <context:component-scan base-package="crud.app.*"/>
+    <mvc:resources mapping="/js/**" location="/js/"/>
+    <mvc:resources mapping="/favicon.ico" location="/favicon.ico" />
   
     <bean id="viewResolver" class="org.springframework.web.servlet.view.InternalResourceViewResolver">
         <property name="prefix" value="/"/>
         <property name="suffix" value=".jsp"/>
     </bean>
 
-    <bean name="indexController" class="crud.app.IndexController" p:formView="index" />
-    <bean name="personController" class="crud.app.PersonController" />
-    <bean name="roleController" class="crud.app.RoleController" p:formView="RoleDetails" p:successView="RoleDetails"/>
+    <bean name="/personController" class="crud.app.PersonController" />
+    <bean name="/roleController" class="crud.app.RoleController" autowire="byType"/>
+    <bean name="/roleSaveController" class="crud.app.RoleSaveController" autowire="byType"/>
 </beans>

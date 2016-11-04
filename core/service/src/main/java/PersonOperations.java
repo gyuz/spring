@@ -21,7 +21,7 @@ public class PersonOperations extends GenericServiceImpl<Person> implements Pers
     private Person person;
     private PersonDto personDto;
     private DataParser dataParser;
-    private ContactOperations contactOps;
+    private ContactService contactOps;
 
     public PersonDto getPersonDto(){
         return personDto;
@@ -46,12 +46,12 @@ public class PersonOperations extends GenericServiceImpl<Person> implements Pers
     public void setPerson(Person person){
         this.person = person;
     }
-    /*
-    public ContactOperations getContactOperations(){
+    
+    public ContactService getContactService(){
         return contactOps;
     } 
-    */
-    public void setContactOperations(ContactOperations contactOps){
+    
+    public void setContactService(ContactService contactOps){
         this.contactOps = contactOps;
     }
     
@@ -239,7 +239,7 @@ public class PersonOperations extends GenericServiceImpl<Person> implements Pers
 
     public boolean addContact(String type, String detail){
         contactOps.setContactDetails(type, detail, person);
-        Contact contact = contactOps.contact;
+        Contact contact = contactOps.getContact();
         if(contactExist(contact)) {
             return false;
         } else {
@@ -249,10 +249,10 @@ public class PersonOperations extends GenericServiceImpl<Person> implements Pers
     } 
     
     public boolean updateContact(String detail){
-        Contact contact = contactOps.contact;
+        Contact contact = contactOps.getContact();
         person.getContacts().remove(contact);
         contactOps.setDetail(detail);
-        contact = contactOps.contact;
+        contact = contactOps.getContact();
         if(contactExist(contact)) {
             return false;
         } else {
