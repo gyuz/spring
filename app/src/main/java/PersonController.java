@@ -4,7 +4,7 @@ import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.SimpleFormController;
 
 import crud.core.service.PersonOperations;
-import crud.core.service.PersonDto;
+import crud.core.model.PersonDto;
 
 @SuppressWarnings("deprecation")
 public class PersonController extends SimpleFormController {

@@ -1,8 +1,8 @@
 package crud.core.service;
 
 import crud.core.model.Role;
+import crud.core.model.RoleDto;
 import crud.core.dao.RoleInterface;
-import crud.core.dao.CrudInterface;
 import java.util.List;
 import java.util.ArrayList;
 
@@ -39,9 +39,10 @@ public class RoleOperations extends GenericServiceImpl<Role> implements RoleServ
         roleDao.closeSession();    
     }
     
-    public void addRole(String roleName){
+    public void add(String roleName){
+        role = new Role();
         role.setRoleName(roleName);
-        add(role);
+        roleDao.add(role);
     }
     
     public boolean idExist(int id) {
@@ -52,26 +53,17 @@ public class RoleOperations extends GenericServiceImpl<Role> implements RoleServ
         return false;     
     }
     
-    public void DtoToEntity(RoleDto roleDto){
-        role.setRoleId(roleDto.getRoleId());
-        role.setRoleName(roleDto.getRoleName());
+    public void update(int id, String newRoleName) {
+         role = roleDao.getRoleById(id); 
+         role.setRoleName(newRoleName);
+         roleDao.update(role);   
     }
     
-    public boolean update(int id, String newRoleName) {
-        newRoleName = newRoleName.toUpperCase();
-        boolean exist = isDuplicate(newRoleName); 
-        if(!exist) {
-            Role role = roleDao.getRoleById(id); 
-            role.setRoleName(newRoleName);
-            roleDao.update(role);
-        }
-        return !exist;    
-    }
-    
-    public boolean deleteRole(){
-       //role = roleDao.loadRole(id);
+    public boolean delete(int id){
+       role = roleDao.loadRole(id);
+       System.out.println(role);
        if (role != null && role.getPersons().isEmpty()) {
-            delete(role);
+            roleDao.delete(role);
             return true;
         } 
         return false;  
@@ -85,11 +77,13 @@ public class RoleOperations extends GenericServiceImpl<Role> implements RoleServ
         return true;
     }
     
-    public void printRoleList(){
+    public RoleDto printRoleList(){
+       roleDto = new RoleDto();
        List<Role> roleList = roleDao.getList("Role ORDER BY ROLE_ID");
        for (Role roles : roleList){
-            roleDto.getRoleIdList().add(roles.getRoleId());
+            roleDto.getRoleIdList().add(roles.getRoleId()+"");
             roleDto.getRoleNameList().add(roles.getRoleName());
-       }  
+       } 
+       return roleDto; 
     }
 }

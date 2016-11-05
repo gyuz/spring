@@ -9,8 +9,7 @@
         http://www.springframework.org/schema/context/spring-context-3.0.xsd
         http://www.springframework.org/schema/mvc
         http://www.springframework.org/schema/mvc/spring-mvc.xsd">
-
-    <context:component-scan base-package="crud.app.*"/>
+        
     <mvc:resources mapping="/js/**" location="/js/"/>
     <mvc:resources mapping="/favicon.ico" location="/favicon.ico" />
   
@@ -21,5 +20,5 @@
 
     <bean name="/personController" class="crud.app.PersonController" />
     <bean name="/roleController" class="crud.app.RoleController" autowire="byType"/>
-    <bean name="/roleSaveController" class="crud.app.RoleSaveController" autowire="byType"/>
+    <bean name="/roleSaveController" class="crud.app.RoleSaveController"  autowire="byType"/>
 </beans>

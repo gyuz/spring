@@ -11,7 +11,10 @@
             <div>
                 <h1>Roles</h1>
             </div>
-            <form:form method="POST" action="/roleSaveController">
+            <div>
+                ${errMsgs}
+            </div>
+            <form:form name="roleDetails" action="/roleSaveController" method="POST" commandName="roleDto">
                 <h3>Create/Update/Delete/List Role:</h3>
                 <br/><br/>
                 <table id="roles" border="1">
@@ -22,15 +25,15 @@
                     </tr>
                     <c:forEach var="roleId" items="${roleDto.roleIdList}" varStatus="ctr">
                         <tr>
-                          <td><input type="text" name="roleId" value="${roleId}" readonly/></td>
-                          <td><input type="text" name="roleName" value="${roleDto.roleNameList.get(ctr.index)}"/></td>
-                          <td><button type="button" onclick="deleteRow(this, 'roles')">DELETE</button></td>
+                          <td><input type="text" id="${roleId}" path="roleIdList" name="roleIdList" value="${roleId}" readonly/></td>
+                          <td><input type="text" name="roleNameList" value="${roleDto.roleNameList.get(ctr.index)}"/></td>
+                          <td><button type="button" onclick="deleteRow(this, 'roles', 'roleDetails', '${roleId}')">DELETE</button></td>
                         </tr>
                     </c:forEach>
                 </table>
                 <button type="button" onclick="addRow('roles')">Add Role</button>
                 <br/><br/>
-                <button type="submit">SAVE</button>
+                <input type="submit" onclick="detectChanges('roleDetails')" value="SAVE">
             </form:form>
             <br/><br/>
             <a href="../index.jsp"><button type="button">BACK TO MAIN</button></a>

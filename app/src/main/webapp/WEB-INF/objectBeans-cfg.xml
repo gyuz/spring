@@ -1,12 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans"
- xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
- xsi:schemaLocation="http://www.springframework.org/schema/beans
- http://www.springframework.org/schema/beans/spring-beans-4.1.xsd">
+     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+     xmlns:p="http://www.springframework.org/schema/p"
+     xmlns:context="http://www.springframework.org/schema/context"
+     xsi:schemaLocation="http://www.springframework.org/schema/beans
+     http://www.springframework.org/schema/beans/spring-beans-4.1.xsd
+     http://www.springframework.org/schema/context
+     http://www.springframework.org/schema/context/spring-context-3.0.xsd">
   
      <import resource="data-source-cfg.xml"/>
      <import resource="transaction-cfg.xml"/>
      
+     <context:component-scan base-package="crud.core.dao"/>  
      <!--repositories base-package="crud.core.dao.CrudInterface" /-->
       
      <bean id="personDao" class="crud.core.dao.PersonDao">
@@ -22,11 +27,18 @@
     <bean id="person" class="crud.core.model.Person" />
     <bean id="role" class="crud.core.model.Role" />
     <bean id="contact" class="crud.core.model.Contact" />  
-    <bean id="personDto" class="crud.core.service.PersonDto" />
-    <bean id="roleDto" class="crud.core.service.RoleDto" />    
+    <bean id="personDto" class="crud.core.model.PersonDto" />
+    <bean id="roleDto" class="crud.core.model.RoleDto" />    
     
-    <bean id="personOperations" class="crud.core.service.PersonOperations" autowire="byType" />
-    <bean id="roleOperations" class="crud.core.service.RoleOperations" autowire="byType" />
-    <bean id="contactOperations" class="crud.core.service.ContactOperations" autowire="byType" />
+    <bean id="personOperations" class="crud.core.service.PersonOperations" autowire="byType">
+        <property name="crudInterface" ref="personDao"/>
+    </bean>
+    <bean id="roleOperations" class="crud.core.service.RoleOperations" autowire="byType">
+        <property name="crudInterface" ref="roleDao"/>
+    </bean>
+    <bean id="contactOperations" class="crud.core.service.ContactOperations" autowire="byType">
+         <property name="crudInterface" ref="contactDao"/>
+    </bean>
+    <bean id="dataParser" class="crud.core.service.DataParser"/>
  
 </beans>

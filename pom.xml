@@ -27,15 +27,9 @@
         <service.version>1.0-SNAPSHOT</service.version>
         <persistence.version>1.0-SNAPSHOT</persistence.version>
         <ejb3.persistence.version>3.3.2.Beta1</ejb3.persistence.version>
-        <connection.url>jdbc:postgresql://localhost:5433/hr</connection.url>
-        <dialect>org.hibernate.dialect.PostgreSQLDialect</dialect>
-        <connection.driver>org.postgresql.Driver</connection.driver>
-        <connection.username>ecc</connection.username>
-        <connection.password>ex1stgl0bal</connection.password>
         <cache.version>2.6.11</cache.version>
         <cache.factory>org.hibernate.cache.ehcache.EhCacheRegionFactory</cache.factory>
         <cache.resource>ehcache.xml</cache.resource>
-        <!--c3p0.version>5.2.3.Final</c3p0.version-->
         <aspectj.version>1.8.9</aspectj.version>
         <dbcp.version>2.1.1</dbcp.version>
         <c3p0.version>0.9.5.2</c3p0.version>
@@ -150,11 +144,6 @@
                 <artifactId>spring-orm</artifactId>
                 <version>${spring.version}</version>
             </dependency>
-            <!--dependency>
-                <groupId>org.hibernate</groupId>
-                <artifactId>hibernate-c3p0</artifactId>
-                <version>${c3p0.version}</version>
-            </dependency-->
             <dependency>
                 <groupId>org.aspectj</groupId>
                 <artifactId>aspectjweaver</artifactId>
@@ -189,5 +178,25 @@
 		    </plugins>        
         </pluginManagement>
     </build>
+    
+    <profiles>
+        <profile>
+            <id>postgres</id>
+            <activation>
+                <activeByDefault>true</activeByDefault>
+            </activation>
+            <properties>
+                <connection.url>jdbc:postgresql://localhost:5432/hr</connection.url>
+                <dialect>org.hibernate.dialect.PostgreSQLDialect</dialect>
+                <connection.driver>org.postgresql.Driver</connection.driver>
+                <connection.username>ecc</connection.username>
+                <connection.password>ex1stgl0bal</connection.password> 
+                <max.pool.size>5</max.pool.size>
+                <min.pool.size>2</min.pool.size>
+                <max.statements>5</max.statements>
+                <test.connection>true</test.connection>           
+            </properties>
+        </profile>
+    </profiles>
 
 </project>

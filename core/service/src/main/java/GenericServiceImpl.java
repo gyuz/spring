@@ -10,7 +10,11 @@ public abstract class GenericServiceImpl<T> implements GenericService<T> {
 	private CrudInterface<T> crudInterface;
    
     public GenericServiceImpl(CrudInterface<T> crudInterface) {
-        this.crudInterface=crudInterface;
+        this.crudInterface = crudInterface;
+    }
+    
+    public void setCrudInterface(CrudInterface<T> crudInterface) {
+        this.crudInterface = crudInterface;
     }
 
     public GenericServiceImpl() {
@@ -29,6 +33,7 @@ public abstract class GenericServiceImpl<T> implements GenericService<T> {
     }
 
     public void delete(T entity) {
+        System.out.println(crudInterface);
         crudInterface.delete(entity);
     }
 }

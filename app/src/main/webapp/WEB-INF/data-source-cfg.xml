@@ -6,56 +6,21 @@
       http://www.springframework.org/schema/beans/spring-beans.xsd
       http://www.springframework.org/schema/context
       http://www.springframework.org/schema/context/spring-context-3.0.xsd">
-      
-    <!--bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
-        <property name="driverClassName" value="${connection.driver}" />
-        <property name="url" value="${connection.url}"/>
-        <property name="username" value="${connection.username}"/>
-        <property name="password" value="${connection.password}"/>
-    </bean-->
     
-    <bean id="dataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource"
-          destroy-method="close">
-        <property name="driverClass" value="org.postgresql.Driver" />
-        <property name="jdbcUrl" value="jdbc:postgresql://localhost:5433/hr"/>
-        <property name="user" value="ecc"/>
-        <property name="password" value="ex1stgl0bal"/>
-        <property name="maxPoolSize" value="5" />
-		<property name="minPoolSize" value="2" />
-		<property name="maxStatements" value="5" />
-		<property name="testConnectionOnCheckout" value="true" />
+    <bean id="dataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource">
+        <property name="driverClass" value="${connection.driver}" />
+        <property name="jdbcUrl" value="${connection.url}"/>
+        <property name="user" value="${connection.username}"/>
+        <property name="password" value="${connection.password}"/>
+        <property name="maxPoolSize" value="${max.pool.size}" />
+		<property name="minPoolSize" value="${min.pool.size}" />
+		<property name="maxStatements" value="${max.statements}" />
+		<property name="testConnectionOnCheckout" value="${test.connection}" />
     </bean>
       
     <bean id="sessionFactory"
           class="org.springframework.orm.hibernate4.LocalSessionFactoryBean">
         <property name="dataSource" ref="dataSource"/>
         <property name="configLocation" value="classpath:hibernate.cfg.xml" />
-        <!--property name="packagesToScan" value="crud.core.model"/>
-        <property name="hibernateProperties">
-            <props>
-                <prop key="hibernate.hbm2ddl.auto">create-drop</prop>
-                <prop key="hibernate.dialect">${dialect}</prop>
-                <prop key="hibernate.connection.CharSet">utf8</prop>
-                <prop key="hibernate.connection.characterEncoding">utf8</prop>
-                <prop key="hibernate.connection.useUnicode">true</prop>
-                
-                <prop name="hibernate.c3p0.min_size" value="2" />
-                <prop name="hibernate.c3p0.max_size" value="5" />
-                <prop name="hibernate.c3p0.timeout" value="600" />
-                <prop name="hibernate.c3p0.max_statements" value="0" />
-                <prop name="hibernate.c3p0.idle_test_period" value="300"/>
-                <prop name="hibernate.c3p0.acquire_increment" value="1" />
-            </props>
-          <property name="annotatedClasses">
-          <list>
-              <value>crud.core.model.Person</value>
-              <value>crud.core.model.Role</value>
-              <value>crud.core.model.Contact</value>
-              <value>crud.core.model.Name</value>
-              <value>crud.core.model.Address</value>
-          </list>
-          </property>
-       </property-->
-
     </bean>
 </beans>
