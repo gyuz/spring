@@ -1,9 +1,5 @@
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-<%@ page import="java.util.List" %>
-<%@ page import="org.joda.time.LocalDate" %>
-<%@ page import="crud.core.service.RoleOperations" %>  
-<%@ page import="crud.core.service.PersonOperations" %>
-<%@ page import="crud.core.service.DataParser" %>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %> 
 
 <html>
     <head>
@@ -15,170 +11,159 @@
             <div>
                 <h1>View Person</h1>       
             </div>
-        <%
-            PersonOperations personOps = new PersonOperations();
-            RoleOperations roleOps = new RoleOperations();
-            DataParser dataParser = new DataParser();
-            int id = dataParser.stringToInt(request.getParameter("personId"));
-            String firstName = "";
-            String lastName = "";
-            String middleName = "";
-            String title = "";
-            String street = "";
-            String brgy = "";
-            String city = "";
-            int zip = 0;
-            char employed = 'N';
-            LocalDate birthDate = null;
-            LocalDate dateHired = null;
-            double gwa = 0.0;
-            if(id != 0){
-                if(personOps.idExist(id)) {
-                    personOps.printContactList();
-                    personOps.printPersonRoleList();
-                    roleOps.printRoleList();
-                    firstName = personOps.getFirstName();
-                    lastName = personOps.getLastName();
-                    middleName = personOps.getMiddleName();
-                    title = personOps.getTitle();
-                    street = personOps.getStreet();
-                    brgy = personOps.getBrgy();
-                    city = personOps.getCity();
-                    zip = personOps.getZip();
-                    birthDate = personOps.getBirthDate();
-                    dateHired = personOps.getDateHired();
-                    gwa = personOps.getGwa();
-                    employed = personOps.getEmployed();
-                    List<String> titleList = personOps.printTitleList();
-                    List<Integer> roleIds = personOps.getPersonRoleIds();
-                    List<Integer> contactIds = personOps.getPersonContactIds();
-                    List<String> roleNames = personOps.getPersonRoleNames();
-                    List<String> contactTypes = personOps.getPersonContactTypes();
-                    List<String> contactDetails = personOps.getPersonContactDetails();
-                    List<String> typeList = personOps.printTypeList();
-                    List<Integer> masterRoleList = roleOps.getRoleIdList();
-                    List<String> masterRoleNameList = roleOps.getRoleNameList();
-                    personOps.closeSession();
-         %>    
-         <form action="PersonOps" name="personForm" method="POST">
-            ID:  <input type="hidden" name="personId" value="<%=id%>"><%=id%><br/>
+            <form:form name="personDetails" action="personSaveController" method="POST" commandNam="personDto">
+            ID:  <input type="hidden" name="id" value="${personDto.id}">${personDto.id}<br/>
             Title: 
             <select name="title" required>
-                <option value="<%=title%>" checked><%=title%></option>
-                <c:forEach items="titleList" var="title">
-                    <option value="${title}"> ${title} + </option>
+                <option value="${personDto.title}" checked>${personDto.title}</option>
+                <c:forEach items="${titles}" var="title">
+                    <option value="${title}"> ${title} </option>
                 </c:forEach>
             </select>
             <br/>
-            First Name: <input type="text" max="30" name="firstName" value="<%=firstName%>" required><br/>
-            Middle Name: <input type="text" max="15" name="middleName"  value="<%=middleName%>"><br/>
-            Last Name:  <input type="text" max="15" name="lastName" value="<%=lastName%>" required><br/>
-            BirthDate: <input type="date" name="birthDate" value="<%=birthDate.toString("MM/dd/yyyy")%>" required placeholder="MM/DD/YYYY"><br/>
-            Street: <input type="text" max="50" name="street" value="<%=street%>" required><br/>
-            Brgy: <input type="text" max="20" name="brgy" value="<%=brgy%>" required><br/>
-            City:  <input type="text" max="20" name="city" value="<%=city%>" required><br/>
-            Zip: <input type="number" name="zip" value="<%=zip%>" required><br/>
-            GWA: <input type="text" name="gwa" value="<%=gwa%>"><br/>
+            First Name: <input type="text" max="30" name="firstName" value="${personDto.firstName}" required><br/>
+            Middle Name: <input type="text" max="15" name="middleName"  value="${personDto.middleName}"><br/>
+            Last Name:  <input type="text" max="15" name="lastName" value="${personDto.lastName}" required><br/>
+            BirthDate: <input type="date" name="birthDate" value="${personDto.birthDate.toString('MM/dd/yyyy')}" required placeholder="MM/DD/YYYY"><br/>
+            Street: <input type="text" max="50" name="street" value="${personDto.street}" required><br/>
+            Brgy: <input type="text" max="20" name="brgy" value="${personDto.brgy}" required><br/>
+            City:  <input type="text" max="20" name="city" value="${personDto.city}" required><br/>
+            Zip: <input type="number" name="zip" value="${personDto.zip}" required><br/>
+            GWA: <input type="text" name="gwa" value="${personDto.gwa}"><br/>
             Employed: 
             <select name="employed" required>
-                <option value="<%=employed%>"><%=employed%></option>
+                <option value="${personDto.employed}">${personDto.employed}</option>
                 <option value="Y">Y</option>
                 <option value="N">N</option>
             </select>
             <br/>
-            <% if(dateHired != null) { %>
-                Date Hired: <input type="date" name="dateHired" value="<%=dateHired.toString("MM/dd/yyyy")%>" placeholder="MM/DD/YYYY">
-            <% } else { %>
-                Date Hired: <input type="date" name="dateHired" placeholder="MM/DD/YYYY">
-            <% } %>
-            <br/>
-            <button type="submit" name="action" value="UPDATE">UPDATE DETAILS</button>
+            <c:choose>
+                <c:when test="${personDto.dateHiredMap.containsKey(personDto.id)}">
+                    Date Hired: <input type="date" name="dateHired" value="${personDto.dateHiredMap.get(personDto.id).toString('MM/dd/yyyy')}" >
+                </c:when>
+                <c:otherwise>
+                     Date Hired: <input type="date" name="dateHired" placeholder="MM/DD/YYYY">
+                </c:otherwise>
+            </c:choose>
+            <div>
             <br/><br/>
             Contacts:
             <br/>
-            <table border="1">
-                <tr>
-                    <td>Contact ID</td>
-                    <td>Type</td>
-                    <td>Details</td>
-                </tr>
-                <% for(int i = 0; i < contactIds.size(); i++){ %>
+            <c:if test="${!personDto.personContactIds.isEmpty()}">
+                <table id="contacts">
                     <tr>
-                        <td><%=contactIds.get(i)%></td> 
-                        <td><%=contactTypes.get(i)%></td>
-                        <td><%=contactDetails.get(i)%></td>
-                   </tr>
-                <% } %>
-            </table>
-            <br/><br/>
-            Select Contact ID: 
-            <select name="contactId">
-                <option disabled selected value> -- Contact ID -- </option>
-                <c:forEach items="<%=contactIds%>" var="contact">
-                    <option value="${contact}"> ${contact} </option>
-                </c:forEach>
-            </select>
-            <button type="submit" name="action" value="DELCONT">DELETE CONTACT</button>
-            <br/>
-            Select Contact Type: 
-            <select name="contactType">
-                <c:forEach items="<%=typeList%>" var="type">
-                    <option value="${type}"> ${type} </option>
-                </c:forEach>
-            </select>
-            <br/>
-            Enter Details: 
-            <input type="text" max="20" name="contactDetail" size=20> 
-            <br/> 
-            <button type="submit" name="action" value="ADDCONT">ADD CONTACT</button>
-            <button type="submit" name="action" value="UPDCONT">UPDATE CONTACT</button>
-            <br/><br/>
-                   
-            Roles:
-            <br/>
-            <% if(roleIds.size() > 0) { %>
-                <table border="1">
-                    <tr>
-                        <td>Role ID</td>
-                        <td>Role Name</td>
+                        <td>CONTACT ID</td>
+                        <td>CONTACT TYPE</td>
+                        <td>CONTACT DETAILS</td>
                     </tr>
-                    <% for(int i = 0; i < roleIds.size(); i++){ %>
+                    <c:forEach var="contactId" items="${personDto.personContactIds}" varStatus="ctr">
                         <tr>
-                            <td><%=roleIds.get(i)%></td> 
-                            <td><%=roleNames.get(i)%></td>
+                            <td style="display:none;"><input type="text" id="${contactId}" name="peronContactIds" value="${contactId}" readonly/></td>
+                            <td>${contactId}</td>
+                            <td>
+                                <select name="personContactTypes" required>
+                                    <option value="${personDto.personContactTypes.get(ctr.index)}" checked>${personDto.personContactTypes.get(ctr.index)}</option>
+                                    <c:forEach items="${typeList}" var="type">
+                                        <option value="${type}"> ${type} </option>
+                                    </c:forEach>
+                                </select>
+                            </td>
+                            <td><input type="text" name="personContactDetails" value="${personDto.personContactDetails.get(ctr.index)}"/></td>
+                            <td><button type="button" onclick="deleteRow(this, 'contacts', 'personDetails', '${contactId}')">DELETE</button></td>
                         </tr>
-                    <% } %>
+                     </c:forEach>
                  </table>
-            <% } else { %>
-                No Roles
-            <% } %>
-            <br/>
-            Choose Role: 
-            <select name="roleId">
-                <% for(int i = 0; i < masterRoleList.size(); i++){ %>
-                <option value="<%=masterRoleList.get(i)%>"> <%=masterRoleList.get(i)%>  -  <%=masterRoleNameList.get(i)%></option>
-                <% } %>
-            </select>
-            <br/>
-            <button type="submit" name="action" value="ADDROLE">ADD ROLE</button>
-            <button type="submit" name="action" value="DELROLE">DELETE ROLE</button><br/><br/>
-            <button type="submit" name="action" value="DELETE">DELETE</button><br/>
-         </form>
-             <% } else { %>
-                ID does not Exist! 
-             <% }
-          } else { %>
-            Invalid ID
-         <% } %>
-            
-            <form action="PersonDispatch" method="GET">
-                <input type="hidden" name="list" value="4">
-                <input type="hidden" name="order" value="1">
-                <button type="submit" name="action" value="LIST">GO TO LIST</button>
-                <button type="submit" name="action" value="BACKP">BACK TO PERSON</button>
-                <button type="submit" name="action" value="BACK">BACK TO MAIN</button>
-            </form>
-            
+            </c:if>
+            <table id="newContacts">
+                <c:if test="${personDto.personContactIds.isEmpty()}">
+                    <tr>
+                        <td>CONTACT ID</td>
+                        <td>CONTACT TYPE</td>
+                        <td>CONTACT DETAILS</td>
+                    </tr>
+                </c:if>
+                <tr>
+                    <td style="display:none;"><input type="text" name="peronContactIds"/></td>
+                    <td></td>
+                    <td>
+                        <select name="personContactTypes">
+                        <option disabled selected value> -- Contact Type -- </option>
+                        <c:forEach items="${typeList}" var="type">
+                            <option value="${type}"> ${type} </option>
+                        </c:forEach>
+                        </select>
+                    </td>
+                    <td><input type="text" name="personContactDetails" placeholder="number/email" size=20></td>
+                    <td><button type="button" onclick="deleteRow(this, 'newContacts', 'personDetails', '')">DELETE</button></td>
+                </tr>   
+            </table>
+            <button type="button" onclick="addRow('newContacts')">Add Contact</button>
+            <br/><br/>
+            <div>
+                Roles:
+                <br/>
+                <c:if test="${!personDto.personRoleIds.isEmpty()}">
+                    <table id="roles">
+                        <tr>
+                            <td>ROLE ID</td>
+                            <td>ROLE NAME</td>
+                            <td>
+                        </tr>
+                        <c:forEach var="roleId" items="${personDto.personRoleIds}" varStatus="ctr">
+                            <tr>
+                                <td style="display:none;"><input type="text" id="${roleId}" name="personRoleIds" value="${roleId}" readonly/></td>
+                                <td>${roleId}</td>
+                                <td>
+                                    <select name="personRoleNames" required>
+                                    <option value="${personDto.personRoleNames.get(ctr.index)}" checked>${personDto.personRoleNames.get(ctr.index)}</option>
+                                    <c:forEach items="${roleDto.roleNameList}" var="roleName">
+                                        <option value="${roleName}"> ${roleName} </option>
+                                    </c:forEach>
+                                </select>
+                                </td>
+                                <td><button type="button" onclick="deleteRow(this, 'roles', 'personDetails', '${roleId}')">DELETE</button></td>
+                                </tr>
+                        </c:forEach>
+                     </table>
+               </c:if>
+              <table id="newRoles">
+                <c:if test="${personDto.personRoleIds.isEmpty()}">
+                    <tr>
+                        <td>ROLE ID</td>
+                        <td>ROLE NAME</td>
+                    </tr>
+                </c:if>
+                <tr>
+                    <td style="display:none;"><input type="text" name="personRoleIds"/></td>
+                    <td></td>
+                    <td>
+                        <select name="personRoleNames">
+                            <option disabled selected value> -- Role -- </option>
+                            <c:forEach items="${roleDto.roleNameList}" var="roleName">
+                                <option value="${roleName}"> ${roleName}</option>
+                            </c:forEach>
+                        </select>
+                    </td>
+                    <td><button type="button" onclick="deleteRow(this, 'newRoles', 'personDetails', '')">DELETE</button></td>
+                 </tr>   
+               </table>
+               <button type="button" onclick="addRow('newRoles')">Add Role</button>
+            </div>
+            <br/><br/>
+            <button type="submit">SAVE</button>
+         </form:form>
+         <br/>
+         <div>
+             <div>
+                 <form:form action="personController" method="GET">
+                        <input type="hidden" name="list" value="4">
+                        <input type="hidden" name="order" value="1">
+                        <button type="submit" name="action" value="LIST">GO TO LIST</button>
+                 </form:form>
+             </div>
+             <a href="../PersonMain.jsp"><button type="button">BACK TO PERSON</button></a>
+             <a href="../index.jsp"><button type="button">BACK TO MAIN</button></a>       
+         </div>
        </div>
     </body>
 </html>

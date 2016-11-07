@@ -2,6 +2,8 @@ package crud.core.model;
 
 import java.util.List;
 import java.util.Map;
+import java.util.ArrayList;
+import java.util.HashMap;
 import org.joda.time.LocalDate;
 
 public class PersonDto{
@@ -9,6 +11,7 @@ public class PersonDto{
     private String firstName;
     private String lastName;
     private String middleName;
+    private String title;
     private String street;
     private String city;
     private String brgy;
@@ -17,26 +20,25 @@ public class PersonDto{
     private double gwa;
     private LocalDate dateHired;
     private char employed;
-    private List<Integer> personIdList;
-    private List<String> firstNameList;
-    private List<String> lastNameList;
-    private List<String> middleNameList;
-    private List<String> titleList; 
-    private List<LocalDate> birthDateList;  
-    private List<LocalDate> dateHiredList;  
-    private List<String> streetList;
-    private List<String> cityList;
-    private List<String> brgyList;
-    private List<Integer> zipList; 
-    private List<Character> employedList;
-    private List<Double> gwaList;
-    private List<Integer> personRoleIds;
-    private List<Integer> personContactIds;
-    private List<String> personRoleNames;
-    private List<String> personContactTypes;
-    private List<String> personContactDetails;
-    private String title;    
-    private Map<Integer, LocalDate> dateHiredMap;
+    private List<Integer> personIdList = new ArrayList<Integer>();
+    private List<String> firstNameList = new ArrayList<String>();
+    private List<String> lastNameList = new ArrayList<String>();
+    private List<String> middleNameList = new ArrayList<String>();
+    private List<String> titleList = new ArrayList<String>(); 
+    private List<LocalDate> birthDateList = new ArrayList<LocalDate>();  
+    private List<LocalDate> dateHiredList = new ArrayList<LocalDate>();  
+    private List<String> streetList = new ArrayList<String>();
+    private List<String> cityList = new ArrayList<String>();
+    private List<String> brgyList = new ArrayList<String>();
+    private List<Integer> zipList = new ArrayList<Integer>(); 
+    private List<Character> employedList = new ArrayList<Character>();
+    private List<Double> gwaList = new ArrayList<Double>();
+    private List<Integer> personRoleIds = new ArrayList<Integer>();
+    private List<Integer> personContactIds = new ArrayList<Integer>();
+    private List<String> personRoleNames = new ArrayList<String>();
+    private List<String> personContactTypes = new ArrayList<String>();
+    private List<String> personContactDetails = new ArrayList<String>();    
+    private Map<Integer, LocalDate> dateHiredMap = new HashMap<Integer, LocalDate>();
     
     public int getId(){
         return id;        

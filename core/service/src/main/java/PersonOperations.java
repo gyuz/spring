@@ -87,6 +87,7 @@ public class PersonOperations extends GenericServiceImpl<Person> implements Pers
         personDto.setFirstName(person.getName().getFirstName());
         personDto.setMiddleName(person.getName().getMiddleName());
         personDto.setLastName(person.getName().getLastName());
+        personDto.setTitle(person.getTitle().toString());
         personDto.setStreet(person.getAddress().getStreet());
         personDto.setBrgy(person.getAddress().getBrgy());
         personDto.setCity(person.getAddress().getCity());
@@ -100,6 +101,8 @@ public class PersonOperations extends GenericServiceImpl<Person> implements Pers
         } else {
             personDto.setEmployed('N');
         }    
+        printContactList();
+        printPersonRoleList();
     }
     
     public void savePerson(){
@@ -148,9 +151,10 @@ public class PersonOperations extends GenericServiceImpl<Person> implements Pers
         return titleList;
     }  
     
-    public void printPersonList(int listChoice, int order){
+    public PersonDto printPersonList(int listChoice, int order){
        List<Person> personList = new ArrayList<Person>();
-
+       personDto = new PersonDto();
+       
        if(listChoice == 1){
             personList = personDao.getList("Person"); 
             if(order == 1) {
@@ -200,6 +204,7 @@ public class PersonOperations extends GenericServiceImpl<Person> implements Pers
                 personDto.getDateHiredMap().put(persons.getId(), persons.getDateHired());   
             }
        }
+       return personDto;
     }
 
     public boolean addRole(Role role){

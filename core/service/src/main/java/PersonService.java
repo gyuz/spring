@@ -5,6 +5,7 @@ import crud.core.model.Contact;
 import crud.core.model.Role;
 import crud.core.model.Title;
 import crud.core.model.Types;
+import crud.core.model.PersonDto;
 import java.util.List;
 import org.joda.time.LocalDate;
 
@@ -17,7 +18,7 @@ public interface PersonService extends GenericService<Person> {
     public boolean parseEmployed(char employed);
     public boolean isDuplicate(String firstName, String lastName, String middleName);
     public List printTitleList();
-    public void printPersonList(int listChoice, int order);
+    public PersonDto printPersonList(int listChoice, int order);
     public boolean addRole(Role role);
     public void deleteRole(Role role);
     public boolean roleExistInSet(int roleId);

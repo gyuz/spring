@@ -8,7 +8,7 @@
                 <h1>Person</h1>
             </div>   
             <div>
-                <form action="crud/PersonDispatch" method="GET">   
+                <form action="personController" method="GET">   
                     <button type="submit" name="action" value="CREATE">CREATE NEW</button>
                     <br><br>   
                     Enter Person ID: <input type="number" name="personId" placeholder="##">

@@ -6,7 +6,6 @@ import javax.servlet.ServletException;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.SimpleFormController;
 import org.springframework.validation.BindException;
-
 import crud.core.service.RoleService;
 import crud.core.model.RoleDto;
 

@@ -11,7 +11,7 @@
      <import resource="data-source-cfg.xml"/>
      <import resource="transaction-cfg.xml"/>
      
-     <context:component-scan base-package="crud.core.dao"/>  
+     <!--context:component-scan base-package="crud.core.dao"/-->  
      <!--repositories base-package="crud.core.dao.CrudInterface" /-->
       
      <bean id="personDao" class="crud.core.dao.PersonDao">

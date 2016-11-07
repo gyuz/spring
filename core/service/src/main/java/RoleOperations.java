@@ -61,7 +61,6 @@ public class RoleOperations extends GenericServiceImpl<Role> implements RoleServ
     
     public boolean delete(int id){
        role = roleDao.loadRole(id);
-       System.out.println(role);
        if (role != null && role.getPersons().isEmpty()) {
             roleDao.delete(role);
             return true;

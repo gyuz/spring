@@ -8,35 +8,51 @@
     </head>
     <body>
         <div>
+            <div style="color:red;">
+                <c:if test="${!errMsgs.isEmpty()}">
+                    <c:forEach items="${errMsgs}" var="err">
+                        ${err} <br/>
+                    </c:forEach>
+                </c:if>
+            </div>
+            <div style="color:blue;">
+                <c:if test="${!successMsgs.isEmpty()}">
+                    <c:forEach items="${successMsgs}" var="msg">
+                        ${msg} <br/>
+                    </c:forEach>
+                </c:if>
+            </div>
             <div>
                 <h1>Roles</h1>
             </div>
             <div>
-                ${errMsgs}
-            </div>
-            <form:form name="roleDetails" action="/roleSaveController" method="POST" commandName="roleDto">
-                <h3>Create/Update/Delete/List Role:</h3>
-                <br/><br/>
-                <table id="roles" border="1">
-                    <tr>
-                      <td>ROLE ID</td>
-                      <td>ROLE NAME</td>
-                      <td></td>
-                    </tr>
-                    <c:forEach var="roleId" items="${roleDto.roleIdList}" varStatus="ctr">
+                <form:form name="roleDetails" action="/roleSaveController" method="POST" commandName="roleDto">
+                    <h3>Add/Update/Delete Roles:</h3>
+                    <br/><br/>
+                    <table id="roles" border="1">
                         <tr>
-                          <td><input type="text" id="${roleId}" path="roleIdList" name="roleIdList" value="${roleId}" readonly/></td>
-                          <td><input type="text" name="roleNameList" value="${roleDto.roleNameList.get(ctr.index)}"/></td>
-                          <td><button type="button" onclick="deleteRow(this, 'roles', 'roleDetails', '${roleId}')">DELETE</button></td>
+                          <td>ROLE ID</td>
+                          <td>ROLE NAME</td>
+                          <td>
                         </tr>
-                    </c:forEach>
-                </table>
-                <button type="button" onclick="addRow('roles')">Add Role</button>
+                        <c:forEach var="roleId" items="${roleDto.roleIdList}" varStatus="ctr">
+                            <tr>
+                              <td style="display:none;"><input type="text" id="${roleId}" name="roleIdList" value="${roleId}" readonly/></td>
+                              <td>${roleId}</td>
+                              <td><input type="text" name="roleNameList" value="${roleDto.roleNameList.get(ctr.index)}"/></td>
+                              <td><button type="button" onclick="deleteRow(this, 'roles', 'roleDetails', '${roleId}')">DELETE</button></td>
+                            </tr>
+                        </c:forEach>
+                    </table>
+                    <button type="button" onclick="addRow('roles')">Add Role</button>
+                    <br/><br/>
+                    <input type="submit" value="SAVE">
+                </form:form>
                 <br/><br/>
-                <input type="submit" onclick="detectChanges('roleDetails')" value="SAVE">
-            </form:form>
-            <br/><br/>
-            <a href="../index.jsp"><button type="button">BACK TO MAIN</button></a>
+            </div>
+            <div>
+                 <a href="../index.jsp"><button type="button">BACK TO MAIN</button></a>
+            </div>
         </div>
     </body>
 </html>
