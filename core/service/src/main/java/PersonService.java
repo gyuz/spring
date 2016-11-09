@@ -10,10 +10,11 @@ import java.util.List;
 import org.joda.time.LocalDate;
 
 public interface PersonService extends GenericService<Person> {   
+    public PersonDto getPersonDto();
     public boolean idExist(int id);
     public boolean titleExist(String title);
-    public void savePerson();
-    //public Person loadPerson(int id);
+    public void savePerson(LocalDate birth, LocalDate hired, PersonDto personDto);
+    public void delete(int id);
     public void entityToDto();
     public boolean parseEmployed(char employed);
     public boolean isDuplicate(String firstName, String lastName, String middleName);
@@ -26,7 +27,7 @@ public interface PersonService extends GenericService<Person> {
     public boolean contactExist(Contact contact);
     public boolean addContact(String type, String detail);
     public boolean updateContact(String detail);
-    public void deleteContact(Contact contact);
+    public void deleteContact();
     public boolean contactIdExist(int contactId);
     public List printTypeList();
     public void printContactList();

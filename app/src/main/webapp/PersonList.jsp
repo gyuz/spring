@@ -4,11 +4,18 @@
 <html>
     <head>
         <title>Crud Application</title>
-        <script src="<c:url value='/js/tableFunctions.js'/>"></script> 
+        <script src="<c:url value='/js/formValidations.js'/>"></script> 
     </head>
     <body>
-        <div>      
-            <form:form name="personList" action="personController" method="GET">
+        <div> 
+             <div style="color:blue;">
+                <c:if test="${!successMsgs.isEmpty()}">
+                    <c:forEach items="${successMsgs}" var="msg">
+                        ${msg} <br/>
+                    </c:forEach>
+                </c:if>
+            </div>   
+            <form:form name="personList" action="/personController" method="GET">
                 View Person List by:
                 <select name="list">
                     <option value="1" checked>GWA<br/>
@@ -23,9 +30,9 @@
                 </select>
                 
                 <input type="submit" name="action" value="LIST"><br/><br/>
-                <option type="hidden" id="personId" name="personId">
+                <input type="hidden" id="personId" name="personId">
                 
-                <table border="1">
+                <table border="1" style="width: fixed"> 
                     <tr>
                         <td>PERSON ID</td>
                         <td>FIRST NAME</td>
@@ -64,7 +71,10 @@
                                     <td></td>
                                 </c:otherwise>
                             </c:choose>
-                            <td><button type="submit" onclick="getSelectedValue('${ctr.index}')" name="action" value="SEARCH">EDIT</button></td>
+                            <td>
+                                <button type="submit" onclick="getSelectedValue('${ctr.index}')" name="action" value="SEARCH">EDIT</button>
+                                <button type="submit" onclick="getSelectedValue('${ctr.index}')" name="action" value="DELETE">DELETE</button>
+                            </td>
                         </tr>
                     </c:forEach>
                 </table>

@@ -56,6 +56,7 @@ public class PersonController extends SimpleFormController {
         String order = request.getParameter("order");
         int id = 0;
         List errMsgs = new ArrayList();
+        List successMsgs = new ArrayList();
         if ("SEARCH".equals(action)) {
             id = dataParser.stringToInt(request.getParameter("personId"));
             if(id != 0){
@@ -64,10 +65,21 @@ public class PersonController extends SimpleFormController {
                     mav.addObject("errMsgs", errMsgs);
                     mav.setViewName("PersonMain");   
                 } else {
+                    personDto = personOps.getPersonDto();
                     mav.addObject("personDto", personDto);
                 }
+            } else {
+                errMsgs.add("Enter ID number to search");
+                mav.addObject("errMsgs", errMsgs);
+                mav.setViewName("PersonMain"); 
             }  
-        } else if ("LIST".equals(action)) {
+        } else if ("LIST".equals(action) || "DELETE".equals(action)) {
+            if("DELETE".equals(action)){
+                id = dataParser.stringToInt(request.getParameter("personId"));
+                personOps.delete(id);  
+                successMsgs.add("Successfully deleted Person ID#"+id);
+                mav.addObject("successMsgs", successMsgs); 
+            }
             personDto = personOps.printPersonList(dataParser.stringToInt(list), dataParser.stringToInt(order));
             mav.addObject("personDto", personDto);  
             mav.setViewName("PersonList");    

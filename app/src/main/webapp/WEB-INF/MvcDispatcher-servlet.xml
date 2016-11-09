@@ -18,7 +18,8 @@
         <property name="suffix" value=".jsp"/>
     </bean>
 
-    <bean name="/personController" class="crud.app.PersonController" autowire="byType"/>
     <bean name="/roleController" class="crud.app.RoleController" autowire="byType"/>
     <bean name="/roleSaveController" class="crud.app.RoleSaveController"  autowire="byType"/>
+    <bean name="/personController" class="crud.app.PersonController" autowire="byType"/>
+    <bean name="/personSaveController" class="crud.app.PersonSaveController"  autowire="byType"/>
 </beans>

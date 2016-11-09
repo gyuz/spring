@@ -16,10 +16,15 @@ public class PersonDto{
     private String city;
     private String brgy;
     private int zip;
-    private LocalDate birthDate;
+    private String birthDate;
     private double gwa;
-    private LocalDate dateHired;
+    private String dateHired;
     private char employed;
+    private List<String> personRoleIds = new ArrayList<String>();
+    private List<String> personContactIds = new ArrayList<String>();
+    private List<String> personRoleNames = new ArrayList<String>();
+    private List<String> personContactTypes = new ArrayList<String>();
+    private List<String> personContactDetails = new ArrayList<String>();
     private List<Integer> personIdList = new ArrayList<Integer>();
     private List<String> firstNameList = new ArrayList<String>();
     private List<String> lastNameList = new ArrayList<String>();
@@ -32,19 +37,14 @@ public class PersonDto{
     private List<String> brgyList = new ArrayList<String>();
     private List<Integer> zipList = new ArrayList<Integer>(); 
     private List<Character> employedList = new ArrayList<Character>();
-    private List<Double> gwaList = new ArrayList<Double>();
-    private List<Integer> personRoleIds = new ArrayList<Integer>();
-    private List<Integer> personContactIds = new ArrayList<Integer>();
-    private List<String> personRoleNames = new ArrayList<String>();
-    private List<String> personContactTypes = new ArrayList<String>();
-    private List<String> personContactDetails = new ArrayList<String>();    
+    private List<Double> gwaList = new ArrayList<Double>();    
     private Map<Integer, LocalDate> dateHiredMap = new HashMap<Integer, LocalDate>();
     
     public int getId(){
         return id;        
     }
 
-    public LocalDate getBirthDate() {
+    public String getBirthDate() {
         return birthDate;    
     }
 
@@ -52,7 +52,7 @@ public class PersonDto{
         return gwa;    
     }
     
-    public LocalDate getDateHired() {
+    public String getDateHired() {
         return dateHired;    
     }
     
@@ -92,11 +92,11 @@ public class PersonDto{
         return zip;
     }
     
-    public List<Integer> getPersonRoleIds(){
+    public List<String> getPersonRoleIds(){
         return personRoleIds;
     }
     
-    public List<Integer> getPersonContactIds(){
+    public List<String> getPersonContactIds(){
         return personContactIds;
     }
     
@@ -172,7 +172,7 @@ public class PersonDto{
         this.firstName = firstName;
     }
     
-    public void setLastName(String lastName) {  
+    public void setLastName(String lastName) {
         this.lastName = lastName;
     } 
     
@@ -196,7 +196,7 @@ public class PersonDto{
         this.zip = zip;   
     }
     
-    public void setBirthDate(LocalDate birthDate) {
+    public void setBirthDate(String birthDate) {
         this.birthDate = birthDate;
     }
     
@@ -204,7 +204,7 @@ public class PersonDto{
         this.gwa = gwa;    
     } 
 
-    public void setDateHired(LocalDate dateHired) {
+    public void setDateHired(String dateHired) {
         this.dateHired = dateHired;
     }  
 

@@ -33,7 +33,6 @@ public abstract class GenericServiceImpl<T> implements GenericService<T> {
     }
 
     public void delete(T entity) {
-        System.out.println(crudInterface);
         crudInterface.delete(entity);
     }
 }

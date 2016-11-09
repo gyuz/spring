@@ -10,9 +10,6 @@
   
      <import resource="data-source-cfg.xml"/>
      <import resource="transaction-cfg.xml"/>
-     
-     <!--context:component-scan base-package="crud.core.dao"/-->  
-     <!--repositories base-package="crud.core.dao.CrudInterface" /-->
       
      <bean id="personDao" class="crud.core.dao.PersonDao">
          <property name="sessionFactory" ref="sessionFactory" />
@@ -27,7 +24,7 @@
     <bean id="person" class="crud.core.model.Person" />
     <bean id="role" class="crud.core.model.Role" />
     <bean id="contact" class="crud.core.model.Contact" />  
-    <bean id="personDto" class="crud.core.model.PersonDto" />
+    <bean id="personDto" class="crud.core.model.PersonDto" scope="prototype"/>
     <bean id="roleDto" class="crud.core.model.RoleDto" />    
     
     <bean id="personOperations" class="crud.core.service.PersonOperations" autowire="byType">

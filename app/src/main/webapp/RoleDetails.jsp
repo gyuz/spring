@@ -4,7 +4,7 @@
 <html>
     <head>
         <title>Crud Application</title>
-        <script src="<c:url value='/js/tableFunctions.js'/>"></script>
+        <script src="<c:url value='/js/formValidations.js'/>"></script>
     </head>
     <body>
         <div>
@@ -44,7 +44,7 @@
                             </tr>
                         </c:forEach>
                     </table>
-                    <button type="button" onclick="addRow('roles')">Add Role</button>
+                    <button type="button" onclick="addRow('roles', '1', 'role')">Add Role</button>
                     <br/><br/>
                     <input type="submit" value="SAVE">
                 </form:form>

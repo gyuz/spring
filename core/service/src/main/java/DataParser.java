@@ -27,7 +27,9 @@ public class DataParser{
     public LocalDate stringToDate(String value){
         LocalDate n = null;
         try{
-            n = LocalDate.parse(value, DateTimeFormat.forPattern("MM/dd/yyyy"));
+            if (value != null) {
+                n = LocalDate.parse(value, DateTimeFormat.forPattern("MM/dd/yyyy"));
+            }
         } catch(IllegalArgumentException ne) {
             n = null;
         }   

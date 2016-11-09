@@ -17,7 +17,7 @@ public class RoleDao extends CrudImpl<Role> implements RoleInterface {
 	}
 	
     public Role loadRole(int id) {
-        Role role = (Role) getSession().get(Role.class, id);  
+        Role role = (Role) getSession().load(Role.class, id);  
         return role;
     }
     

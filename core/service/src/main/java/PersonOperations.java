@@ -21,47 +21,38 @@ public class PersonOperations extends GenericServiceImpl<Person> implements Pers
     private PersonInterface personDao;
     private Person person;
     private PersonDto personDto;
-    private DataParser dataParser;
     private ContactService contactOps;
 
-    public PersonDto getPersonDto(){
+    public PersonDto getPersonDto() {
         return personDto;
     }
     
-    public void setPersonDto(PersonDto personDto){
+    public void setPersonDto(PersonDto personDto) {
         this.personDto = personDto;
     }
     
-    public PersonInterface getPersonInterface(){
+    public PersonInterface getPersonInterface() {
         return personDao;
     }
     
-    public void setPersonInterface(PersonInterface personDao){
+    public void setPersonInterface(PersonInterface personDao) {
         this.personDao = personDao;
     }
     
-    public Person getPerson(){
+    public Person getPerson() {
         return person;
     }
     
-    public void setPerson(Person person){
+    public void setPerson(Person person) {
         this.person = person;
     }
     
-    public ContactService getContactService(){
+    public ContactService getContactService() {
         return contactOps;
     } 
     
-    public void setContactService(ContactService contactOps){
+    public void setContactService(ContactService contactOps) {
         this.contactOps = contactOps;
-    }
-    
-    public DataParser getDataParses(){
-        return dataParser;
-    }
-    
-    public void setDataParser(DataParser dataParser){
-        this.dataParser = dataParser;
     }
     
     public boolean idExist(int id) {
@@ -70,8 +61,12 @@ public class PersonOperations extends GenericServiceImpl<Person> implements Pers
             entityToDto();
             return true;
        }
-       
        return false;     
+    }
+    
+    public void delete(int id) {
+        person = personDao.getPersonById(id);
+        personDao.delete(person);
     }
     
     public boolean titleExist(String title){
@@ -84,6 +79,7 @@ public class PersonOperations extends GenericServiceImpl<Person> implements Pers
     }
     
     public void entityToDto() {
+        personDto.setId(person.getId());
         personDto.setFirstName(person.getName().getFirstName());
         personDto.setMiddleName(person.getName().getMiddleName());
         personDto.setLastName(person.getName().getLastName());
@@ -92,10 +88,11 @@ public class PersonOperations extends GenericServiceImpl<Person> implements Pers
         personDto.setBrgy(person.getAddress().getBrgy());
         personDto.setCity(person.getAddress().getCity());
         personDto.setZip(person.getAddress().getZip());
-        personDto.setBirthDate(person.getBirthDate());
-        personDto.setId(person.getId());
+        personDto.setBirthDate(person.getBirthDate().toString("MM/dd/yyyy"));
         personDto.setGwa(person.getGwa());
-        personDto.setDateHired(person.getDateHired());
+        if(person.getDateHired() != null){
+            personDto.setDateHired(person.getDateHired().toString("MM/dd/yyyy"));
+        }
         if(person.getEmployed()) {
             personDto.setEmployed('Y');
         } else {
@@ -105,21 +102,26 @@ public class PersonOperations extends GenericServiceImpl<Person> implements Pers
         printPersonRoleList();
     }
     
-    public void savePerson(){
-        person.getName().setFirstName(personDto.getFirstName());
-        person.getName().setLastName(personDto.getLastName());
-        person.getName().setMiddleName(personDto.getMiddleName());
+    public void savePerson(LocalDate birth, LocalDate hired, PersonDto personDto){
+        this.personDto = personDto;
+        if(personDto.getId() == 0){
+            person = new Person();
+        }
+        person.getName().setFirstName(personDto.getFirstName().toUpperCase().trim());
+        person.getName().setLastName(personDto.getLastName().toUpperCase().trim());
+        person.getName().setMiddleName(personDto.getMiddleName().toUpperCase().trim());
         person.setTitle(Title.valueOf(personDto.getTitle()));    
-        person.getAddress().setStreet(personDto.getStreet());
-        person.getAddress().setBrgy(personDto.getBrgy());
-        person.getAddress().setCity(personDto.getCity());
+        person.getAddress().setStreet(personDto.getStreet().toUpperCase().trim());
+        person.getAddress().setBrgy(personDto.getBrgy().toUpperCase().trim());
+        person.getAddress().setCity(personDto.getCity().toUpperCase().trim());
         person.getAddress().setZip(personDto.getZip());
         person.setGwa(personDto.getGwa());    
-        person.setBirthDate(personDto.getBirthDate());     
+        person.setBirthDate(birth);     
         person.setEmployed(parseEmployed(personDto.getEmployed()));     
         if(personDto.getEmployed() == 'Y' && personDto.getDateHired() != null) {
-            person.setDateHired(personDto.getDateHired());
-        }          
+            person.setDateHired(hired);
+        } 
+        add(person);         
     }    
     /*
     public Person loadPerson(int id){
@@ -217,8 +219,7 @@ public class PersonOperations extends GenericServiceImpl<Person> implements Pers
     }
 
     public void deleteRole(Role role){
-        person.getRoles().remove(role); 
-        //personDao.update(person);    
+        person.getRoles().remove(role);    
     }
 
     public boolean roleExistInSet(int roleId){
@@ -233,10 +234,14 @@ public class PersonOperations extends GenericServiceImpl<Person> implements Pers
 
     public void printPersonRoleList(){
         Set<Role> roleSet = person.getRoles();
+        List roleIds = new ArrayList();
+        List roleNames = new ArrayList();
         for(Role r : roleSet){
-          personDto.getPersonRoleIds().add(r.getRoleId());
-          personDto.getPersonRoleNames().add(r.getRoleName());
+          roleIds.add(r.getRoleId());
+          roleNames.add(r.getRoleName());
         }  
+        personDto.setPersonRoleIds(roleIds);
+        personDto.setPersonRoleNames(roleNames);
     }  
 
     public boolean contactExist(Contact contact){
@@ -263,21 +268,21 @@ public class PersonOperations extends GenericServiceImpl<Person> implements Pers
             return false;
         } else {
             person.getContacts().add(contact);
-           //personDao.update(person);   
         }
         return true;
     }
 
-    public void deleteContact(Contact contact){
+    public void deleteContact(){
+        Contact contact = contactOps.getContact();
         person.getContacts().remove(contact);
-        contactOps.delete(contact);
-        //personDao.update(person);   
+        contactOps.delete(contact); 
     }
 
     public boolean contactIdExist(int contactId){
         Set<Contact> contactSet = person.getContacts();
         for(Contact c : contactSet){
           if(c.getContactId() == contactId) {
+            contactOps.setContact(c);
             return true;
           }
         } 
@@ -294,10 +299,16 @@ public class PersonOperations extends GenericServiceImpl<Person> implements Pers
     
     public void printContactList(){
         Set<Contact> contactSet = person.getContacts();
+        List contactIds = new ArrayList();
+        List contactTypes = new ArrayList();
+        List contactDetails = new ArrayList();
         for(Contact c : contactSet) {
-          personDto.getPersonContactIds().add(c.getContactId());
-          personDto.getPersonContactTypes().add(c.getContactType().name()); 
-          personDto.getPersonContactDetails().add(c.getDetails());
-        }  
+          contactIds.add(c.getContactId());
+          contactTypes.add(c.getContactType().name()); 
+          contactDetails.add(c.getDetails());
+        }
+        personDto.setPersonContactIds(contactIds);  
+        personDto.setPersonContactTypes(contactTypes);
+        personDto.setPersonContactDetails(contactDetails);
     }
 }

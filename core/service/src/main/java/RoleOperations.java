@@ -19,11 +19,11 @@ public class RoleOperations extends GenericServiceImpl<Role> implements RoleServ
         this.roleDto = roleDto;
     }
     
-    public RoleInterface getRoleInterface(){
+    public RoleInterface getRoleInterface() {
         return roleDao;
     }
     
-    public void setRoleInterface(RoleInterface roleDao){
+    public void setRoleInterface(RoleInterface roleDao) {
         this.roleDao = roleDao;
     }
     
@@ -31,15 +31,21 @@ public class RoleOperations extends GenericServiceImpl<Role> implements RoleServ
         return role;
     }
     
-    public void setRole(Role role){
+    public void setRole(Role role) {
         this.role = role;
     }
     
-    public void closeSession(){
+    public void closeSession() {
         roleDao.closeSession();    
     }
     
-    public void add(String roleName){
+    public Role getRoleByName(String roleName) {
+        List<Role> roles = roleDao.getList("Role where roleName = '"+roleName.toUpperCase()+"'");
+        role = roles.get(0);
+        return role;     
+    }
+    
+    public void add(String roleName) {
         role = new Role();
         role.setRoleName(roleName);
         roleDao.add(role);
