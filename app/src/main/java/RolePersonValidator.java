@@ -8,33 +8,38 @@ import org.joda.time.LocalDate;
 
 import crud.core.model.PersonDto;
 import crud.core.model.RoleDto;
+import crud.core.service.DataParser;
 
-public class PersonValidator implements Validator {
-
+public class RolePersonValidator implements Validator {
+   
     @Override
     public boolean supports(Class c) {
-        return PersonDto.class.equals(c);
+        return PersonDto.class.equals(c) || RoleDto.class.equals(c);
     }
 
     @Override
     public void validate(Object command, Errors errors) {
-    /*
-        ValidationUtils.rejectIfEmptyOrWhitespace(errors, "name", "field.name.empty");
-        ValidationUtils.rejectIfEmptyOrWhitespace(errors, "username", "field.username.empty");
-        ValidationUtils.rejectIfEmptyOrWhitespace(errors, "email", "field.email.empty");
-        ValidationUtils.rejectIfEmptyOrWhitespace(errors, "phone", "field.phone.empty");
-        ValidationUtils.rejectIfEmptyOrWhitespace(errors, "password", "field.password.empty");
-        ValidationUtils.rejectIfEmptyOrWhitespace(errors, "rePassword", "field.rePassword.empty");
-        RegistrationBean regBean = (RegistrationBean)command;
-        if(!regBean.getPassword().equals(regBean.getRePassword()))
-            errors.rejectValue("rePassword","password.notmatch");
-        if(regBean.getPhone().trim().length() != 10)
-            errors.rejectValue("phone","field.phone.length");
-        if(!isNumber(regBean.getPhone().trim()))
-            errors.rejectValue("phone", "field.phone.NAN");
-            */
+        DataParser dataParser = new DataParser();
+        if(command instanceof PersonDto){
+            PersonDto personDto = (PersonDto) command;
+            if(!alphabetOnly(personDto.getFirstName().trim())){
+                errors.rejectValue("firstName", "invalid.name");
+            }
+            if(!alphabetOnly(personDto.getMiddleName().trim())){
+                errors.rejectValue("middleName", "invalid.name");
+            }
+            if(!alphabetOnly(personDto.getLastName().trim())){
+                errors.rejectValue("lastName", "invalid.name");
+            }
+            if(personDto.getBirthDate() == null && !validDate(dataParser.stringToDate(personDto.getBirthDate()))){
+                errors.rejectValue("birthDate", "invalid.date");
+            } 
+            if(!(personDto.getDateHired().equals("")) && !validDate(dataParser.stringToDate(personDto.getDateHired()))){
+                errors.rejectValue("hiredDate", "invalid.date");
+            }
+        }
     }
-/*
+    
    protected boolean validDate(LocalDate date){
         LocalDate current = new LocalDate();
         if(date.getYear() < 1970 || date.getYear() > current.getYear()) {
@@ -83,6 +88,6 @@ public class PersonValidator implements Validator {
         }
         return true;
     }
-    */
+    
 }
 

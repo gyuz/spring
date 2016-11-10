@@ -4,7 +4,7 @@
 <html>
     <head>
         <title>Crud Application</title>
-        <script src="<c:url value='/js/formValidations.js'/>"></script>
+        <script src="<c:url value='/js/tableFunctions.js'/>"></script>
     </head>
     <body>
         <div>

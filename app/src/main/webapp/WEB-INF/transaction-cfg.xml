@@ -12,8 +12,6 @@
  
    <import resource="data-source-cfg.xml"/>
  
-   <!--tx:annotation-driven proxy-target-class="true" transaction-manager="txManager"/-->
- 
    <bean id="txManager"
        class="org.springframework.orm.hibernate4.HibernateTransactionManager">
        <property name="sessionFactory" ref="sessionFactory"/>

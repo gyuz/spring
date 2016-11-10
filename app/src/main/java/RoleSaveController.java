@@ -52,7 +52,7 @@ public class RoleSaveController extends SimpleFormController {
 	    if(deletedRoles != null){
 	        for(String r: deletedRoles) {
                 if(!roleOps.delete(dataParser.stringToInt(r))){
-                   errMsgs.add("Error deleting role#"+r+". Role may still be associated with a person");
+                    errMsgs.add("Error deleting role#"+r+". Role may still be associated with a person");
                 } else {
                     success.add(r);
                 }

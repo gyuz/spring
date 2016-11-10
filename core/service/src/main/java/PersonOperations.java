@@ -102,7 +102,11 @@ public class PersonOperations extends GenericServiceImpl<Person> implements Pers
         printPersonRoleList();
     }
     
-    public void savePerson(LocalDate birth, LocalDate hired, PersonDto personDto){
+    public void savePerson(){
+        add(person); 
+    }
+    
+    public void saveDetails(LocalDate birth, LocalDate hired, PersonDto personDto){
         this.personDto = personDto;
         if(personDto.getId() == 0){
             person = new Person();
@@ -120,22 +124,13 @@ public class PersonOperations extends GenericServiceImpl<Person> implements Pers
         person.setEmployed(parseEmployed(personDto.getEmployed()));     
         if(personDto.getEmployed() == 'Y' && personDto.getDateHired() != null) {
             person.setDateHired(hired);
-        } 
-        add(person);         
+        }         
     }    
-    /*
-    public Person loadPerson(int id){
-        return personDao.getPersonById(id);
-    }
-    */
+   
     public boolean parseEmployed(char employed){
         if(employed == 'Y') return true;
         return false;  
     }    
-   
-    public void closeSession(){
-        personDao.closeSession();
-    }
     
     public boolean isDuplicate(String firstName, String lastName, String middleName){
         List<Person> personList = personDao.getList("Person where name.firstName = '"+firstName.toUpperCase()+"' AND name.lastName='"+lastName.toUpperCase()+"' AND name.middleName='"+middleName.toUpperCase()+"'"); 

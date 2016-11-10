@@ -68,7 +68,7 @@ public class PersonSaveController extends SimpleFormController {
             if(id != 0) { 
                 if(deletedRoles != null){
 	                for(String r: deletedRoles) {
-	                    int roleId = dataParser.stringToInt(r);
+s	                    int roleId = dataParser.stringToInt(r);
 	                    if(roleId != 0){
                              if (roleOps.idExist(roleId) && personOps.roleExistInSet(roleId)) {
                                 personOps.deleteRole(roleOps.getRole());
@@ -88,49 +88,50 @@ public class PersonSaveController extends SimpleFormController {
                     }
 	            }
 	        }
+	        
+	        personOps.saveDetails(dataParser.stringToDate(personDto.getBirthDate()), dataParser.stringToDate(personDto.getDateHired()), personDto);
 	            
-	            if(!updatedRoleIds.isEmpty()){
-	                for(int i = 0; i<updatedRoleNames.size(); i++){
-                        if(!updatedRoleNames.get(i).equals("") && updatedRoleIds.get(i).equals("")){
-                            if(!personOps.addRole(roleOps.getRoleByName(updatedRoleNames.get(i)))){
-                                errMsgs.add(updatedRoleNames.get(i) + " role already exist for this person");
-                            }
+	        if(!updatedRoleIds.isEmpty()){
+	            for(int i = 0; i<updatedRoleNames.size(); i++){
+                    if(!updatedRoleNames.get(i).equals("") && updatedRoleIds.get(i).equals("")){
+                        if(!personOps.addRole(roleOps.getRoleByName(updatedRoleNames.get(i)))){
+                           errMsgs.add(updatedRoleNames.get(i) + " role already exist for this person");
                         }
-                    }    
-                }
-                
-                if(!updatedContactIds.isEmpty()){
-	                for(int i = 0; i<updatedContactIds.size(); i++){
-	                    String contactType = updatedContactTypes.get(i);
-	                    String details = updatedContactDetails.get(i);
-	                    
-                        if(updatedContactIds.get(i).equals("")){
-                            if(!contactType.equals("0")){
-                                if(validateContact(contactType, details)){
-                                    if(!personOps.addContact(contactType, details)){
-                                          errMsgs.add("Add Contact: " + contactType + " - " + details + " failed. Contact already exist!");
-                                    } 
-                                } else {
-                                    errMsgs.add("Add Contact: " + contactType + " - " + details + " failed. Invalid contact details.");
-                                }  
-                            }  
-                        } else {
-                            if(!contactType.equals("0")) {
-                                if(validateContact(contactType, details)){
-                                    if(personOps.contactIdExist(dataParser.stringToInt(updatedContactIds.get(i)))){
-                                        if(!personOps.updateContact(details)){
-                                            errMsgs.add("Update Contact: " + contactType + " - " + details + " failed. Contact already exist!");
-                                         } 
-                                    } else {
-                                            errMsgs.add("Update Contact: " + contactType + " - " + details + " failed. Invalid contact details.");
-                                    }
-                               }
-                            }
-                        }
-                    }    
-                }
+                    }
+                }    
+            }
             
-            personOps.savePerson(dataParser.stringToDate(personDto.getBirthDate()), dataParser.stringToDate(personDto.getDateHired()), personDto);
+            if(!updatedContactIds.isEmpty()){
+	            for(int i = 0; i<updatedContactIds.size(); i++){
+	                String contactType = updatedContactTypes.get(i);
+	                String details = updatedContactDetails.get(i);
+	                if(updatedContactIds.get(i).equals("")){
+                        if(!contactType.equals("0")){
+                            if(validateContact(contactType, details)){
+                                if(!personOps.addContact(contactType, details)){
+                                    errMsgs.add("Add Contact: " + contactType + " - " + details + " failed. Contact already exist!");
+                                } 
+                             } else {
+                                errMsgs.add("Add Contact: " + contactType + " - " + details + " failed. Invalid contact details.");
+                             }  
+                        }  
+                    } else {
+                        if(!contactType.equals("0")) {
+                            if(validateContact(contactType, details)){
+                                if(personOps.contactIdExist(dataParser.stringToInt(updatedContactIds.get(i)))){
+                                    if(!personOps.updateContact(details)){
+                                        errMsgs.add("Update Contact: " + contactType + " - " + details + " failed. Contact already exist!");
+                                    } 
+                                 } else {
+                                    errMsgs.add("Update Contact: " + contactType + " - " + details + " failed. Invalid contact details.");
+                                 }
+                            }
+                        }
+                    }
+                }    
+            }
+            
+            personOps.savePerson();     
         }
         
         personOps.entityToDto();

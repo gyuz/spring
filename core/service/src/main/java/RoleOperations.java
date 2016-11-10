@@ -35,10 +35,6 @@ public class RoleOperations extends GenericServiceImpl<Role> implements RoleServ
         this.role = role;
     }
     
-    public void closeSession() {
-        roleDao.closeSession();    
-    }
-    
     public Role getRoleByName(String roleName) {
         List<Role> roles = roleDao.getList("Role where roleName = '"+roleName.toUpperCase()+"'");
         role = roles.get(0);

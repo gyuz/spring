@@ -13,7 +13,8 @@ public interface PersonService extends GenericService<Person> {
     public PersonDto getPersonDto();
     public boolean idExist(int id);
     public boolean titleExist(String title);
-    public void savePerson(LocalDate birth, LocalDate hired, PersonDto personDto);
+    public void savePerson();
+    public void saveDetails(LocalDate birth, LocalDate hired, PersonDto personDto);
     public void delete(int id);
     public void entityToDto();
     public boolean parseEmployed(char employed);

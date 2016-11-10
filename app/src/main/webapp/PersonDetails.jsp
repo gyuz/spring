@@ -4,12 +4,13 @@
 <html>
     <head>
         <title>Crud Application</title>
-        <script src="js/formValidations.js"></script>  
+        <script src="js/tableFunctions.js"></script>  
     </head>
     <body>
         <div>
             <div style="color:red;">
-                <c:choose>
+                <form:errors path="*"/>
+                  <c:choose>
                     <c:when test="${!errMsgs.isEmpty()}">
                         <c:forEach items="${errMsgs}" var="err">
                             ${err} <br/>
@@ -21,7 +22,7 @@
                         </div>
                     </c:otherwise>
                 </c:choose>
-            </div>
+            </div>  
             <div class="header">
                 <c:choose>
                     <c:when test="${not empty personDto.id}">
@@ -34,7 +35,7 @@
                     </c:otherwise>
                 </c:choose>       
             </div>
-            <form:form name="personDetails" action="/personSaveController" method="POST" commandName="personDto" onsubmit="return checkFields('personDetails')">
+            <form:form name="personDetails" action="/personSaveController" method="POST" commandName="personDto">
             <table>
                 <tr>
                     <td>ID:</td>
@@ -77,6 +78,9 @@
                 <tr>
                     <td>BirthDate:</td> 
                     <td><input type="date" name="birthDate" value="${personDto.birthDate}" required placeholder="MM/DD/YYYY"></td>
+                    <td>
+                        <font color="red"><form:errors path="birthDate"/></font>
+                    </td>
                 </tr>
                 <tr>
                     <td>Street:</td>
@@ -96,10 +100,7 @@
                 </tr>
                 <tr>
                     <td>GWA:</td>
-                    <td><input type="text" name="gwa" value="${personDto.gwa}"></td>
-                     <td>
-                        <font color="red"><form:errors path="gwa"/></font>
-                    </td>
+                    <td><input type="number" name="gwa" value="${personDto.gwa}" step="any"></td>
                 </tr>
                 <tr>
                     <td>Employed:</td>
@@ -124,6 +125,9 @@
                             </c:otherwise>
                         </c:choose>
                     </td>
+                    <td>
+                        <font color="red"><form:errors path="dateHired"/></font>
+                    </td>
                 </tr>
             </table>
             <div>
@@ -138,15 +142,17 @@
                         <td>CONTACT DETAILS</td>
                     </tr>
                     <c:forEach var="contactId" items="${personDto.personContactIds}" varStatus="ctr">
-                        <tr>
-                            <td style="display:none;"><input type="text" id="${contactId}" name="personContactIds" value="${contactId}" readonly/></td>
-                            <td style="width: 100px;">${contactId}</td>
-                            <td style="width: 250px;">
-                                <input type="text" name="personContactTypes"  style="width: 250px;" readonly value="${personDto.personContactTypes.get(ctr.index)}" />
-                            </td>
-                            <td><input type="text" name="personContactDetails" value="${personDto.personContactDetails.get(ctr.index)}"/></td>
-                            <td><button type="button" onclick="deleteRow(this, 'contacts', 'personDetails', '${contactId}')">DELETE</button></td>
-                        </tr>
+                        <c:if test="${not empty contactId}">
+                            <tr>
+                                <td style="display:none;"><input type="text" id="${contactId}" name="personContactIds" value="${contactId}" readonly/></td>
+                                <td style="width: 100px;">${contactId}</td>
+                                <td style="width: 250px;">
+                                    <input type="text" name="personContactTypes"  style="width: 250px;" readonly value="${personDto.personContactTypes.get(ctr.index)}" />
+                                </td>
+                                <td><input type="text" name="personContactDetails" value="${personDto.personContactDetails.get(ctr.index)}"/></td>
+                                <td><button type="button" onclick="deleteRow(this, 'contacts', 'personDetails', '${contactId}')">DELETE</button></td>
+                            </tr>
+                         </c:if>
                      </c:forEach>
                  </table>
             </c:if>
@@ -191,16 +197,18 @@
                             <td>ROLE NAME</td>
                         </tr>
                         <c:forEach var="roleId" items="${personDto.personRoleIds}" varStatus="ctr">
-                            <tr>
-                                <td style="display:none;">
-                                    <input type="text" id="${roleId}" name="personRoleIds" value="${roleId}" />
-                                </td>
-                                <td style="width: 100px;">${roleId}</td>
-                                <td style="width: 200px;">
-                                    <input type="text" name="personRoleNames" style="width: 200px;" readonly value="${personDto.personRoleNames.get(ctr.index)}" />
-                                </td>
-                                <td><button type="button" onclick="deleteRow(this, 'roles', 'personDetails', '${roleId}')">DELETE</button></td>
+                            <c:if test="${not empty roleId}">
+                                <tr>
+                                    <td style="display:none;">
+                                        <input type="text" id="${roleId}" name="personRoleIds" value="${roleId}" />
+                                    </td>
+                                    <td style="width: 100px;">${roleId}</td>
+                                    <td style="width: 200px;">
+                                        <input type="text" name="personRoleNames" style="width: 200px;" readonly value="${personDto.personRoleNames.get(ctr.index)}" />
+                                    </td>
+                                    <td><button type="button" onclick="deleteRow(this, 'roles', 'personDetails', '${roleId}')">DELETE</button></td>
                                 </tr>
+                            </c:if> 
                         </c:forEach>
                      </table>
                </c:if>
