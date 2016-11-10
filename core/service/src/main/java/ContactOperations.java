@@ -29,7 +29,8 @@ public class ContactOperations extends GenericServiceImpl<Contact> implements Co
     }
     
     
-    public void setContactDetails(String type, String details, Person person){      
+    public void setContactDetails(String type, String details, Person person){  
+        contact = new Contact();          
         contact.setContactType(Types.valueOf(type));
         contact.setDetails(details);
         contact.setPerson(person); 

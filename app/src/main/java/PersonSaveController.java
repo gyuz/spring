@@ -93,24 +93,25 @@ public class PersonSaveController extends SimpleFormController {
 	                for(int i = 0; i<updatedRoleNames.size(); i++){
                         if(!updatedRoleNames.get(i).equals("") && updatedRoleIds.get(i).equals("")){
                             if(!personOps.addRole(roleOps.getRoleByName(updatedRoleNames.get(i)))){
-                                errMsgs.add(updatedRoleNames.get(i) + " already exist for this person");
+                                errMsgs.add(updatedRoleNames.get(i) + " role already exist for this person");
                             }
                         }
                     }    
                 }
-
+                
                 if(!updatedContactIds.isEmpty()){
 	                for(int i = 0; i<updatedContactIds.size(); i++){
 	                    String contactType = updatedContactTypes.get(i);
 	                    String details = updatedContactDetails.get(i);
+	                    
                         if(updatedContactIds.get(i).equals("")){
                             if(!contactType.equals("0")){
                                 if(validateContact(contactType, details)){
                                     if(!personOps.addContact(contactType, details)){
-                                          errMsgs.add("Add Contact: " + contactType + "-" + details + " failed. Contact already exist!");
+                                          errMsgs.add("Add Contact: " + contactType + " - " + details + " failed. Contact already exist!");
                                     } 
                                 } else {
-                                    errMsgs.add("Add Contact: " + contactType + "-" + details + " failed. Invalid contact details.");
+                                    errMsgs.add("Add Contact: " + contactType + " - " + details + " failed. Invalid contact details.");
                                 }  
                             }  
                         } else {
@@ -118,10 +119,10 @@ public class PersonSaveController extends SimpleFormController {
                                 if(validateContact(contactType, details)){
                                     if(personOps.contactIdExist(dataParser.stringToInt(updatedContactIds.get(i)))){
                                         if(!personOps.updateContact(details)){
-                                            errMsgs.add("Update Contact: " + contactType + "-" + details + " failed. Contact already exist!");
+                                            errMsgs.add("Update Contact: " + contactType + " - " + details + " failed. Contact already exist!");
                                          } 
                                     } else {
-                                            errMsgs.add("Update Contact: " + contactType + "-" + details + " failed. Invalid contact details.");
+                                            errMsgs.add("Update Contact: " + contactType + " - " + details + " failed. Invalid contact details.");
                                     }
                                }
                             }

@@ -134,14 +134,14 @@
                 <table id="contacts">
                     <tr>
                         <td style="width: 100px;">ID</td>
-                        <td>CONTACT TYPE</td>
+                        <td style="width: 250px;">CONTACT TYPE</td>
                         <td>CONTACT DETAILS</td>
                     </tr>
                     <c:forEach var="contactId" items="${personDto.personContactIds}" varStatus="ctr">
                         <tr>
                             <td style="display:none;"><input type="text" id="${contactId}" name="personContactIds" value="${contactId}" readonly/></td>
                             <td style="width: 100px;">${contactId}</td>
-                            <td style="width: 300px;">
+                            <td style="width: 250px;">
                                 <input type="text" name="personContactTypes"  style="width: 250px;" readonly value="${personDto.personContactTypes.get(ctr.index)}" />
                             </td>
                             <td><input type="text" name="personContactDetails" value="${personDto.personContactDetails.get(ctr.index)}"/></td>
@@ -155,7 +155,7 @@
                     <c:when test="${personDto.personContactIds.isEmpty()}">
                         <tr>
                             <td style="width: 100px;">ID</td>
-                            <td style="width: 300px;">CONTACT TYPE</td>
+                            <td style="width: 250px;">CONTACT TYPE</td>
                             <td>CONTACT DETAILS</td>
                         </tr>
                         <c:set var="row" value="1"/>
@@ -167,7 +167,7 @@
                 <tr style="display:none;">
                     <td style="display:none;"><input type="text" name="personContactIds"/></td>
                     <td style="width: 100px;"></td>
-                    <td style="width: 300px;">
+                    <td style="width: 250px;">
                         <select name="personContactTypes"  style="width: 250px;">
                         <option checked value="0"> -- Contact Type -- </option>
                         <c:forEach items="${typeList}" var="type">

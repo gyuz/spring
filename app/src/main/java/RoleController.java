@@ -28,8 +28,8 @@ public class RoleController extends SimpleFormController {
     }
     
     @Override
-    public ModelAndView handleRequest(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, Exception {
+   public ModelAndView handleRequest(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException {
         roleDto = roleOps.printRoleList();
         return new ModelAndView("RoleDetails", "roleDto", roleDto);
     }

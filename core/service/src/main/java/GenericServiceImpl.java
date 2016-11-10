@@ -2,9 +2,6 @@ package crud.core.service;
 
 import crud.core.dao.CrudInterface;
 import java.util.List;
-import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Propagation;
-import org.springframework.transaction.annotation.Transactional;
 
 public abstract class GenericServiceImpl<T> implements GenericService<T> {
 	private CrudInterface<T> crudInterface;

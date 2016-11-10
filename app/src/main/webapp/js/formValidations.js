@@ -47,25 +47,30 @@ function checkFields(form) {
                 var middleName = document.getElementsByName("middleName")[0];
                 if(middleName.value.match(regex)){
                     var lastName = document.getElementsByName("lastName")[0];
-                    if(!lastName.value.match(regex)){
-                        msg(lastName);
+                    if(lastName.value.match(regex)){
+                        pass = msg(lastName);
+                    } else {
+                        var gwa = document.getElementsByName("gwa")[0]; 
+                        if(gwa < 0){
+                            alert("Invalid gwa!");
+                            return false;
+                        }      
                     }
                 } else {
-                    msg(middleName);
+                    pass = msg(middleName);
                 }
             } else {
-                msg(firstName);
-                return false;
+                pass = msg(firstName);
             }   
        }
-  } 
-  alert(pass);  
+  }  
   return pass;
 }
 
 function msg(element){
     element.focus();
     alert("Characters A-Z only!");
+    return false;
 }
 
 function checkDate(field, allowBlank) {
