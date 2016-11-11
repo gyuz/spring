@@ -1,0 +1,560 @@
+13:28:37,265  INFO ContextLoader:285 - Root WebApplicationContext: initialization started
+13:28:37,738  INFO XmlWebApplicationContext:515 - Refreshing Root WebApplicationContext: startup date [Fri Nov 11 13:28:37 PHT 2016]; root of context hierarchy
+13:28:37,928  INFO XmlBeanDefinitionReader:316 - Loading XML bean definitions from ServletContext resource [/WEB-INF/MvcDispatcher-servlet.xml]
+13:28:38,790  INFO XmlBeanDefinitionReader:316 - Loading XML bean definitions from ServletContext resource [/WEB-INF/data-source-cfg.xml]
+13:28:38,872  INFO XmlBeanDefinitionReader:316 - Loading XML bean definitions from ServletContext resource [/WEB-INF/transaction-cfg.xml]
+13:28:39,006  INFO XmlBeanDefinitionReader:316 - Loading XML bean definitions from ServletContext resource [/WEB-INF/data-source-cfg.xml]
+13:28:39,132  INFO DefaultListableBeanFactory:675 - Overriding bean definition for bean 'dataSource': replacing [Generic bean: class [com.mchange.v2.c3p0.ComboPooledDataSource]; scope=; abstract=false; lazyInit=false; autowireMode=0; dependencyCheck=0; autowireCandidate=true; primary=false; factoryBeanName=null; factoryMethodName=null; initMethodName=null; destroyMethodName=null; defined in ServletContext resource [/WEB-INF/data-source-cfg.xml]] with [Generic bean: class [com.mchange.v2.c3p0.ComboPooledDataSource]; scope=; abstract=false; lazyInit=false; autowireMode=0; dependencyCheck=0; autowireCandidate=true; primary=false; factoryBeanName=null; factoryMethodName=null; initMethodName=null; destroyMethodName=null; defined in ServletContext resource [/WEB-INF/data-source-cfg.xml]]
+13:28:39,142  INFO DefaultListableBeanFactory:675 - Overriding bean definition for bean 'sessionFactory': replacing [Generic bean: class [org.springframework.orm.hibernate4.LocalSessionFactoryBean]; scope=; abstract=false; lazyInit=false; autowireMode=0; dependencyCheck=0; autowireCandidate=true; primary=false; factoryBeanName=null; factoryMethodName=null; initMethodName=null; destroyMethodName=null; defined in ServletContext resource [/WEB-INF/data-source-cfg.xml]] with [Generic bean: class [org.springframework.orm.hibernate4.LocalSessionFactoryBean]; scope=; abstract=false; lazyInit=false; autowireMode=0; dependencyCheck=0; autowireCandidate=true; primary=false; factoryBeanName=null; factoryMethodName=null; initMethodName=null; destroyMethodName=null; defined in ServletContext resource [/WEB-INF/data-source-cfg.xml]]
+13:28:39,263  INFO XmlBeanDefinitionReader:316 - Loading XML bean definitions from ServletContext resource [/WEB-INF/data-source-cfg.xml]
+13:28:39,331  INFO DefaultListableBeanFactory:675 - Overriding bean definition for bean 'dataSource': replacing [Generic bean: class [com.mchange.v2.c3p0.ComboPooledDataSource]; scope=; abstract=false; lazyInit=false; autowireMode=0; dependencyCheck=0; autowireCandidate=true; primary=false; factoryBeanName=null; factoryMethodName=null; initMethodName=null; destroyMethodName=null; defined in ServletContext resource [/WEB-INF/data-source-cfg.xml]] with [Generic bean: class [com.mchange.v2.c3p0.ComboPooledDataSource]; scope=; abstract=false; lazyInit=false; autowireMode=0; dependencyCheck=0; autowireCandidate=true; primary=false; factoryBeanName=null; factoryMethodName=null; initMethodName=null; destroyMethodName=null; defined in ServletContext resource [/WEB-INF/data-source-cfg.xml]]
+13:28:39,340  INFO DefaultListableBeanFactory:675 - Overriding bean definition for bean 'sessionFactory': replacing [Generic bean: class [org.springframework.orm.hibernate4.LocalSessionFactoryBean]; scope=; abstract=false; lazyInit=false; autowireMode=0; dependencyCheck=0; autowireCandidate=true; primary=false; factoryBeanName=null; factoryMethodName=null; initMethodName=null; destroyMethodName=null; defined in ServletContext resource [/WEB-INF/data-source-cfg.xml]] with [Generic bean: class [org.springframework.orm.hibernate4.LocalSessionFactoryBean]; scope=; abstract=false; lazyInit=false; autowireMode=0; dependencyCheck=0; autowireCandidate=true; primary=false; factoryBeanName=null; factoryMethodName=null; initMethodName=null; destroyMethodName=null; defined in ServletContext resource [/WEB-INF/data-source-cfg.xml]]
+13:28:39,348  INFO XmlBeanDefinitionReader:316 - Loading XML bean definitions from ServletContext resource [/WEB-INF/transaction-cfg.xml]
+13:28:39,461  INFO XmlBeanDefinitionReader:316 - Loading XML bean definitions from ServletContext resource [/WEB-INF/data-source-cfg.xml]
+13:28:39,566  INFO DefaultListableBeanFactory:675 - Overriding bean definition for bean 'dataSource': replacing [Generic bean: class [com.mchange.v2.c3p0.ComboPooledDataSource]; scope=; abstract=false; lazyInit=false; autowireMode=0; dependencyCheck=0; autowireCandidate=true; primary=false; factoryBeanName=null; factoryMethodName=null; initMethodName=null; destroyMethodName=null; defined in ServletContext resource [/WEB-INF/data-source-cfg.xml]] with [Generic bean: class [com.mchange.v2.c3p0.ComboPooledDataSource]; scope=; abstract=false; lazyInit=false; autowireMode=0; dependencyCheck=0; autowireCandidate=true; primary=false; factoryBeanName=null; factoryMethodName=null; initMethodName=null; destroyMethodName=null; defined in ServletContext resource [/WEB-INF/data-source-cfg.xml]]
+13:28:39,581  INFO DefaultListableBeanFactory:675 - Overriding bean definition for bean 'sessionFactory': replacing [Generic bean: class [org.springframework.orm.hibernate4.LocalSessionFactoryBean]; scope=; abstract=false; lazyInit=false; autowireMode=0; dependencyCheck=0; autowireCandidate=true; primary=false; factoryBeanName=null; factoryMethodName=null; initMethodName=null; destroyMethodName=null; defined in ServletContext resource [/WEB-INF/data-source-cfg.xml]] with [Generic bean: class [org.springframework.orm.hibernate4.LocalSessionFactoryBean]; scope=; abstract=false; lazyInit=false; autowireMode=0; dependencyCheck=0; autowireCandidate=true; primary=false; factoryBeanName=null; factoryMethodName=null; initMethodName=null; destroyMethodName=null; defined in ServletContext resource [/WEB-INF/data-source-cfg.xml]]
+13:28:39,584  INFO DefaultListableBeanFactory:675 - Overriding bean definition for bean 'txManager': replacing [Generic bean: class [org.springframework.orm.hibernate4.HibernateTransactionManager]; scope=; abstract=false; lazyInit=false; autowireMode=0; dependencyCheck=0; autowireCandidate=true; primary=false; factoryBeanName=null; factoryMethodName=null; initMethodName=null; destroyMethodName=null; defined in ServletContext resource [/WEB-INF/transaction-cfg.xml]] with [Generic bean: class [org.springframework.orm.hibernate4.HibernateTransactionManager]; scope=; abstract=false; lazyInit=false; autowireMode=0; dependencyCheck=0; autowireCandidate=true; primary=false; factoryBeanName=null; factoryMethodName=null; initMethodName=null; destroyMethodName=null; defined in ServletContext resource [/WEB-INF/transaction-cfg.xml]]
+13:28:39,609  INFO DefaultListableBeanFactory:675 - Overriding bean definition for bean 'txAdvice': replacing [Generic bean: class [org.springframework.transaction.interceptor.TransactionInterceptor]; scope=; abstract=false; lazyInit=false; autowireMode=0; dependencyCheck=0; autowireCandidate=true; primary=false; factoryBeanName=null; factoryMethodName=null; initMethodName=null; destroyMethodName=null] with [Generic bean: class [org.springframework.transaction.interceptor.TransactionInterceptor]; scope=; abstract=false; lazyInit=false; autowireMode=0; dependencyCheck=0; autowireCandidate=true; primary=false; factoryBeanName=null; factoryMethodName=null; initMethodName=null; destroyMethodName=null]
+13:28:39,610  INFO DefaultListableBeanFactory:675 - Overriding bean definition for bean 'servicePointCut': replacing [Root bean: class [org.springframework.aop.aspectj.AspectJExpressionPointcut]; scope=prototype; abstract=false; lazyInit=false; autowireMode=0; dependencyCheck=0; autowireCandidate=true; primary=false; factoryBeanName=null; factoryMethodName=null; initMethodName=null; destroyMethodName=null] with [Root bean: class [org.springframework.aop.aspectj.AspectJExpressionPointcut]; scope=prototype; abstract=false; lazyInit=false; autowireMode=0; dependencyCheck=0; autowireCandidate=true; primary=false; factoryBeanName=null; factoryMethodName=null; initMethodName=null; destroyMethodName=null]
+13:28:41,109  INFO DefaultListableBeanFactory:603 - Pre-instantiating singletons in org.springframework.beans.factory.support.DefaultListableBeanFactory@c2c551: defining beans [org.springframework.web.servlet.resource.ResourceHttpRequestHandler#0,mvcPathMatcher,mvcUrlPathHelper,org.springframework.web.servlet.handler.SimpleUrlHandlerMapping#0,org.springframework.web.servlet.handler.BeanNameUrlHandlerMapping,org.springframework.web.servlet.mvc.HttpRequestHandlerAdapter,org.springframework.web.servlet.mvc.SimpleControllerHandlerAdapter,org.springframework.web.servlet.resource.ResourceHttpRequestHandler#1,org.springframework.web.servlet.handler.SimpleUrlHandlerMapping#1,dataSource,sessionFactory,txManager,txAdvice,org.springframework.aop.config.internalAutoProxyCreator,servicePointCut,org.springframework.aop.support.DefaultBeanFactoryPointcutAdvisor#0,personDao,roleDao,contactDao,person,role,file,contact,personDto,roleDto,fileDto,personOperations,roleOperations,contactOperations,dataParser,fileOperations,/roleController,/roleSaveController,/personController,/personSaveController,org.springframework.web.servlet.mvc.support.ControllerClassNameHandlerMapping#0,multipartResolver,/fileUpload,localeResolver,org.springframework.web.servlet.handler.MappedInterceptor#0,messageSource,viewResolver,org.springframework.aop.support.DefaultBeanFactoryPointcutAdvisor#1]; root of factory hierarchy
+13:28:41,664  INFO SimpleUrlHandlerMapping:315 - Mapped URL path [/js/**] onto handler 'org.springframework.web.servlet.resource.ResourceHttpRequestHandler#0'
+13:28:42,205  INFO MLog:212 - MLog clients using slf4j logging.
+13:28:42,550  INFO C3P0Registry:212 - Initializing c3p0-0.9.5.2 [built 08-December-2015 22:06:04 -0800; debug? true; trace: 10]
+13:28:43,329 DEBUG BasicTypeRegistry:148 - Adding type registration boolean -> org.hibernate.type.BooleanType@1b362f1
+13:28:43,334 DEBUG BasicTypeRegistry:148 - Adding type registration boolean -> org.hibernate.type.BooleanType@1b362f1
+13:28:43,336 DEBUG BasicTypeRegistry:148 - Adding type registration java.lang.Boolean -> org.hibernate.type.BooleanType@1b362f1
+13:28:43,339 DEBUG BasicTypeRegistry:148 - Adding type registration numeric_boolean -> org.hibernate.type.NumericBooleanType@198ab9a
+13:28:43,347 DEBUG BasicTypeRegistry:148 - Adding type registration true_false -> org.hibernate.type.TrueFalseType@3af394
+13:28:43,349 DEBUG BasicTypeRegistry:148 - Adding type registration yes_no -> org.hibernate.type.YesNoType@1313495
+13:28:43,355 DEBUG BasicTypeRegistry:148 - Adding type registration byte -> org.hibernate.type.ByteType@ce919c
+13:28:43,356 DEBUG BasicTypeRegistry:148 - Adding type registration byte -> org.hibernate.type.ByteType@ce919c
+13:28:43,358 DEBUG BasicTypeRegistry:148 - Adding type registration java.lang.Byte -> org.hibernate.type.ByteType@ce919c
+13:28:43,362 DEBUG BasicTypeRegistry:148 - Adding type registration character -> org.hibernate.type.CharacterType@1d6dddc
+13:28:43,364 DEBUG BasicTypeRegistry:148 - Adding type registration char -> org.hibernate.type.CharacterType@1d6dddc
+13:28:43,365 DEBUG BasicTypeRegistry:148 - Adding type registration java.lang.Character -> org.hibernate.type.CharacterType@1d6dddc
+13:28:43,372 DEBUG BasicTypeRegistry:148 - Adding type registration short -> org.hibernate.type.ShortType@e7394f
+13:28:43,373 DEBUG BasicTypeRegistry:148 - Adding type registration short -> org.hibernate.type.ShortType@e7394f
+13:28:43,375 DEBUG BasicTypeRegistry:148 - Adding type registration java.lang.Short -> org.hibernate.type.ShortType@e7394f
+13:28:43,381 DEBUG BasicTypeRegistry:148 - Adding type registration integer -> org.hibernate.type.IntegerType@1012923
+13:28:43,383 DEBUG BasicTypeRegistry:148 - Adding type registration int -> org.hibernate.type.IntegerType@1012923
+13:28:43,385 DEBUG BasicTypeRegistry:148 - Adding type registration java.lang.Integer -> org.hibernate.type.IntegerType@1012923
+13:28:43,390 DEBUG BasicTypeRegistry:148 - Adding type registration long -> org.hibernate.type.LongType@1b74370
+13:28:43,392 DEBUG BasicTypeRegistry:148 - Adding type registration long -> org.hibernate.type.LongType@1b74370
+13:28:43,395 DEBUG BasicTypeRegistry:148 - Adding type registration java.lang.Long -> org.hibernate.type.LongType@1b74370
+13:28:43,401 DEBUG BasicTypeRegistry:148 - Adding type registration float -> org.hibernate.type.FloatType@b6d34a
+13:28:43,403 DEBUG BasicTypeRegistry:148 - Adding type registration float -> org.hibernate.type.FloatType@b6d34a
+13:28:43,405 DEBUG BasicTypeRegistry:148 - Adding type registration java.lang.Float -> org.hibernate.type.FloatType@b6d34a
+13:28:43,410 DEBUG BasicTypeRegistry:148 - Adding type registration double -> org.hibernate.type.DoubleType@df71d9
+13:28:43,411 DEBUG BasicTypeRegistry:148 - Adding type registration double -> org.hibernate.type.DoubleType@df71d9
+13:28:43,415 DEBUG BasicTypeRegistry:148 - Adding type registration java.lang.Double -> org.hibernate.type.DoubleType@df71d9
+13:28:43,420 DEBUG BasicTypeRegistry:148 - Adding type registration big_decimal -> org.hibernate.type.BigDecimalType@36f83
+13:28:43,421 DEBUG BasicTypeRegistry:148 - Adding type registration java.math.BigDecimal -> org.hibernate.type.BigDecimalType@36f83
+13:28:43,427 DEBUG BasicTypeRegistry:148 - Adding type registration big_integer -> org.hibernate.type.BigIntegerType@fc0211
+13:28:43,429 DEBUG BasicTypeRegistry:148 - Adding type registration java.math.BigInteger -> org.hibernate.type.BigIntegerType@fc0211
+13:28:43,432 DEBUG BasicTypeRegistry:148 - Adding type registration string -> org.hibernate.type.StringType@448de1
+13:28:43,435 DEBUG BasicTypeRegistry:148 - Adding type registration java.lang.String -> org.hibernate.type.StringType@448de1
+13:28:43,438 DEBUG BasicTypeRegistry:148 - Adding type registration nstring -> org.hibernate.type.StringNVarcharType@14d7ffa
+13:28:43,450 DEBUG BasicTypeRegistry:148 - Adding type registration ncharacter -> org.hibernate.type.CharacterNCharType@1ed8b44
+13:28:43,455 DEBUG BasicTypeRegistry:148 - Adding type registration url -> org.hibernate.type.UrlType@16525ab
+13:28:43,465 DEBUG BasicTypeRegistry:148 - Adding type registration java.net.URL -> org.hibernate.type.UrlType@16525ab
+13:28:43,471 DEBUG BasicTypeRegistry:148 - Adding type registration date -> org.hibernate.type.DateType@349cf2
+13:28:43,475 DEBUG BasicTypeRegistry:148 - Adding type registration java.sql.Date -> org.hibernate.type.DateType@349cf2
+13:28:43,492 DEBUG BasicTypeRegistry:148 - Adding type registration time -> org.hibernate.type.TimeType@16a4275
+13:28:43,494 DEBUG BasicTypeRegistry:148 - Adding type registration java.sql.Time -> org.hibernate.type.TimeType@16a4275
+13:28:43,510 DEBUG BasicTypeRegistry:148 - Adding type registration timestamp -> org.hibernate.type.TimestampType@1502e5c
+13:28:43,515 DEBUG BasicTypeRegistry:148 - Adding type registration java.sql.Timestamp -> org.hibernate.type.TimestampType@1502e5c
+13:28:43,517 DEBUG BasicTypeRegistry:148 - Adding type registration java.util.Date -> org.hibernate.type.TimestampType@1502e5c
+13:28:43,533 DEBUG BasicTypeRegistry:148 - Adding type registration dbtimestamp -> org.hibernate.type.DbTimestampType@ae9e8b
+13:28:43,547 DEBUG BasicTypeRegistry:148 - Adding type registration calendar -> org.hibernate.type.CalendarType@1645e64
+13:28:43,551 DEBUG BasicTypeRegistry:148 - Adding type registration java.util.Calendar -> org.hibernate.type.CalendarType@1645e64
+13:28:43,553 DEBUG BasicTypeRegistry:148 - Adding type registration java.util.GregorianCalendar -> org.hibernate.type.CalendarType@1645e64
+13:28:43,558 DEBUG BasicTypeRegistry:148 - Adding type registration calendar_date -> org.hibernate.type.CalendarDateType@16c67cd
+13:28:43,577 DEBUG BasicTypeRegistry:148 - Adding type registration locale -> org.hibernate.type.LocaleType@12e5a82
+13:28:43,590 DEBUG BasicTypeRegistry:148 - Adding type registration java.util.Locale -> org.hibernate.type.LocaleType@12e5a82
+13:28:43,612 DEBUG BasicTypeRegistry:148 - Adding type registration currency -> org.hibernate.type.CurrencyType@187d0fa
+13:28:43,618 DEBUG BasicTypeRegistry:148 - Adding type registration java.util.Currency -> org.hibernate.type.CurrencyType@187d0fa
+13:28:43,634 DEBUG BasicTypeRegistry:148 - Adding type registration timezone -> org.hibernate.type.TimeZoneType@1dc335a
+13:28:43,636 DEBUG BasicTypeRegistry:148 - Adding type registration java.util.TimeZone -> org.hibernate.type.TimeZoneType@1dc335a
+13:28:43,639 DEBUG BasicTypeRegistry:148 - Adding type registration class -> org.hibernate.type.ClassType@1fa3671
+13:28:43,640 DEBUG BasicTypeRegistry:148 - Adding type registration java.lang.Class -> org.hibernate.type.ClassType@1fa3671
+13:28:43,646 DEBUG BasicTypeRegistry:148 - Adding type registration uuid-binary -> org.hibernate.type.UUIDBinaryType@358dc7
+13:28:43,647 DEBUG BasicTypeRegistry:148 - Adding type registration java.util.UUID -> org.hibernate.type.UUIDBinaryType@358dc7
+13:28:43,650 DEBUG BasicTypeRegistry:148 - Adding type registration uuid-char -> org.hibernate.type.UUIDCharType@1fcfc54
+13:28:43,653 DEBUG BasicTypeRegistry:148 - Adding type registration pg-uuid -> org.hibernate.type.PostgresUUIDType@aee519
+13:28:43,658 DEBUG BasicTypeRegistry:148 - Adding type registration binary -> org.hibernate.type.BinaryType@357c3e
+13:28:43,659 DEBUG BasicTypeRegistry:148 - Adding type registration byte[] -> org.hibernate.type.BinaryType@357c3e
+13:28:43,661 DEBUG BasicTypeRegistry:148 - Adding type registration [B -> org.hibernate.type.BinaryType@357c3e
+13:28:43,665 DEBUG BasicTypeRegistry:148 - Adding type registration wrapper-binary -> org.hibernate.type.WrapperBinaryType@f047cf
+13:28:43,666 DEBUG BasicTypeRegistry:148 - Adding type registration Byte[] -> org.hibernate.type.WrapperBinaryType@f047cf
+13:28:43,667 DEBUG BasicTypeRegistry:148 - Adding type registration [Ljava.lang.Byte; -> org.hibernate.type.WrapperBinaryType@f047cf
+13:28:43,670 DEBUG BasicTypeRegistry:148 - Adding type registration image -> org.hibernate.type.ImageType@8769b7
+13:28:43,673 DEBUG BasicTypeRegistry:148 - Adding type registration characters -> org.hibernate.type.CharArrayType@1262071
+13:28:43,675 DEBUG BasicTypeRegistry:148 - Adding type registration char[] -> org.hibernate.type.CharArrayType@1262071
+13:28:43,676 DEBUG BasicTypeRegistry:148 - Adding type registration [C -> org.hibernate.type.CharArrayType@1262071
+13:28:43,680 DEBUG BasicTypeRegistry:148 - Adding type registration wrapper-characters -> org.hibernate.type.CharacterArrayType@238b12
+13:28:43,681 DEBUG BasicTypeRegistry:148 - Adding type registration [Ljava.lang.Character; -> org.hibernate.type.CharacterArrayType@238b12
+13:28:43,683 DEBUG BasicTypeRegistry:148 - Adding type registration Character[] -> org.hibernate.type.CharacterArrayType@238b12
+13:28:43,685 DEBUG BasicTypeRegistry:148 - Adding type registration text -> org.hibernate.type.TextType@133fae8
+13:28:43,688 DEBUG BasicTypeRegistry:148 - Adding type registration ntext -> org.hibernate.type.NTextType@5b8922
+13:28:43,701 DEBUG BasicTypeRegistry:148 - Adding type registration blob -> org.hibernate.type.BlobType@1be41c6
+13:28:43,705 DEBUG BasicTypeRegistry:148 - Adding type registration java.sql.Blob -> org.hibernate.type.BlobType@1be41c6
+13:28:43,707 DEBUG BasicTypeRegistry:148 - Adding type registration materialized_blob -> org.hibernate.type.MaterializedBlobType@13a6e95
+13:28:43,741 DEBUG BasicTypeRegistry:148 - Adding type registration clob -> org.hibernate.type.ClobType@46ad0f
+13:28:43,751 DEBUG BasicTypeRegistry:148 - Adding type registration java.sql.Clob -> org.hibernate.type.ClobType@46ad0f
+13:28:43,778 DEBUG BasicTypeRegistry:148 - Adding type registration nclob -> org.hibernate.type.NClobType@84338a
+13:28:43,787 DEBUG BasicTypeRegistry:148 - Adding type registration java.sql.NClob -> org.hibernate.type.NClobType@84338a
+13:28:43,800 DEBUG BasicTypeRegistry:148 - Adding type registration materialized_clob -> org.hibernate.type.MaterializedClobType@c4868
+13:28:43,808 DEBUG BasicTypeRegistry:148 - Adding type registration materialized_nclob -> org.hibernate.type.MaterializedNClobType@1d4b3e8
+13:28:43,823 DEBUG BasicTypeRegistry:148 - Adding type registration serializable -> org.hibernate.type.SerializableType@1c59b6e
+13:28:43,857 DEBUG BasicTypeRegistry:148 - Adding type registration object -> org.hibernate.type.ObjectType@1638165
+13:28:43,859 DEBUG BasicTypeRegistry:148 - Adding type registration java.lang.Object -> org.hibernate.type.ObjectType@1638165
+13:28:43,864 DEBUG BasicTypeRegistry:148 - Adding type registration imm_date -> org.hibernate.type.AdaptedImmutableType@17f2f0a
+13:28:43,871 DEBUG BasicTypeRegistry:148 - Adding type registration imm_time -> org.hibernate.type.AdaptedImmutableType@defd69
+13:28:43,877 DEBUG BasicTypeRegistry:148 - Adding type registration imm_timestamp -> org.hibernate.type.AdaptedImmutableType@11a716c
+13:28:43,883 DEBUG BasicTypeRegistry:148 - Adding type registration imm_dbtimestamp -> org.hibernate.type.AdaptedImmutableType@17dbc50
+13:28:43,888 DEBUG BasicTypeRegistry:148 - Adding type registration imm_calendar -> org.hibernate.type.AdaptedImmutableType@11ec2ca
+13:28:43,889 DEBUG BasicTypeRegistry:148 - Adding type registration imm_calendar_date -> org.hibernate.type.AdaptedImmutableType@884875
+13:28:43,892 DEBUG BasicTypeRegistry:148 - Adding type registration imm_binary -> org.hibernate.type.AdaptedImmutableType@19d619
+13:28:43,893 DEBUG BasicTypeRegistry:148 - Adding type registration imm_serializable -> org.hibernate.type.AdaptedImmutableType@5c6b76
+13:28:44,003  INFO Version:37 - HCANN000001: Hibernate Commons Annotations {4.0.2.Final}
+13:28:44,026  INFO Version:41 - HHH000412: Hibernate Core {4.2.11.Final}
+13:28:44,036  INFO Environment:238 - HHH000206: hibernate.properties not found
+13:28:44,042  INFO Environment:345 - HHH000021: Bytecode provider name : javassist
+13:28:44,107  INFO Configuration:2049 - HHH000044: Configuring from URL: jar:file:/home/ecc/Documents/programs/spring/app/target/app-1.0-SNAPSHOT/WEB-INF/lib/persistence-1.0-SNAPSHOT.jar!/hibernate.cfg.xml
+13:28:44,275  INFO Configuration:2154 - HHH000041: Configured SessionFactory: null
+13:28:44,833  INFO AbstractPoolBackedDataSource:212 - Initializing c3p0 pool... com.mchange.v2.c3p0.ComboPooledDataSource [ acquireIncrement -> 3, acquireRetryAttempts -> 30, acquireRetryDelay -> 1000, autoCommitOnClose -> false, automaticTestTable -> null, breakAfterAcquireFailure -> false, checkoutTimeout -> 0, connectionCustomizerClassName -> null, connectionTesterClassName -> com.mchange.v2.c3p0.impl.DefaultConnectionTester, contextClassLoaderSource -> caller, dataSourceName -> z8kfsx9kmpo50ds044c6|d2b274, debugUnreturnedConnectionStackTraces -> false, description -> null, driverClass -> org.postgresql.Driver, extensions -> {}, factoryClassLocation -> null, forceIgnoreUnresolvedTransactions -> false, forceSynchronousCheckins -> false, forceUseNamedDriverClass -> false, identityToken -> z8kfsx9kmpo50ds044c6|d2b274, idleConnectionTestPeriod -> 0, initialPoolSize -> 3, jdbcUrl -> jdbc:postgresql://localhost:5433/hr, maxAdministrativeTaskTime -> 0, maxConnectionAge -> 0, maxIdleTime -> 0, maxIdleTimeExcessConnections -> 0, maxPoolSize -> 5, maxStatements -> 5, maxStatementsPerConnection -> 0, minPoolSize -> 2, numHelperThreads -> 3, preferredTestQuery -> null, privilegeSpawnedThreads -> false, properties -> {user=******, password=******}, propertyCycle -> 0, statementCacheNumDeferredCloseThreads -> 0, testConnectionOnCheckin -> false, testConnectionOnCheckout -> true, unreturnedConnectionTimeout -> 0, userOverrides -> {}, usesTraditionalReflectiveProxies -> false ]
+13:28:46,003  INFO Dialect:130 - HHH000400: Using dialect: org.hibernate.dialect.PostgreSQLDialect
+13:28:46,075  INFO LobCreatorBuilder:120 - HHH000424: Disabling contextual LOB creation as createClob() method threw error : java.lang.reflect.InvocationTargetException
+13:28:47,116  INFO TransactionFactoryInitiator:68 - HHH000399: Using default transaction strategy (direct JDBC transactions)
+13:28:47,173  INFO ASTQueryTranslatorFactory:48 - HHH000397: Using ASTQueryTranslatorFactory
+13:28:47,677 TRACE TypeFactory:71 - Scoping types to session factory org.hibernate.internal.SessionFactoryImpl@163cb
+13:28:48,568  INFO HibernateTransactionManager:340 - Using DataSource [com.mchange.v2.c3p0.ComboPooledDataSource[ identityToken -> z8kfsx9kmpo50ds044c6|d2b274, dataSourceName -> z8kfsx9kmpo50ds044c6|d2b274 ]] of Hibernate SessionFactory for HibernateTransactionManager
+13:28:48,804  INFO BeanNameUrlHandlerMapping:315 - Mapped URL path [/roleController] onto handler '/roleController'
+13:28:48,920  INFO BeanNameUrlHandlerMapping:315 - Mapped URL path [/roleSaveController] onto handler '/roleSaveController'
+13:28:49,040  INFO UpdateChecker:98 - New update(s) found: 2.4.7 [http://www.terracotta.org/confluence/display/release/Release+Notes+Ehcache+Core+2.4]. Please check http://ehcache.org for the latest version.
+13:28:49,839  INFO BeanNameUrlHandlerMapping:315 - Mapped URL path [/personController] onto handler '/personController'
+13:28:49,976  INFO BeanNameUrlHandlerMapping:315 - Mapped URL path [/personSaveController] onto handler '/personSaveController'
+13:28:50,113  INFO BeanNameUrlHandlerMapping:315 - Mapped URL path [/fileUpload] onto handler '/fileUpload'
+13:28:50,189  INFO SimpleUrlHandlerMapping:315 - Mapped URL path [/favicon.ico] onto handler 'org.springframework.web.servlet.resource.ResourceHttpRequestHandler#1'
+13:28:50,275  INFO ControllerClassNameHandlerMapping:315 - Mapped URL path [/role*] onto handler '/roleController'
+13:28:50,276  INFO ControllerClassNameHandlerMapping:315 - Mapped URL path [/rolesave*] onto handler '/roleSaveController'
+13:28:50,280  INFO ControllerClassNameHandlerMapping:315 - Mapped URL path [/person*] onto handler '/personController'
+13:28:50,282  INFO ControllerClassNameHandlerMapping:315 - Mapped URL path [/personsave*] onto handler '/personSaveController'
+13:28:50,283  INFO ControllerClassNameHandlerMapping:315 - Mapped URL path [/fileupload*] onto handler '/fileUpload'
+13:28:50,609  INFO ContextLoader:325 - Root WebApplicationContext: initialization completed in 13329 ms
+13:28:50,903  INFO DispatcherServlet:457 - FrameworkServlet 'MvcDispatcher': initialization started
+13:28:50,934  INFO XmlWebApplicationContext:515 - Refreshing WebApplicationContext for namespace 'MvcDispatcher-servlet': startup date [Fri Nov 11 13:28:50 PHT 2016]; parent: Root WebApplicationContext
+13:28:50,940  INFO XmlBeanDefinitionReader:316 - Loading XML bean definitions from ServletContext resource [/WEB-INF/MvcDispatcher-servlet.xml]
+13:28:51,102  INFO XmlBeanDefinitionReader:316 - Loading XML bean definitions from ServletContext resource [/WEB-INF/data-source-cfg.xml]
+13:28:51,188  INFO XmlBeanDefinitionReader:316 - Loading XML bean definitions from ServletContext resource [/WEB-INF/transaction-cfg.xml]
+13:28:51,259  INFO XmlBeanDefinitionReader:316 - Loading XML bean definitions from ServletContext resource [/WEB-INF/data-source-cfg.xml]
+13:28:51,314  INFO DefaultListableBeanFactory:675 - Overriding bean definition for bean 'dataSource': replacing [Generic bean: class [com.mchange.v2.c3p0.ComboPooledDataSource]; scope=; abstract=false; lazyInit=false; autowireMode=0; dependencyCheck=0; autowireCandidate=true; primary=false; factoryBeanName=null; factoryMethodName=null; initMethodName=null; destroyMethodName=null; defined in ServletContext resource [/WEB-INF/data-source-cfg.xml]] with [Generic bean: class [com.mchange.v2.c3p0.ComboPooledDataSource]; scope=; abstract=false; lazyInit=false; autowireMode=0; dependencyCheck=0; autowireCandidate=true; primary=false; factoryBeanName=null; factoryMethodName=null; initMethodName=null; destroyMethodName=null; defined in ServletContext resource [/WEB-INF/data-source-cfg.xml]]
+13:28:51,316  INFO DefaultListableBeanFactory:675 - Overriding bean definition for bean 'sessionFactory': replacing [Generic bean: class [org.springframework.orm.hibernate4.LocalSessionFactoryBean]; scope=; abstract=false; lazyInit=false; autowireMode=0; dependencyCheck=0; autowireCandidate=true; primary=false; factoryBeanName=null; factoryMethodName=null; initMethodName=null; destroyMethodName=null; defined in ServletContext resource [/WEB-INF/data-source-cfg.xml]] with [Generic bean: class [org.springframework.orm.hibernate4.LocalSessionFactoryBean]; scope=; abstract=false; lazyInit=false; autowireMode=0; dependencyCheck=0; autowireCandidate=true; primary=false; factoryBeanName=null; factoryMethodName=null; initMethodName=null; destroyMethodName=null; defined in ServletContext resource [/WEB-INF/data-source-cfg.xml]]
+13:28:51,384  INFO DefaultListableBeanFactory:603 - Pre-instantiating singletons in org.springframework.beans.factory.support.DefaultListableBeanFactory@1bb8ed5: defining beans [org.springframework.web.servlet.resource.ResourceHttpRequestHandler#0,mvcPathMatcher,mvcUrlPathHelper,org.springframework.web.servlet.handler.SimpleUrlHandlerMapping#0,org.springframework.web.servlet.handler.BeanNameUrlHandlerMapping,org.springframework.web.servlet.mvc.HttpRequestHandlerAdapter,org.springframework.web.servlet.mvc.SimpleControllerHandlerAdapter,org.springframework.web.servlet.resource.ResourceHttpRequestHandler#1,org.springframework.web.servlet.handler.SimpleUrlHandlerMapping#1,dataSource,sessionFactory,txManager,txAdvice,org.springframework.aop.config.internalAutoProxyCreator,servicePointCut,org.springframework.aop.support.DefaultBeanFactoryPointcutAdvisor#0,personDao,roleDao,contactDao,person,role,file,contact,personDto,roleDto,fileDto,personOperations,roleOperations,contactOperations,dataParser,fileOperations,/roleController,/roleSaveController,/personController,/personSaveController,org.springframework.web.servlet.mvc.support.ControllerClassNameHandlerMapping#0,multipartResolver,/fileUpload,localeResolver,org.springframework.web.servlet.handler.MappedInterceptor#0,messageSource,viewResolver]; parent: org.springframework.beans.factory.support.DefaultListableBeanFactory@c2c551
+13:28:51,437  INFO SimpleUrlHandlerMapping:315 - Mapped URL path [/js/**] onto handler 'org.springframework.web.servlet.resource.ResourceHttpRequestHandler#0'
+13:28:51,814 DEBUG BasicTypeRegistry:148 - Adding type registration boolean -> org.hibernate.type.BooleanType@1b362f1
+13:28:51,824 DEBUG BasicTypeRegistry:148 - Adding type registration boolean -> org.hibernate.type.BooleanType@1b362f1
+13:28:51,825 DEBUG BasicTypeRegistry:148 - Adding type registration java.lang.Boolean -> org.hibernate.type.BooleanType@1b362f1
+13:28:51,842 DEBUG BasicTypeRegistry:148 - Adding type registration numeric_boolean -> org.hibernate.type.NumericBooleanType@198ab9a
+13:28:51,843 DEBUG BasicTypeRegistry:148 - Adding type registration true_false -> org.hibernate.type.TrueFalseType@3af394
+13:28:51,847 DEBUG BasicTypeRegistry:148 - Adding type registration yes_no -> org.hibernate.type.YesNoType@1313495
+13:28:51,849 DEBUG BasicTypeRegistry:148 - Adding type registration byte -> org.hibernate.type.ByteType@ce919c
+13:28:51,850 DEBUG BasicTypeRegistry:148 - Adding type registration byte -> org.hibernate.type.ByteType@ce919c
+13:28:51,858 DEBUG BasicTypeRegistry:148 - Adding type registration java.lang.Byte -> org.hibernate.type.ByteType@ce919c
+13:28:51,862 DEBUG BasicTypeRegistry:148 - Adding type registration character -> org.hibernate.type.CharacterType@1d6dddc
+13:28:51,869 DEBUG BasicTypeRegistry:148 - Adding type registration char -> org.hibernate.type.CharacterType@1d6dddc
+13:28:51,870 DEBUG BasicTypeRegistry:148 - Adding type registration java.lang.Character -> org.hibernate.type.CharacterType@1d6dddc
+13:28:51,872 DEBUG BasicTypeRegistry:148 - Adding type registration short -> org.hibernate.type.ShortType@e7394f
+13:28:51,873 DEBUG BasicTypeRegistry:148 - Adding type registration short -> org.hibernate.type.ShortType@e7394f
+13:28:51,874 DEBUG BasicTypeRegistry:148 - Adding type registration java.lang.Short -> org.hibernate.type.ShortType@e7394f
+13:28:51,875 DEBUG BasicTypeRegistry:148 - Adding type registration integer -> org.hibernate.type.IntegerType@1012923
+13:28:51,876 DEBUG BasicTypeRegistry:148 - Adding type registration int -> org.hibernate.type.IntegerType@1012923
+13:28:51,877 DEBUG BasicTypeRegistry:148 - Adding type registration java.lang.Integer -> org.hibernate.type.IntegerType@1012923
+13:28:51,878 DEBUG BasicTypeRegistry:148 - Adding type registration long -> org.hibernate.type.LongType@1b74370
+13:28:51,879 DEBUG BasicTypeRegistry:148 - Adding type registration long -> org.hibernate.type.LongType@1b74370
+13:28:51,880 DEBUG BasicTypeRegistry:148 - Adding type registration java.lang.Long -> org.hibernate.type.LongType@1b74370
+13:28:51,881 DEBUG BasicTypeRegistry:148 - Adding type registration float -> org.hibernate.type.FloatType@b6d34a
+13:28:51,883 DEBUG BasicTypeRegistry:148 - Adding type registration float -> org.hibernate.type.FloatType@b6d34a
+13:28:51,885 DEBUG BasicTypeRegistry:148 - Adding type registration java.lang.Float -> org.hibernate.type.FloatType@b6d34a
+13:28:51,886 DEBUG BasicTypeRegistry:148 - Adding type registration double -> org.hibernate.type.DoubleType@df71d9
+13:28:51,887 DEBUG BasicTypeRegistry:148 - Adding type registration double -> org.hibernate.type.DoubleType@df71d9
+13:28:51,888 DEBUG BasicTypeRegistry:148 - Adding type registration java.lang.Double -> org.hibernate.type.DoubleType@df71d9
+13:28:51,889 DEBUG BasicTypeRegistry:148 - Adding type registration big_decimal -> org.hibernate.type.BigDecimalType@36f83
+13:28:51,890 DEBUG BasicTypeRegistry:148 - Adding type registration java.math.BigDecimal -> org.hibernate.type.BigDecimalType@36f83
+13:28:51,892 DEBUG BasicTypeRegistry:148 - Adding type registration big_integer -> org.hibernate.type.BigIntegerType@fc0211
+13:28:51,893 DEBUG BasicTypeRegistry:148 - Adding type registration java.math.BigInteger -> org.hibernate.type.BigIntegerType@fc0211
+13:28:51,896 DEBUG BasicTypeRegistry:148 - Adding type registration string -> org.hibernate.type.StringType@448de1
+13:28:51,897 DEBUG BasicTypeRegistry:148 - Adding type registration java.lang.String -> org.hibernate.type.StringType@448de1
+13:28:51,898 DEBUG BasicTypeRegistry:148 - Adding type registration nstring -> org.hibernate.type.StringNVarcharType@14d7ffa
+13:28:51,900 DEBUG BasicTypeRegistry:148 - Adding type registration ncharacter -> org.hibernate.type.CharacterNCharType@1ed8b44
+13:28:51,903 DEBUG BasicTypeRegistry:148 - Adding type registration url -> org.hibernate.type.UrlType@16525ab
+13:28:51,904 DEBUG BasicTypeRegistry:148 - Adding type registration java.net.URL -> org.hibernate.type.UrlType@16525ab
+13:28:51,905 DEBUG BasicTypeRegistry:148 - Adding type registration date -> org.hibernate.type.DateType@349cf2
+13:28:51,915 DEBUG BasicTypeRegistry:148 - Adding type registration java.sql.Date -> org.hibernate.type.DateType@349cf2
+13:28:51,921 DEBUG BasicTypeRegistry:148 - Adding type registration time -> org.hibernate.type.TimeType@16a4275
+13:28:51,922 DEBUG BasicTypeRegistry:148 - Adding type registration java.sql.Time -> org.hibernate.type.TimeType@16a4275
+13:28:51,924 DEBUG BasicTypeRegistry:148 - Adding type registration timestamp -> org.hibernate.type.TimestampType@1502e5c
+13:28:51,935 DEBUG BasicTypeRegistry:148 - Adding type registration java.sql.Timestamp -> org.hibernate.type.TimestampType@1502e5c
+13:28:51,937 DEBUG BasicTypeRegistry:148 - Adding type registration java.util.Date -> org.hibernate.type.TimestampType@1502e5c
+13:28:51,942 DEBUG BasicTypeRegistry:148 - Adding type registration dbtimestamp -> org.hibernate.type.DbTimestampType@ae9e8b
+13:28:51,943 DEBUG BasicTypeRegistry:148 - Adding type registration calendar -> org.hibernate.type.CalendarType@1645e64
+13:28:51,944 DEBUG BasicTypeRegistry:148 - Adding type registration java.util.Calendar -> org.hibernate.type.CalendarType@1645e64
+13:28:51,947 DEBUG BasicTypeRegistry:148 - Adding type registration java.util.GregorianCalendar -> org.hibernate.type.CalendarType@1645e64
+13:28:51,949 DEBUG BasicTypeRegistry:148 - Adding type registration calendar_date -> org.hibernate.type.CalendarDateType@16c67cd
+13:28:51,962 DEBUG BasicTypeRegistry:148 - Adding type registration locale -> org.hibernate.type.LocaleType@12e5a82
+13:28:51,963 DEBUG BasicTypeRegistry:148 - Adding type registration java.util.Locale -> org.hibernate.type.LocaleType@12e5a82
+13:28:51,964 DEBUG BasicTypeRegistry:148 - Adding type registration currency -> org.hibernate.type.CurrencyType@187d0fa
+13:28:51,967 DEBUG BasicTypeRegistry:148 - Adding type registration java.util.Currency -> org.hibernate.type.CurrencyType@187d0fa
+13:28:51,975 DEBUG BasicTypeRegistry:148 - Adding type registration timezone -> org.hibernate.type.TimeZoneType@1dc335a
+13:28:51,980 DEBUG BasicTypeRegistry:148 - Adding type registration java.util.TimeZone -> org.hibernate.type.TimeZoneType@1dc335a
+13:28:51,984 DEBUG BasicTypeRegistry:148 - Adding type registration class -> org.hibernate.type.ClassType@1fa3671
+13:28:51,994 DEBUG BasicTypeRegistry:148 - Adding type registration java.lang.Class -> org.hibernate.type.ClassType@1fa3671
+13:28:52,003 DEBUG BasicTypeRegistry:148 - Adding type registration uuid-binary -> org.hibernate.type.UUIDBinaryType@358dc7
+13:28:52,005 DEBUG BasicTypeRegistry:148 - Adding type registration java.util.UUID -> org.hibernate.type.UUIDBinaryType@358dc7
+13:28:52,007 DEBUG BasicTypeRegistry:148 - Adding type registration uuid-char -> org.hibernate.type.UUIDCharType@1fcfc54
+13:28:52,010 DEBUG BasicTypeRegistry:148 - Adding type registration pg-uuid -> org.hibernate.type.PostgresUUIDType@aee519
+13:28:52,016 DEBUG BasicTypeRegistry:148 - Adding type registration binary -> org.hibernate.type.BinaryType@357c3e
+13:28:52,018 DEBUG BasicTypeRegistry:148 - Adding type registration byte[] -> org.hibernate.type.BinaryType@357c3e
+13:28:52,031 DEBUG BasicTypeRegistry:148 - Adding type registration [B -> org.hibernate.type.BinaryType@357c3e
+13:28:52,033 DEBUG BasicTypeRegistry:148 - Adding type registration wrapper-binary -> org.hibernate.type.WrapperBinaryType@f047cf
+13:28:52,036 DEBUG BasicTypeRegistry:148 - Adding type registration Byte[] -> org.hibernate.type.WrapperBinaryType@f047cf
+13:28:52,039 DEBUG BasicTypeRegistry:148 - Adding type registration [Ljava.lang.Byte; -> org.hibernate.type.WrapperBinaryType@f047cf
+13:28:52,048 DEBUG BasicTypeRegistry:148 - Adding type registration image -> org.hibernate.type.ImageType@8769b7
+13:28:52,053 DEBUG BasicTypeRegistry:148 - Adding type registration characters -> org.hibernate.type.CharArrayType@1262071
+13:28:52,055 DEBUG BasicTypeRegistry:148 - Adding type registration char[] -> org.hibernate.type.CharArrayType@1262071
+13:28:52,058 DEBUG BasicTypeRegistry:148 - Adding type registration [C -> org.hibernate.type.CharArrayType@1262071
+13:28:52,061 DEBUG BasicTypeRegistry:148 - Adding type registration wrapper-characters -> org.hibernate.type.CharacterArrayType@238b12
+13:28:52,065 DEBUG BasicTypeRegistry:148 - Adding type registration [Ljava.lang.Character; -> org.hibernate.type.CharacterArrayType@238b12
+13:28:52,067 DEBUG BasicTypeRegistry:148 - Adding type registration Character[] -> org.hibernate.type.CharacterArrayType@238b12
+13:28:52,080 DEBUG BasicTypeRegistry:148 - Adding type registration text -> org.hibernate.type.TextType@133fae8
+13:28:52,087 DEBUG BasicTypeRegistry:148 - Adding type registration ntext -> org.hibernate.type.NTextType@5b8922
+13:28:52,089 DEBUG BasicTypeRegistry:148 - Adding type registration blob -> org.hibernate.type.BlobType@1be41c6
+13:28:52,090 DEBUG BasicTypeRegistry:148 - Adding type registration java.sql.Blob -> org.hibernate.type.BlobType@1be41c6
+13:28:52,091 DEBUG BasicTypeRegistry:148 - Adding type registration materialized_blob -> org.hibernate.type.MaterializedBlobType@13a6e95
+13:28:52,092 DEBUG BasicTypeRegistry:148 - Adding type registration clob -> org.hibernate.type.ClobType@46ad0f
+13:28:52,099 DEBUG BasicTypeRegistry:148 - Adding type registration java.sql.Clob -> org.hibernate.type.ClobType@46ad0f
+13:28:52,101 DEBUG BasicTypeRegistry:148 - Adding type registration nclob -> org.hibernate.type.NClobType@84338a
+13:28:52,102 DEBUG BasicTypeRegistry:148 - Adding type registration java.sql.NClob -> org.hibernate.type.NClobType@84338a
+13:28:52,104 DEBUG BasicTypeRegistry:148 - Adding type registration materialized_clob -> org.hibernate.type.MaterializedClobType@c4868
+13:28:52,106 DEBUG BasicTypeRegistry:148 - Adding type registration materialized_nclob -> org.hibernate.type.MaterializedNClobType@1d4b3e8
+13:28:52,111 DEBUG BasicTypeRegistry:148 - Adding type registration serializable -> org.hibernate.type.SerializableType@1c59b6e
+13:28:52,113 DEBUG BasicTypeRegistry:148 - Adding type registration object -> org.hibernate.type.ObjectType@1638165
+13:28:52,114 DEBUG BasicTypeRegistry:148 - Adding type registration java.lang.Object -> org.hibernate.type.ObjectType@1638165
+13:28:52,123 DEBUG BasicTypeRegistry:148 - Adding type registration imm_date -> org.hibernate.type.AdaptedImmutableType@c74fc4
+13:28:52,125 DEBUG BasicTypeRegistry:148 - Adding type registration imm_time -> org.hibernate.type.AdaptedImmutableType@697186
+13:28:52,126 DEBUG BasicTypeRegistry:148 - Adding type registration imm_timestamp -> org.hibernate.type.AdaptedImmutableType@5a7dd0
+13:28:52,127 DEBUG BasicTypeRegistry:148 - Adding type registration imm_dbtimestamp -> org.hibernate.type.AdaptedImmutableType@158443e
+13:28:52,128 DEBUG BasicTypeRegistry:148 - Adding type registration imm_calendar -> org.hibernate.type.AdaptedImmutableType@1e796fe
+13:28:52,129 DEBUG BasicTypeRegistry:148 - Adding type registration imm_calendar_date -> org.hibernate.type.AdaptedImmutableType@c53685
+13:28:52,131 DEBUG BasicTypeRegistry:148 - Adding type registration imm_binary -> org.hibernate.type.AdaptedImmutableType@1ba63f0
+13:28:52,139 DEBUG BasicTypeRegistry:148 - Adding type registration imm_serializable -> org.hibernate.type.AdaptedImmutableType@22ab4d
+13:28:52,143  INFO Configuration:2049 - HHH000044: Configuring from URL: jar:file:/home/ecc/Documents/programs/spring/app/target/app-1.0-SNAPSHOT/WEB-INF/lib/persistence-1.0-SNAPSHOT.jar!/hibernate.cfg.xml
+13:28:52,173  INFO Configuration:2154 - HHH000041: Configured SessionFactory: null
+13:28:52,258  INFO AbstractPoolBackedDataSource:212 - Initializing c3p0 pool... com.mchange.v2.c3p0.ComboPooledDataSource [ acquireIncrement -> 3, acquireRetryAttempts -> 30, acquireRetryDelay -> 1000, autoCommitOnClose -> false, automaticTestTable -> null, breakAfterAcquireFailure -> false, checkoutTimeout -> 0, connectionCustomizerClassName -> null, connectionTesterClassName -> com.mchange.v2.c3p0.impl.DefaultConnectionTester, contextClassLoaderSource -> caller, dataSourceName -> z8kfsx9kmpo50ds044c6|7af13d, debugUnreturnedConnectionStackTraces -> false, description -> null, driverClass -> org.postgresql.Driver, extensions -> {}, factoryClassLocation -> null, forceIgnoreUnresolvedTransactions -> false, forceSynchronousCheckins -> false, forceUseNamedDriverClass -> false, identityToken -> z8kfsx9kmpo50ds044c6|7af13d, idleConnectionTestPeriod -> 0, initialPoolSize -> 3, jdbcUrl -> jdbc:postgresql://localhost:5433/hr, maxAdministrativeTaskTime -> 0, maxConnectionAge -> 0, maxIdleTime -> 0, maxIdleTimeExcessConnections -> 0, maxPoolSize -> 5, maxStatements -> 5, maxStatementsPerConnection -> 0, minPoolSize -> 2, numHelperThreads -> 3, preferredTestQuery -> null, privilegeSpawnedThreads -> false, properties -> {user=******, password=******}, propertyCycle -> 0, statementCacheNumDeferredCloseThreads -> 0, testConnectionOnCheckin -> false, testConnectionOnCheckout -> true, unreturnedConnectionTimeout -> 0, userOverrides -> {}, usesTraditionalReflectiveProxies -> false ]
+13:28:52,651  INFO Dialect:130 - HHH000400: Using dialect: org.hibernate.dialect.PostgreSQLDialect
+13:28:52,668  INFO LobCreatorBuilder:120 - HHH000424: Disabling contextual LOB creation as createClob() method threw error : java.lang.reflect.InvocationTargetException
+13:28:52,724  INFO TransactionFactoryInitiator:68 - HHH000399: Using default transaction strategy (direct JDBC transactions)
+13:28:52,728  INFO ASTQueryTranslatorFactory:48 - HHH000397: Using ASTQueryTranslatorFactory
+13:28:52,778  WARN CacheManager:611 - Creating a new instance of CacheManager using the diskStorePath "/tmp" which is already used by an existing CacheManager.
+The source of the configuration was net.sf.ehcache.config.generator.ConfigurationSource$URLConfigurationSource@f3fb87.
+The diskStore path for this CacheManager will be set to /tmp/ehcache_auto_created_1478842132778.
+To avoid this warning consider using the CacheManager factory methods to create a singleton CacheManager or specifying a separate ehcache configuration (ehcache.xml) for each CacheManager instance.
+13:28:52,790 TRACE TypeFactory:71 - Scoping types to session factory org.hibernate.internal.SessionFactoryImpl@13c4ad6
+13:28:53,013  INFO HibernateTransactionManager:340 - Using DataSource [com.mchange.v2.c3p0.ComboPooledDataSource[ identityToken -> z8kfsx9kmpo50ds044c6|7af13d, dataSourceName -> z8kfsx9kmpo50ds044c6|7af13d ]] of Hibernate SessionFactory for HibernateTransactionManager
+13:28:53,070  INFO BeanNameUrlHandlerMapping:315 - Mapped URL path [/roleController] onto handler '/roleController'
+13:28:53,105  INFO BeanNameUrlHandlerMapping:315 - Mapped URL path [/roleSaveController] onto handler '/roleSaveController'
+13:28:53,241  INFO BeanNameUrlHandlerMapping:315 - Mapped URL path [/personController] onto handler '/personController'
+13:28:53,301  INFO BeanNameUrlHandlerMapping:315 - Mapped URL path [/personSaveController] onto handler '/personSaveController'
+13:28:53,353  INFO BeanNameUrlHandlerMapping:315 - Mapped URL path [/fileUpload] onto handler '/fileUpload'
+13:28:53,381  INFO SimpleUrlHandlerMapping:315 - Mapped URL path [/favicon.ico] onto handler 'org.springframework.web.servlet.resource.ResourceHttpRequestHandler#1'
+13:28:53,387  INFO ControllerClassNameHandlerMapping:315 - Mapped URL path [/role*] onto handler '/roleController'
+13:28:53,401  INFO ControllerClassNameHandlerMapping:315 - Mapped URL path [/rolesave*] onto handler '/roleSaveController'
+13:28:53,403  INFO ControllerClassNameHandlerMapping:315 - Mapped URL path [/person*] onto handler '/personController'
+13:28:53,403  INFO ControllerClassNameHandlerMapping:315 - Mapped URL path [/personsave*] onto handler '/personSaveController'
+13:28:53,404  INFO ControllerClassNameHandlerMapping:315 - Mapped URL path [/fileupload*] onto handler '/fileUpload'
+13:28:54,067  INFO DispatcherServlet:476 - FrameworkServlet 'MvcDispatcher': initialization completed in 3157 ms
+13:28:54,557  INFO UpdateChecker:98 - New update(s) found: 2.4.7 [http://www.terracotta.org/confluence/display/release/Release+Notes+Ehcache+Core+2.4]. Please check http://ehcache.org for the latest version.
+13:29:19,557  INFO XmlWebApplicationContext:1048 - Closing WebApplicationContext for namespace 'MvcDispatcher-servlet': startup date [Fri Nov 11 13:28:50 PHT 2016]; parent: Root WebApplicationContext
+13:29:19,564  INFO DefaultListableBeanFactory:444 - Destroying singletons in org.springframework.beans.factory.support.DefaultListableBeanFactory@1bb8ed5: defining beans [org.springframework.web.servlet.resource.ResourceHttpRequestHandler#0,mvcPathMatcher,mvcUrlPathHelper,org.springframework.web.servlet.handler.SimpleUrlHandlerMapping#0,org.springframework.web.servlet.handler.BeanNameUrlHandlerMapping,org.springframework.web.servlet.mvc.HttpRequestHandlerAdapter,org.springframework.web.servlet.mvc.SimpleControllerHandlerAdapter,org.springframework.web.servlet.resource.ResourceHttpRequestHandler#1,org.springframework.web.servlet.handler.SimpleUrlHandlerMapping#1,dataSource,sessionFactory,txManager,txAdvice,org.springframework.aop.config.internalAutoProxyCreator,servicePointCut,org.springframework.aop.support.DefaultBeanFactoryPointcutAdvisor#0,personDao,roleDao,contactDao,person,role,file,contact,personDto,roleDto,fileDto,personOperations,roleOperations,contactOperations,dataParser,fileOperations,/roleController,/roleSaveController,/personController,/personSaveController,org.springframework.web.servlet.mvc.support.ControllerClassNameHandlerMapping#0,multipartResolver,/fileUpload,localeResolver,org.springframework.web.servlet.handler.MappedInterceptor#0,messageSource,viewResolver]; parent: org.springframework.beans.factory.support.DefaultListableBeanFactory@c2c551
+13:29:19,596  INFO XmlWebApplicationContext:1048 - Closing Root WebApplicationContext: startup date [Fri Nov 11 13:28:37 PHT 2016]; root of context hierarchy
+13:29:19,605  INFO DefaultListableBeanFactory:444 - Destroying singletons in org.springframework.beans.factory.support.DefaultListableBeanFactory@c2c551: defining beans [org.springframework.web.servlet.resource.ResourceHttpRequestHandler#0,mvcPathMatcher,mvcUrlPathHelper,org.springframework.web.servlet.handler.SimpleUrlHandlerMapping#0,org.springframework.web.servlet.handler.BeanNameUrlHandlerMapping,org.springframework.web.servlet.mvc.HttpRequestHandlerAdapter,org.springframework.web.servlet.mvc.SimpleControllerHandlerAdapter,org.springframework.web.servlet.resource.ResourceHttpRequestHandler#1,org.springframework.web.servlet.handler.SimpleUrlHandlerMapping#1,dataSource,sessionFactory,txManager,txAdvice,org.springframework.aop.config.internalAutoProxyCreator,servicePointCut,org.springframework.aop.support.DefaultBeanFactoryPointcutAdvisor#0,personDao,roleDao,contactDao,person,role,file,contact,personDto,roleDto,fileDto,personOperations,roleOperations,contactOperations,dataParser,fileOperations,/roleController,/roleSaveController,/personController,/personSaveController,org.springframework.web.servlet.mvc.support.ControllerClassNameHandlerMapping#0,multipartResolver,/fileUpload,localeResolver,org.springframework.web.servlet.handler.MappedInterceptor#0,messageSource,viewResolver,org.springframework.aop.support.DefaultBeanFactoryPointcutAdvisor#1]; root of factory hierarchy
+13:30:26,954  INFO ContextLoader:285 - Root WebApplicationContext: initialization started
+13:30:27,144  INFO XmlWebApplicationContext:515 - Refreshing Root WebApplicationContext: startup date [Fri Nov 11 13:30:27 PHT 2016]; root of context hierarchy
+13:30:27,261  INFO XmlBeanDefinitionReader:316 - Loading XML bean definitions from ServletContext resource [/WEB-INF/MvcDispatcher-servlet.xml]
+13:30:27,716  INFO XmlBeanDefinitionReader:316 - Loading XML bean definitions from ServletContext resource [/WEB-INF/data-source-cfg.xml]
+13:30:27,789  INFO XmlBeanDefinitionReader:316 - Loading XML bean definitions from ServletContext resource [/WEB-INF/transaction-cfg.xml]
+13:30:27,878  INFO XmlBeanDefinitionReader:316 - Loading XML bean definitions from ServletContext resource [/WEB-INF/data-source-cfg.xml]
+13:30:27,994  INFO DefaultListableBeanFactory:675 - Overriding bean definition for bean 'dataSource': replacing [Generic bean: class [com.mchange.v2.c3p0.ComboPooledDataSource]; scope=; abstract=false; lazyInit=false; autowireMode=0; dependencyCheck=0; autowireCandidate=true; primary=false; factoryBeanName=null; factoryMethodName=null; initMethodName=null; destroyMethodName=null; defined in ServletContext resource [/WEB-INF/data-source-cfg.xml]] with [Generic bean: class [com.mchange.v2.c3p0.ComboPooledDataSource]; scope=; abstract=false; lazyInit=false; autowireMode=0; dependencyCheck=0; autowireCandidate=true; primary=false; factoryBeanName=null; factoryMethodName=null; initMethodName=null; destroyMethodName=null; defined in ServletContext resource [/WEB-INF/data-source-cfg.xml]]
+13:30:27,997  INFO DefaultListableBeanFactory:675 - Overriding bean definition for bean 'sessionFactory': replacing [Generic bean: class [org.springframework.orm.hibernate4.LocalSessionFactoryBean]; scope=; abstract=false; lazyInit=false; autowireMode=0; dependencyCheck=0; autowireCandidate=true; primary=false; factoryBeanName=null; factoryMethodName=null; initMethodName=null; destroyMethodName=null; defined in ServletContext resource [/WEB-INF/data-source-cfg.xml]] with [Generic bean: class [org.springframework.orm.hibernate4.LocalSessionFactoryBean]; scope=; abstract=false; lazyInit=false; autowireMode=0; dependencyCheck=0; autowireCandidate=true; primary=false; factoryBeanName=null; factoryMethodName=null; initMethodName=null; destroyMethodName=null; defined in ServletContext resource [/WEB-INF/data-source-cfg.xml]]
+13:30:28,192  INFO XmlBeanDefinitionReader:316 - Loading XML bean definitions from ServletContext resource [/WEB-INF/data-source-cfg.xml]
+13:30:28,250  INFO DefaultListableBeanFactory:675 - Overriding bean definition for bean 'dataSource': replacing [Generic bean: class [com.mchange.v2.c3p0.ComboPooledDataSource]; scope=; abstract=false; lazyInit=false; autowireMode=0; dependencyCheck=0; autowireCandidate=true; primary=false; factoryBeanName=null; factoryMethodName=null; initMethodName=null; destroyMethodName=null; defined in ServletContext resource [/WEB-INF/data-source-cfg.xml]] with [Generic bean: class [com.mchange.v2.c3p0.ComboPooledDataSource]; scope=; abstract=false; lazyInit=false; autowireMode=0; dependencyCheck=0; autowireCandidate=true; primary=false; factoryBeanName=null; factoryMethodName=null; initMethodName=null; destroyMethodName=null; defined in ServletContext resource [/WEB-INF/data-source-cfg.xml]]
+13:30:28,252  INFO DefaultListableBeanFactory:675 - Overriding bean definition for bean 'sessionFactory': replacing [Generic bean: class [org.springframework.orm.hibernate4.LocalSessionFactoryBean]; scope=; abstract=false; lazyInit=false; autowireMode=0; dependencyCheck=0; autowireCandidate=true; primary=false; factoryBeanName=null; factoryMethodName=null; initMethodName=null; destroyMethodName=null; defined in ServletContext resource [/WEB-INF/data-source-cfg.xml]] with [Generic bean: class [org.springframework.orm.hibernate4.LocalSessionFactoryBean]; scope=; abstract=false; lazyInit=false; autowireMode=0; dependencyCheck=0; autowireCandidate=true; primary=false; factoryBeanName=null; factoryMethodName=null; initMethodName=null; destroyMethodName=null; defined in ServletContext resource [/WEB-INF/data-source-cfg.xml]]
+13:30:28,253  INFO XmlBeanDefinitionReader:316 - Loading XML bean definitions from ServletContext resource [/WEB-INF/transaction-cfg.xml]
+13:30:28,330  INFO XmlBeanDefinitionReader:316 - Loading XML bean definitions from ServletContext resource [/WEB-INF/data-source-cfg.xml]
+13:30:28,384  INFO DefaultListableBeanFactory:675 - Overriding bean definition for bean 'dataSource': replacing [Generic bean: class [com.mchange.v2.c3p0.ComboPooledDataSource]; scope=; abstract=false; lazyInit=false; autowireMode=0; dependencyCheck=0; autowireCandidate=true; primary=false; factoryBeanName=null; factoryMethodName=null; initMethodName=null; destroyMethodName=null; defined in ServletContext resource [/WEB-INF/data-source-cfg.xml]] with [Generic bean: class [com.mchange.v2.c3p0.ComboPooledDataSource]; scope=; abstract=false; lazyInit=false; autowireMode=0; dependencyCheck=0; autowireCandidate=true; primary=false; factoryBeanName=null; factoryMethodName=null; initMethodName=null; destroyMethodName=null; defined in ServletContext resource [/WEB-INF/data-source-cfg.xml]]
+13:30:28,393  INFO DefaultListableBeanFactory:675 - Overriding bean definition for bean 'sessionFactory': replacing [Generic bean: class [org.springframework.orm.hibernate4.LocalSessionFactoryBean]; scope=; abstract=false; lazyInit=false; autowireMode=0; dependencyCheck=0; autowireCandidate=true; primary=false; factoryBeanName=null; factoryMethodName=null; initMethodName=null; destroyMethodName=null; defined in ServletContext resource [/WEB-INF/data-source-cfg.xml]] with [Generic bean: class [org.springframework.orm.hibernate4.LocalSessionFactoryBean]; scope=; abstract=false; lazyInit=false; autowireMode=0; dependencyCheck=0; autowireCandidate=true; primary=false; factoryBeanName=null; factoryMethodName=null; initMethodName=null; destroyMethodName=null; defined in ServletContext resource [/WEB-INF/data-source-cfg.xml]]
+13:30:28,396  INFO DefaultListableBeanFactory:675 - Overriding bean definition for bean 'txManager': replacing [Generic bean: class [org.springframework.orm.hibernate4.HibernateTransactionManager]; scope=; abstract=false; lazyInit=false; autowireMode=0; dependencyCheck=0; autowireCandidate=true; primary=false; factoryBeanName=null; factoryMethodName=null; initMethodName=null; destroyMethodName=null; defined in ServletContext resource [/WEB-INF/transaction-cfg.xml]] with [Generic bean: class [org.springframework.orm.hibernate4.HibernateTransactionManager]; scope=; abstract=false; lazyInit=false; autowireMode=0; dependencyCheck=0; autowireCandidate=true; primary=false; factoryBeanName=null; factoryMethodName=null; initMethodName=null; destroyMethodName=null; defined in ServletContext resource [/WEB-INF/transaction-cfg.xml]]
+13:30:28,401  INFO DefaultListableBeanFactory:675 - Overriding bean definition for bean 'txAdvice': replacing [Generic bean: class [org.springframework.transaction.interceptor.TransactionInterceptor]; scope=; abstract=false; lazyInit=false; autowireMode=0; dependencyCheck=0; autowireCandidate=true; primary=false; factoryBeanName=null; factoryMethodName=null; initMethodName=null; destroyMethodName=null] with [Generic bean: class [org.springframework.transaction.interceptor.TransactionInterceptor]; scope=; abstract=false; lazyInit=false; autowireMode=0; dependencyCheck=0; autowireCandidate=true; primary=false; factoryBeanName=null; factoryMethodName=null; initMethodName=null; destroyMethodName=null]
+13:30:28,409  INFO DefaultListableBeanFactory:675 - Overriding bean definition for bean 'servicePointCut': replacing [Root bean: class [org.springframework.aop.aspectj.AspectJExpressionPointcut]; scope=prototype; abstract=false; lazyInit=false; autowireMode=0; dependencyCheck=0; autowireCandidate=true; primary=false; factoryBeanName=null; factoryMethodName=null; initMethodName=null; destroyMethodName=null] with [Root bean: class [org.springframework.aop.aspectj.AspectJExpressionPointcut]; scope=prototype; abstract=false; lazyInit=false; autowireMode=0; dependencyCheck=0; autowireCandidate=true; primary=false; factoryBeanName=null; factoryMethodName=null; initMethodName=null; destroyMethodName=null]
+13:30:29,422  INFO DefaultListableBeanFactory:603 - Pre-instantiating singletons in org.springframework.beans.factory.support.DefaultListableBeanFactory@13eca84: defining beans [org.springframework.web.servlet.resource.ResourceHttpRequestHandler#0,mvcPathMatcher,mvcUrlPathHelper,org.springframework.web.servlet.handler.SimpleUrlHandlerMapping#0,org.springframework.web.servlet.handler.BeanNameUrlHandlerMapping,org.springframework.web.servlet.mvc.HttpRequestHandlerAdapter,org.springframework.web.servlet.mvc.SimpleControllerHandlerAdapter,org.springframework.web.servlet.resource.ResourceHttpRequestHandler#1,org.springframework.web.servlet.handler.SimpleUrlHandlerMapping#1,dataSource,sessionFactory,txManager,txAdvice,org.springframework.aop.config.internalAutoProxyCreator,servicePointCut,org.springframework.aop.support.DefaultBeanFactoryPointcutAdvisor#0,personDao,roleDao,contactDao,person,role,file,contact,personDto,roleDto,fileDto,personOperations,roleOperations,contactOperations,dataParser,fileOperations,/roleController,/roleSaveController,/personController,/personSaveController,org.springframework.web.servlet.mvc.support.ControllerClassNameHandlerMapping#0,multipartResolver,/fileUpload,localeResolver,org.springframework.web.servlet.handler.MappedInterceptor#0,messageSource,viewResolver,org.springframework.aop.support.DefaultBeanFactoryPointcutAdvisor#1]; root of factory hierarchy
+13:30:29,905  INFO SimpleUrlHandlerMapping:315 - Mapped URL path [/js/**] onto handler 'org.springframework.web.servlet.resource.ResourceHttpRequestHandler#0'
+13:30:30,549  INFO MLog:212 - MLog clients using slf4j logging.
+13:30:30,869  INFO C3P0Registry:212 - Initializing c3p0-0.9.5.2 [built 08-December-2015 22:06:04 -0800; debug? true; trace: 10]
+13:30:31,484 DEBUG BasicTypeRegistry:148 - Adding type registration boolean -> org.hibernate.type.BooleanType@4ca74
+13:30:31,486 DEBUG BasicTypeRegistry:148 - Adding type registration boolean -> org.hibernate.type.BooleanType@4ca74
+13:30:31,487 DEBUG BasicTypeRegistry:148 - Adding type registration java.lang.Boolean -> org.hibernate.type.BooleanType@4ca74
+13:30:31,491 DEBUG BasicTypeRegistry:148 - Adding type registration numeric_boolean -> org.hibernate.type.NumericBooleanType@d42ab7
+13:30:31,496 DEBUG BasicTypeRegistry:148 - Adding type registration true_false -> org.hibernate.type.TrueFalseType@f6b4ab
+13:30:31,502 DEBUG BasicTypeRegistry:148 - Adding type registration yes_no -> org.hibernate.type.YesNoType@b5a559
+13:30:31,521 DEBUG BasicTypeRegistry:148 - Adding type registration byte -> org.hibernate.type.ByteType@3c99f7
+13:30:31,522 DEBUG BasicTypeRegistry:148 - Adding type registration byte -> org.hibernate.type.ByteType@3c99f7
+13:30:31,523 DEBUG BasicTypeRegistry:148 - Adding type registration java.lang.Byte -> org.hibernate.type.ByteType@3c99f7
+13:30:31,531 DEBUG BasicTypeRegistry:148 - Adding type registration character -> org.hibernate.type.CharacterType@2c087e
+13:30:31,535 DEBUG BasicTypeRegistry:148 - Adding type registration char -> org.hibernate.type.CharacterType@2c087e
+13:30:31,540 DEBUG BasicTypeRegistry:148 - Adding type registration java.lang.Character -> org.hibernate.type.CharacterType@2c087e
+13:30:31,545 DEBUG BasicTypeRegistry:148 - Adding type registration short -> org.hibernate.type.ShortType@15e6833
+13:30:31,547 DEBUG BasicTypeRegistry:148 - Adding type registration short -> org.hibernate.type.ShortType@15e6833
+13:30:31,548 DEBUG BasicTypeRegistry:148 - Adding type registration java.lang.Short -> org.hibernate.type.ShortType@15e6833
+13:30:31,552 DEBUG BasicTypeRegistry:148 - Adding type registration integer -> org.hibernate.type.IntegerType@b6d34a
+13:30:31,553 DEBUG BasicTypeRegistry:148 - Adding type registration int -> org.hibernate.type.IntegerType@b6d34a
+13:30:31,555 DEBUG BasicTypeRegistry:148 - Adding type registration java.lang.Integer -> org.hibernate.type.IntegerType@b6d34a
+13:30:31,560 DEBUG BasicTypeRegistry:148 - Adding type registration long -> org.hibernate.type.LongType@df71d9
+13:30:31,561 DEBUG BasicTypeRegistry:148 - Adding type registration long -> org.hibernate.type.LongType@df71d9
+13:30:31,563 DEBUG BasicTypeRegistry:148 - Adding type registration java.lang.Long -> org.hibernate.type.LongType@df71d9
+13:30:31,568 DEBUG BasicTypeRegistry:148 - Adding type registration float -> org.hibernate.type.FloatType@36f83
+13:30:31,569 DEBUG BasicTypeRegistry:148 - Adding type registration float -> org.hibernate.type.FloatType@36f83
+13:30:31,570 DEBUG BasicTypeRegistry:148 - Adding type registration java.lang.Float -> org.hibernate.type.FloatType@36f83
+13:30:31,575 DEBUG BasicTypeRegistry:148 - Adding type registration double -> org.hibernate.type.DoubleType@1088813
+13:30:31,576 DEBUG BasicTypeRegistry:148 - Adding type registration double -> org.hibernate.type.DoubleType@1088813
+13:30:31,577 DEBUG BasicTypeRegistry:148 - Adding type registration java.lang.Double -> org.hibernate.type.DoubleType@1088813
+13:30:31,582 DEBUG BasicTypeRegistry:148 - Adding type registration big_decimal -> org.hibernate.type.BigDecimalType@948f1c
+13:30:31,584 DEBUG BasicTypeRegistry:148 - Adding type registration java.math.BigDecimal -> org.hibernate.type.BigDecimalType@948f1c
+13:30:31,587 DEBUG BasicTypeRegistry:148 - Adding type registration big_integer -> org.hibernate.type.BigIntegerType@1280cbb
+13:30:31,589 DEBUG BasicTypeRegistry:148 - Adding type registration java.math.BigInteger -> org.hibernate.type.BigIntegerType@1280cbb
+13:30:31,592 DEBUG BasicTypeRegistry:148 - Adding type registration string -> org.hibernate.type.StringType@1438750
+13:30:31,594 DEBUG BasicTypeRegistry:148 - Adding type registration java.lang.String -> org.hibernate.type.StringType@1438750
+13:30:31,597 DEBUG BasicTypeRegistry:148 - Adding type registration nstring -> org.hibernate.type.StringNVarcharType@de229
+13:30:31,610 DEBUG BasicTypeRegistry:148 - Adding type registration ncharacter -> org.hibernate.type.CharacterNCharType@a426c3
+13:30:31,615 DEBUG BasicTypeRegistry:148 - Adding type registration url -> org.hibernate.type.UrlType@16a4275
+13:30:31,616 DEBUG BasicTypeRegistry:148 - Adding type registration java.net.URL -> org.hibernate.type.UrlType@16a4275
+13:30:31,622 DEBUG BasicTypeRegistry:148 - Adding type registration date -> org.hibernate.type.DateType@1d2b646
+13:30:31,624 DEBUG BasicTypeRegistry:148 - Adding type registration java.sql.Date -> org.hibernate.type.DateType@1d2b646
+13:30:31,632 DEBUG BasicTypeRegistry:148 - Adding type registration time -> org.hibernate.type.TimeType@1e6549d
+13:30:31,633 DEBUG BasicTypeRegistry:148 - Adding type registration java.sql.Time -> org.hibernate.type.TimeType@1e6549d
+13:30:31,640 DEBUG BasicTypeRegistry:148 - Adding type registration timestamp -> org.hibernate.type.TimestampType@12e5a82
+13:30:31,642 DEBUG BasicTypeRegistry:148 - Adding type registration java.sql.Timestamp -> org.hibernate.type.TimestampType@12e5a82
+13:30:31,644 DEBUG BasicTypeRegistry:148 - Adding type registration java.util.Date -> org.hibernate.type.TimestampType@12e5a82
+13:30:31,652 DEBUG BasicTypeRegistry:148 - Adding type registration dbtimestamp -> org.hibernate.type.DbTimestampType@1423a17
+13:30:31,657 DEBUG BasicTypeRegistry:148 - Adding type registration calendar -> org.hibernate.type.CalendarType@1374689
+13:30:31,661 DEBUG BasicTypeRegistry:148 - Adding type registration java.util.Calendar -> org.hibernate.type.CalendarType@1374689
+13:30:31,662 DEBUG BasicTypeRegistry:148 - Adding type registration java.util.GregorianCalendar -> org.hibernate.type.CalendarType@1374689
+13:30:31,669 DEBUG BasicTypeRegistry:148 - Adding type registration calendar_date -> org.hibernate.type.CalendarDateType@95cb11
+13:30:31,673 DEBUG BasicTypeRegistry:148 - Adding type registration locale -> org.hibernate.type.LocaleType@f662bd
+13:30:31,682 DEBUG BasicTypeRegistry:148 - Adding type registration java.util.Locale -> org.hibernate.type.LocaleType@f662bd
+13:30:31,691 DEBUG BasicTypeRegistry:148 - Adding type registration currency -> org.hibernate.type.CurrencyType@1fc8558
+13:30:31,699 DEBUG BasicTypeRegistry:148 - Adding type registration java.util.Currency -> org.hibernate.type.CurrencyType@1fc8558
+13:30:31,703 DEBUG BasicTypeRegistry:148 - Adding type registration timezone -> org.hibernate.type.TimeZoneType@bf795f
+13:30:31,705 DEBUG BasicTypeRegistry:148 - Adding type registration java.util.TimeZone -> org.hibernate.type.TimeZoneType@bf795f
+13:30:31,708 DEBUG BasicTypeRegistry:148 - Adding type registration class -> org.hibernate.type.ClassType@1402027
+13:30:31,709 DEBUG BasicTypeRegistry:148 - Adding type registration java.lang.Class -> org.hibernate.type.ClassType@1402027
+13:30:31,714 DEBUG BasicTypeRegistry:148 - Adding type registration uuid-binary -> org.hibernate.type.UUIDBinaryType@1322610
+13:30:31,715 DEBUG BasicTypeRegistry:148 - Adding type registration java.util.UUID -> org.hibernate.type.UUIDBinaryType@1322610
+13:30:31,718 DEBUG BasicTypeRegistry:148 - Adding type registration uuid-char -> org.hibernate.type.UUIDCharType@92a549
+13:30:31,721 DEBUG BasicTypeRegistry:148 - Adding type registration pg-uuid -> org.hibernate.type.PostgresUUIDType@e830a0
+13:30:31,725 DEBUG BasicTypeRegistry:148 - Adding type registration binary -> org.hibernate.type.BinaryType@d4f67e
+13:30:31,727 DEBUG BasicTypeRegistry:148 - Adding type registration byte[] -> org.hibernate.type.BinaryType@d4f67e
+13:30:31,731 DEBUG BasicTypeRegistry:148 - Adding type registration [B -> org.hibernate.type.BinaryType@d4f67e
+13:30:31,734 DEBUG BasicTypeRegistry:148 - Adding type registration wrapper-binary -> org.hibernate.type.WrapperBinaryType@1187485
+13:30:31,736 DEBUG BasicTypeRegistry:148 - Adding type registration Byte[] -> org.hibernate.type.WrapperBinaryType@1187485
+13:30:31,737 DEBUG BasicTypeRegistry:148 - Adding type registration [Ljava.lang.Byte; -> org.hibernate.type.WrapperBinaryType@1187485
+13:30:31,740 DEBUG BasicTypeRegistry:148 - Adding type registration image -> org.hibernate.type.ImageType@8d676e
+13:30:31,746 DEBUG BasicTypeRegistry:148 - Adding type registration characters -> org.hibernate.type.CharArrayType@5a821d
+13:30:31,748 DEBUG BasicTypeRegistry:148 - Adding type registration char[] -> org.hibernate.type.CharArrayType@5a821d
+13:30:31,750 DEBUG BasicTypeRegistry:148 - Adding type registration [C -> org.hibernate.type.CharArrayType@5a821d
+13:30:31,754 DEBUG BasicTypeRegistry:148 - Adding type registration wrapper-characters -> org.hibernate.type.CharacterArrayType@b906f3
+13:30:31,755 DEBUG BasicTypeRegistry:148 - Adding type registration [Ljava.lang.Character; -> org.hibernate.type.CharacterArrayType@b906f3
+13:30:31,756 DEBUG BasicTypeRegistry:148 - Adding type registration Character[] -> org.hibernate.type.CharacterArrayType@b906f3
+13:30:31,762 DEBUG BasicTypeRegistry:148 - Adding type registration text -> org.hibernate.type.TextType@e388ec
+13:30:31,765 DEBUG BasicTypeRegistry:148 - Adding type registration ntext -> org.hibernate.type.NTextType@2266d8
+13:30:31,778 DEBUG BasicTypeRegistry:148 - Adding type registration blob -> org.hibernate.type.BlobType@1a0ff25
+13:30:31,783 DEBUG BasicTypeRegistry:148 - Adding type registration java.sql.Blob -> org.hibernate.type.BlobType@1a0ff25
+13:30:31,786 DEBUG BasicTypeRegistry:148 - Adding type registration materialized_blob -> org.hibernate.type.MaterializedBlobType@155dd21
+13:30:31,813 DEBUG BasicTypeRegistry:148 - Adding type registration clob -> org.hibernate.type.ClobType@a22e19
+13:30:31,815 DEBUG BasicTypeRegistry:148 - Adding type registration java.sql.Clob -> org.hibernate.type.ClobType@a22e19
+13:30:31,830 DEBUG BasicTypeRegistry:148 - Adding type registration nclob -> org.hibernate.type.NClobType@1e55819
+13:30:31,831 DEBUG BasicTypeRegistry:148 - Adding type registration java.sql.NClob -> org.hibernate.type.NClobType@1e55819
+13:30:31,835 DEBUG BasicTypeRegistry:148 - Adding type registration materialized_clob -> org.hibernate.type.MaterializedClobType@71a482
+13:30:31,841 DEBUG BasicTypeRegistry:148 - Adding type registration materialized_nclob -> org.hibernate.type.MaterializedNClobType@1f7d1d4
+13:30:31,865 DEBUG BasicTypeRegistry:148 - Adding type registration serializable -> org.hibernate.type.SerializableType@17f2f0a
+13:30:31,886 DEBUG BasicTypeRegistry:148 - Adding type registration object -> org.hibernate.type.ObjectType@1006a75
+13:30:31,891 DEBUG BasicTypeRegistry:148 - Adding type registration java.lang.Object -> org.hibernate.type.ObjectType@1006a75
+13:30:31,894 DEBUG BasicTypeRegistry:148 - Adding type registration imm_date -> org.hibernate.type.AdaptedImmutableType@16b42cf
+13:30:31,898 DEBUG BasicTypeRegistry:148 - Adding type registration imm_time -> org.hibernate.type.AdaptedImmutableType@18ac8d5
+13:30:31,904 DEBUG BasicTypeRegistry:148 - Adding type registration imm_timestamp -> org.hibernate.type.AdaptedImmutableType@10225c7
+13:30:31,907 DEBUG BasicTypeRegistry:148 - Adding type registration imm_dbtimestamp -> org.hibernate.type.AdaptedImmutableType@ac756b
+13:30:31,917 DEBUG BasicTypeRegistry:148 - Adding type registration imm_calendar -> org.hibernate.type.AdaptedImmutableType@156324b
+13:30:31,918 DEBUG BasicTypeRegistry:148 - Adding type registration imm_calendar_date -> org.hibernate.type.AdaptedImmutableType@a38ed4
+13:30:31,928 DEBUG BasicTypeRegistry:148 - Adding type registration imm_binary -> org.hibernate.type.AdaptedImmutableType@29a81a
+13:30:31,930 DEBUG BasicTypeRegistry:148 - Adding type registration imm_serializable -> org.hibernate.type.AdaptedImmutableType@14b8199
+13:30:32,055  INFO Version:37 - HCANN000001: Hibernate Commons Annotations {4.0.2.Final}
+13:30:32,109  INFO Version:41 - HHH000412: Hibernate Core {4.2.11.Final}
+13:30:32,130  INFO Environment:238 - HHH000206: hibernate.properties not found
+13:30:32,140  INFO Environment:345 - HHH000021: Bytecode provider name : javassist
+13:30:32,243  INFO Configuration:2049 - HHH000044: Configuring from URL: jar:file:/home/ecc/Documents/programs/spring/app/target/app-1.0-SNAPSHOT/WEB-INF/lib/persistence-1.0-SNAPSHOT.jar!/hibernate.cfg.xml
+13:30:32,408  INFO Configuration:2154 - HHH000041: Configured SessionFactory: null
+13:30:32,980  INFO AbstractPoolBackedDataSource:212 - Initializing c3p0 pool... com.mchange.v2.c3p0.ComboPooledDataSource [ acquireIncrement -> 3, acquireRetryAttempts -> 30, acquireRetryDelay -> 1000, autoCommitOnClose -> false, automaticTestTable -> null, breakAfterAcquireFailure -> false, checkoutTimeout -> 0, connectionCustomizerClassName -> null, connectionTesterClassName -> com.mchange.v2.c3p0.impl.DefaultConnectionTester, contextClassLoaderSource -> caller, dataSourceName -> z8kfsx9kmpqglvsch6br|b46831, debugUnreturnedConnectionStackTraces -> false, description -> null, driverClass -> org.postgresql.Driver, extensions -> {}, factoryClassLocation -> null, forceIgnoreUnresolvedTransactions -> false, forceSynchronousCheckins -> false, forceUseNamedDriverClass -> false, identityToken -> z8kfsx9kmpqglvsch6br|b46831, idleConnectionTestPeriod -> 0, initialPoolSize -> 3, jdbcUrl -> jdbc:postgresql://localhost:5433/hr, maxAdministrativeTaskTime -> 0, maxConnectionAge -> 0, maxIdleTime -> 0, maxIdleTimeExcessConnections -> 0, maxPoolSize -> 5, maxStatements -> 5, maxStatementsPerConnection -> 0, minPoolSize -> 2, numHelperThreads -> 3, preferredTestQuery -> null, privilegeSpawnedThreads -> false, properties -> {user=******, password=******}, propertyCycle -> 0, statementCacheNumDeferredCloseThreads -> 0, testConnectionOnCheckin -> false, testConnectionOnCheckout -> true, unreturnedConnectionTimeout -> 0, userOverrides -> {}, usesTraditionalReflectiveProxies -> false ]
+13:30:33,924  INFO Dialect:130 - HHH000400: Using dialect: org.hibernate.dialect.PostgreSQLDialect
+13:30:34,003  INFO LobCreatorBuilder:120 - HHH000424: Disabling contextual LOB creation as createClob() method threw error : java.lang.reflect.InvocationTargetException
+13:30:34,709  INFO TransactionFactoryInitiator:68 - HHH000399: Using default transaction strategy (direct JDBC transactions)
+13:30:34,760  INFO ASTQueryTranslatorFactory:48 - HHH000397: Using ASTQueryTranslatorFactory
+13:30:35,156 TRACE TypeFactory:71 - Scoping types to session factory org.hibernate.internal.SessionFactoryImpl@805849
+13:30:36,142  INFO HibernateTransactionManager:340 - Using DataSource [com.mchange.v2.c3p0.ComboPooledDataSource[ identityToken -> z8kfsx9kmpqglvsch6br|b46831, dataSourceName -> z8kfsx9kmpqglvsch6br|b46831 ]] of Hibernate SessionFactory for HibernateTransactionManager
+13:30:36,364  INFO BeanNameUrlHandlerMapping:315 - Mapped URL path [/roleController] onto handler '/roleController'
+13:30:36,511  INFO BeanNameUrlHandlerMapping:315 - Mapped URL path [/roleSaveController] onto handler '/roleSaveController'
+13:30:36,835  INFO BeanNameUrlHandlerMapping:315 - Mapped URL path [/personController] onto handler '/personController'
+13:30:36,947  INFO BeanNameUrlHandlerMapping:315 - Mapped URL path [/personSaveController] onto handler '/personSaveController'
+13:30:37,190  INFO BeanNameUrlHandlerMapping:315 - Mapped URL path [/fileUpload] onto handler '/fileUpload'
+13:30:37,232  INFO SimpleUrlHandlerMapping:315 - Mapped URL path [/favicon.ico] onto handler 'org.springframework.web.servlet.resource.ResourceHttpRequestHandler#1'
+13:30:37,830  INFO ControllerClassNameHandlerMapping:315 - Mapped URL path [/role*] onto handler '/roleController'
+13:30:37,835  INFO ControllerClassNameHandlerMapping:315 - Mapped URL path [/rolesave*] onto handler '/roleSaveController'
+13:30:37,840  INFO ControllerClassNameHandlerMapping:315 - Mapped URL path [/person*] onto handler '/personController'
+13:30:37,841  INFO ControllerClassNameHandlerMapping:315 - Mapped URL path [/personsave*] onto handler '/personSaveController'
+13:30:37,842  INFO ControllerClassNameHandlerMapping:315 - Mapped URL path [/fileupload*] onto handler '/fileUpload'
+13:30:38,091  INFO ContextLoader:325 - Root WebApplicationContext: initialization completed in 11123 ms
+13:30:38,289  INFO DispatcherServlet:457 - FrameworkServlet 'MvcDispatcher': initialization started
+13:30:38,313  INFO XmlWebApplicationContext:515 - Refreshing WebApplicationContext for namespace 'MvcDispatcher-servlet': startup date [Fri Nov 11 13:30:38 PHT 2016]; parent: Root WebApplicationContext
+13:30:38,325  INFO XmlBeanDefinitionReader:316 - Loading XML bean definitions from ServletContext resource [/WEB-INF/MvcDispatcher-servlet.xml]
+13:30:38,452  INFO XmlBeanDefinitionReader:316 - Loading XML bean definitions from ServletContext resource [/WEB-INF/data-source-cfg.xml]
+13:30:38,520  INFO XmlBeanDefinitionReader:316 - Loading XML bean definitions from ServletContext resource [/WEB-INF/transaction-cfg.xml]
+13:30:38,639  INFO XmlBeanDefinitionReader:316 - Loading XML bean definitions from ServletContext resource [/WEB-INF/data-source-cfg.xml]
+13:30:38,693  INFO DefaultListableBeanFactory:675 - Overriding bean definition for bean 'dataSource': replacing [Generic bean: class [com.mchange.v2.c3p0.ComboPooledDataSource]; scope=; abstract=false; lazyInit=false; autowireMode=0; dependencyCheck=0; autowireCandidate=true; primary=false; factoryBeanName=null; factoryMethodName=null; initMethodName=null; destroyMethodName=null; defined in ServletContext resource [/WEB-INF/data-source-cfg.xml]] with [Generic bean: class [com.mchange.v2.c3p0.ComboPooledDataSource]; scope=; abstract=false; lazyInit=false; autowireMode=0; dependencyCheck=0; autowireCandidate=true; primary=false; factoryBeanName=null; factoryMethodName=null; initMethodName=null; destroyMethodName=null; defined in ServletContext resource [/WEB-INF/data-source-cfg.xml]]
+13:30:38,700  INFO DefaultListableBeanFactory:675 - Overriding bean definition for bean 'sessionFactory': replacing [Generic bean: class [org.springframework.orm.hibernate4.LocalSessionFactoryBean]; scope=; abstract=false; lazyInit=false; autowireMode=0; dependencyCheck=0; autowireCandidate=true; primary=false; factoryBeanName=null; factoryMethodName=null; initMethodName=null; destroyMethodName=null; defined in ServletContext resource [/WEB-INF/data-source-cfg.xml]] with [Generic bean: class [org.springframework.orm.hibernate4.LocalSessionFactoryBean]; scope=; abstract=false; lazyInit=false; autowireMode=0; dependencyCheck=0; autowireCandidate=true; primary=false; factoryBeanName=null; factoryMethodName=null; initMethodName=null; destroyMethodName=null; defined in ServletContext resource [/WEB-INF/data-source-cfg.xml]]
+13:30:38,776  INFO DefaultListableBeanFactory:603 - Pre-instantiating singletons in org.springframework.beans.factory.support.DefaultListableBeanFactory@134b261: defining beans [org.springframework.web.servlet.resource.ResourceHttpRequestHandler#0,mvcPathMatcher,mvcUrlPathHelper,org.springframework.web.servlet.handler.SimpleUrlHandlerMapping#0,org.springframework.web.servlet.handler.BeanNameUrlHandlerMapping,org.springframework.web.servlet.mvc.HttpRequestHandlerAdapter,org.springframework.web.servlet.mvc.SimpleControllerHandlerAdapter,org.springframework.web.servlet.resource.ResourceHttpRequestHandler#1,org.springframework.web.servlet.handler.SimpleUrlHandlerMapping#1,dataSource,sessionFactory,txManager,txAdvice,org.springframework.aop.config.internalAutoProxyCreator,servicePointCut,org.springframework.aop.support.DefaultBeanFactoryPointcutAdvisor#0,personDao,roleDao,contactDao,person,role,file,contact,personDto,roleDto,fileDto,personOperations,roleOperations,contactOperations,dataParser,fileOperations,/roleController,/roleSaveController,/personController,/personSaveController,org.springframework.web.servlet.mvc.support.ControllerClassNameHandlerMapping#0,multipartResolver,/fileUpload,localeResolver,org.springframework.web.servlet.handler.MappedInterceptor#0,messageSource,viewResolver]; parent: org.springframework.beans.factory.support.DefaultListableBeanFactory@13eca84
+13:30:38,828  INFO SimpleUrlHandlerMapping:315 - Mapped URL path [/js/**] onto handler 'org.springframework.web.servlet.resource.ResourceHttpRequestHandler#0'
+13:30:39,038 DEBUG BasicTypeRegistry:148 - Adding type registration boolean -> org.hibernate.type.BooleanType@4ca74
+13:30:39,040 DEBUG BasicTypeRegistry:148 - Adding type registration boolean -> org.hibernate.type.BooleanType@4ca74
+13:30:39,042 DEBUG BasicTypeRegistry:148 - Adding type registration java.lang.Boolean -> org.hibernate.type.BooleanType@4ca74
+13:30:39,043 DEBUG BasicTypeRegistry:148 - Adding type registration numeric_boolean -> org.hibernate.type.NumericBooleanType@d42ab7
+13:30:39,044 DEBUG BasicTypeRegistry:148 - Adding type registration true_false -> org.hibernate.type.TrueFalseType@f6b4ab
+13:30:39,046 DEBUG BasicTypeRegistry:148 - Adding type registration yes_no -> org.hibernate.type.YesNoType@b5a559
+13:30:39,047 DEBUG BasicTypeRegistry:148 - Adding type registration byte -> org.hibernate.type.ByteType@3c99f7
+13:30:39,048 DEBUG BasicTypeRegistry:148 - Adding type registration byte -> org.hibernate.type.ByteType@3c99f7
+13:30:39,050 DEBUG BasicTypeRegistry:148 - Adding type registration java.lang.Byte -> org.hibernate.type.ByteType@3c99f7
+13:30:39,063 DEBUG BasicTypeRegistry:148 - Adding type registration character -> org.hibernate.type.CharacterType@2c087e
+13:30:39,064 DEBUG BasicTypeRegistry:148 - Adding type registration char -> org.hibernate.type.CharacterType@2c087e
+13:30:39,066 DEBUG BasicTypeRegistry:148 - Adding type registration java.lang.Character -> org.hibernate.type.CharacterType@2c087e
+13:30:39,076 DEBUG BasicTypeRegistry:148 - Adding type registration short -> org.hibernate.type.ShortType@15e6833
+13:30:39,081 DEBUG BasicTypeRegistry:148 - Adding type registration short -> org.hibernate.type.ShortType@15e6833
+13:30:39,091 DEBUG BasicTypeRegistry:148 - Adding type registration java.lang.Short -> org.hibernate.type.ShortType@15e6833
+13:30:39,095 DEBUG BasicTypeRegistry:148 - Adding type registration integer -> org.hibernate.type.IntegerType@b6d34a
+13:30:39,100 DEBUG BasicTypeRegistry:148 - Adding type registration int -> org.hibernate.type.IntegerType@b6d34a
+13:30:39,102 DEBUG BasicTypeRegistry:148 - Adding type registration java.lang.Integer -> org.hibernate.type.IntegerType@b6d34a
+13:30:39,103 DEBUG BasicTypeRegistry:148 - Adding type registration long -> org.hibernate.type.LongType@df71d9
+13:30:39,105 DEBUG BasicTypeRegistry:148 - Adding type registration long -> org.hibernate.type.LongType@df71d9
+13:30:39,106 DEBUG BasicTypeRegistry:148 - Adding type registration java.lang.Long -> org.hibernate.type.LongType@df71d9
+13:30:39,108 DEBUG BasicTypeRegistry:148 - Adding type registration float -> org.hibernate.type.FloatType@36f83
+13:30:39,109 DEBUG BasicTypeRegistry:148 - Adding type registration float -> org.hibernate.type.FloatType@36f83
+13:30:39,125 DEBUG BasicTypeRegistry:148 - Adding type registration java.lang.Float -> org.hibernate.type.FloatType@36f83
+13:30:39,127 DEBUG BasicTypeRegistry:148 - Adding type registration double -> org.hibernate.type.DoubleType@1088813
+13:30:39,130 DEBUG BasicTypeRegistry:148 - Adding type registration double -> org.hibernate.type.DoubleType@1088813
+13:30:39,139 DEBUG BasicTypeRegistry:148 - Adding type registration java.lang.Double -> org.hibernate.type.DoubleType@1088813
+13:30:39,151 DEBUG BasicTypeRegistry:148 - Adding type registration big_decimal -> org.hibernate.type.BigDecimalType@948f1c
+13:30:39,153 DEBUG BasicTypeRegistry:148 - Adding type registration java.math.BigDecimal -> org.hibernate.type.BigDecimalType@948f1c
+13:30:39,156 DEBUG BasicTypeRegistry:148 - Adding type registration big_integer -> org.hibernate.type.BigIntegerType@1280cbb
+13:30:39,158 DEBUG BasicTypeRegistry:148 - Adding type registration java.math.BigInteger -> org.hibernate.type.BigIntegerType@1280cbb
+13:30:39,159 DEBUG BasicTypeRegistry:148 - Adding type registration string -> org.hibernate.type.StringType@1438750
+13:30:39,161 DEBUG BasicTypeRegistry:148 - Adding type registration java.lang.String -> org.hibernate.type.StringType@1438750
+13:30:39,162 DEBUG BasicTypeRegistry:148 - Adding type registration nstring -> org.hibernate.type.StringNVarcharType@de229
+13:30:39,177 DEBUG BasicTypeRegistry:148 - Adding type registration ncharacter -> org.hibernate.type.CharacterNCharType@a426c3
+13:30:39,179 DEBUG BasicTypeRegistry:148 - Adding type registration url -> org.hibernate.type.UrlType@16a4275
+13:30:39,183 DEBUG BasicTypeRegistry:148 - Adding type registration java.net.URL -> org.hibernate.type.UrlType@16a4275
+13:30:39,191 DEBUG BasicTypeRegistry:148 - Adding type registration date -> org.hibernate.type.DateType@1d2b646
+13:30:39,193 DEBUG BasicTypeRegistry:148 - Adding type registration java.sql.Date -> org.hibernate.type.DateType@1d2b646
+13:30:39,196 DEBUG BasicTypeRegistry:148 - Adding type registration time -> org.hibernate.type.TimeType@1e6549d
+13:30:39,197 DEBUG BasicTypeRegistry:148 - Adding type registration java.sql.Time -> org.hibernate.type.TimeType@1e6549d
+13:30:39,199 DEBUG BasicTypeRegistry:148 - Adding type registration timestamp -> org.hibernate.type.TimestampType@12e5a82
+13:30:39,200 DEBUG BasicTypeRegistry:148 - Adding type registration java.sql.Timestamp -> org.hibernate.type.TimestampType@12e5a82
+13:30:39,202 DEBUG BasicTypeRegistry:148 - Adding type registration java.util.Date -> org.hibernate.type.TimestampType@12e5a82
+13:30:39,227 DEBUG BasicTypeRegistry:148 - Adding type registration dbtimestamp -> org.hibernate.type.DbTimestampType@1423a17
+13:30:39,231 DEBUG BasicTypeRegistry:148 - Adding type registration calendar -> org.hibernate.type.CalendarType@1374689
+13:30:39,233 DEBUG BasicTypeRegistry:148 - Adding type registration java.util.Calendar -> org.hibernate.type.CalendarType@1374689
+13:30:39,235 DEBUG BasicTypeRegistry:148 - Adding type registration java.util.GregorianCalendar -> org.hibernate.type.CalendarType@1374689
+13:30:39,236 DEBUG BasicTypeRegistry:148 - Adding type registration calendar_date -> org.hibernate.type.CalendarDateType@95cb11
+13:30:39,237 DEBUG BasicTypeRegistry:148 - Adding type registration locale -> org.hibernate.type.LocaleType@f662bd
+13:30:39,251 DEBUG BasicTypeRegistry:148 - Adding type registration java.util.Locale -> org.hibernate.type.LocaleType@f662bd
+13:30:39,258 DEBUG BasicTypeRegistry:148 - Adding type registration currency -> org.hibernate.type.CurrencyType@1fc8558
+13:30:39,260 DEBUG BasicTypeRegistry:148 - Adding type registration java.util.Currency -> org.hibernate.type.CurrencyType@1fc8558
+13:30:39,261 DEBUG BasicTypeRegistry:148 - Adding type registration timezone -> org.hibernate.type.TimeZoneType@bf795f
+13:30:39,262 DEBUG BasicTypeRegistry:148 - Adding type registration java.util.TimeZone -> org.hibernate.type.TimeZoneType@bf795f
+13:30:39,263 DEBUG BasicTypeRegistry:148 - Adding type registration class -> org.hibernate.type.ClassType@1402027
+13:30:39,264 DEBUG BasicTypeRegistry:148 - Adding type registration java.lang.Class -> org.hibernate.type.ClassType@1402027
+13:30:39,265 DEBUG BasicTypeRegistry:148 - Adding type registration uuid-binary -> org.hibernate.type.UUIDBinaryType@1322610
+13:30:39,266 DEBUG BasicTypeRegistry:148 - Adding type registration java.util.UUID -> org.hibernate.type.UUIDBinaryType@1322610
+13:30:39,267 DEBUG BasicTypeRegistry:148 - Adding type registration uuid-char -> org.hibernate.type.UUIDCharType@92a549
+13:30:39,268 DEBUG BasicTypeRegistry:148 - Adding type registration pg-uuid -> org.hibernate.type.PostgresUUIDType@e830a0
+13:30:39,272 DEBUG BasicTypeRegistry:148 - Adding type registration binary -> org.hibernate.type.BinaryType@d4f67e
+13:30:39,273 DEBUG BasicTypeRegistry:148 - Adding type registration byte[] -> org.hibernate.type.BinaryType@d4f67e
+13:30:39,274 DEBUG BasicTypeRegistry:148 - Adding type registration [B -> org.hibernate.type.BinaryType@d4f67e
+13:30:39,275 DEBUG BasicTypeRegistry:148 - Adding type registration wrapper-binary -> org.hibernate.type.WrapperBinaryType@1187485
+13:30:39,276 DEBUG BasicTypeRegistry:148 - Adding type registration Byte[] -> org.hibernate.type.WrapperBinaryType@1187485
+13:30:39,277 DEBUG BasicTypeRegistry:148 - Adding type registration [Ljava.lang.Byte; -> org.hibernate.type.WrapperBinaryType@1187485
+13:30:39,278 DEBUG BasicTypeRegistry:148 - Adding type registration image -> org.hibernate.type.ImageType@8d676e
+13:30:39,279 DEBUG BasicTypeRegistry:148 - Adding type registration characters -> org.hibernate.type.CharArrayType@5a821d
+13:30:39,280 DEBUG BasicTypeRegistry:148 - Adding type registration char[] -> org.hibernate.type.CharArrayType@5a821d
+13:30:39,281 DEBUG BasicTypeRegistry:148 - Adding type registration [C -> org.hibernate.type.CharArrayType@5a821d
+13:30:39,282 DEBUG BasicTypeRegistry:148 - Adding type registration wrapper-characters -> org.hibernate.type.CharacterArrayType@b906f3
+13:30:39,283 DEBUG BasicTypeRegistry:148 - Adding type registration [Ljava.lang.Character; -> org.hibernate.type.CharacterArrayType@b906f3
+13:30:39,284 DEBUG BasicTypeRegistry:148 - Adding type registration Character[] -> org.hibernate.type.CharacterArrayType@b906f3
+13:30:39,285 DEBUG BasicTypeRegistry:148 - Adding type registration text -> org.hibernate.type.TextType@e388ec
+13:30:39,286 DEBUG BasicTypeRegistry:148 - Adding type registration ntext -> org.hibernate.type.NTextType@2266d8
+13:30:39,287 DEBUG BasicTypeRegistry:148 - Adding type registration blob -> org.hibernate.type.BlobType@1a0ff25
+13:30:39,289 DEBUG BasicTypeRegistry:148 - Adding type registration java.sql.Blob -> org.hibernate.type.BlobType@1a0ff25
+13:30:39,290 DEBUG BasicTypeRegistry:148 - Adding type registration materialized_blob -> org.hibernate.type.MaterializedBlobType@155dd21
+13:30:39,291 DEBUG BasicTypeRegistry:148 - Adding type registration clob -> org.hibernate.type.ClobType@a22e19
+13:30:39,292 DEBUG BasicTypeRegistry:148 - Adding type registration java.sql.Clob -> org.hibernate.type.ClobType@a22e19
+13:30:39,293 DEBUG BasicTypeRegistry:148 - Adding type registration nclob -> org.hibernate.type.NClobType@1e55819
+13:30:39,294 DEBUG BasicTypeRegistry:148 - Adding type registration java.sql.NClob -> org.hibernate.type.NClobType@1e55819
+13:30:39,296 DEBUG BasicTypeRegistry:148 - Adding type registration materialized_clob -> org.hibernate.type.MaterializedClobType@71a482
+13:30:39,297 DEBUG BasicTypeRegistry:148 - Adding type registration materialized_nclob -> org.hibernate.type.MaterializedNClobType@1f7d1d4
+13:30:39,298 DEBUG BasicTypeRegistry:148 - Adding type registration serializable -> org.hibernate.type.SerializableType@17f2f0a
+13:30:39,299 DEBUG BasicTypeRegistry:148 - Adding type registration object -> org.hibernate.type.ObjectType@1006a75
+13:30:39,300 DEBUG BasicTypeRegistry:148 - Adding type registration java.lang.Object -> org.hibernate.type.ObjectType@1006a75
+13:30:39,301 DEBUG BasicTypeRegistry:148 - Adding type registration imm_date -> org.hibernate.type.AdaptedImmutableType@1e24670
+13:30:39,303 DEBUG BasicTypeRegistry:148 - Adding type registration imm_time -> org.hibernate.type.AdaptedImmutableType@46e6f6
+13:30:39,304 DEBUG BasicTypeRegistry:148 - Adding type registration imm_timestamp -> org.hibernate.type.AdaptedImmutableType@16019d5
+13:30:39,305 DEBUG BasicTypeRegistry:148 - Adding type registration imm_dbtimestamp -> org.hibernate.type.AdaptedImmutableType@b01718
+13:30:39,306 DEBUG BasicTypeRegistry:148 - Adding type registration imm_calendar -> org.hibernate.type.AdaptedImmutableType@14c18b8
+13:30:39,307 DEBUG BasicTypeRegistry:148 - Adding type registration imm_calendar_date -> org.hibernate.type.AdaptedImmutableType@3622b1
+13:30:39,310 DEBUG BasicTypeRegistry:148 - Adding type registration imm_binary -> org.hibernate.type.AdaptedImmutableType@1e52113
+13:30:39,311 DEBUG BasicTypeRegistry:148 - Adding type registration imm_serializable -> org.hibernate.type.AdaptedImmutableType@1adeda0
+13:30:39,315  INFO Configuration:2049 - HHH000044: Configuring from URL: jar:file:/home/ecc/Documents/programs/spring/app/target/app-1.0-SNAPSHOT/WEB-INF/lib/persistence-1.0-SNAPSHOT.jar!/hibernate.cfg.xml
+13:30:39,344  INFO Configuration:2154 - HHH000041: Configured SessionFactory: null
+13:30:39,424  INFO AbstractPoolBackedDataSource:212 - Initializing c3p0 pool... com.mchange.v2.c3p0.ComboPooledDataSource [ acquireIncrement -> 3, acquireRetryAttempts -> 30, acquireRetryDelay -> 1000, autoCommitOnClose -> false, automaticTestTable -> null, breakAfterAcquireFailure -> false, checkoutTimeout -> 0, connectionCustomizerClassName -> null, connectionTesterClassName -> com.mchange.v2.c3p0.impl.DefaultConnectionTester, contextClassLoaderSource -> caller, dataSourceName -> z8kfsx9kmpqglvsch6br|22ab4d, debugUnreturnedConnectionStackTraces -> false, description -> null, driverClass -> org.postgresql.Driver, extensions -> {}, factoryClassLocation -> null, forceIgnoreUnresolvedTransactions -> false, forceSynchronousCheckins -> false, forceUseNamedDriverClass -> false, identityToken -> z8kfsx9kmpqglvsch6br|22ab4d, idleConnectionTestPeriod -> 0, initialPoolSize -> 3, jdbcUrl -> jdbc:postgresql://localhost:5433/hr, maxAdministrativeTaskTime -> 0, maxConnectionAge -> 0, maxIdleTime -> 0, maxIdleTimeExcessConnections -> 0, maxPoolSize -> 5, maxStatements -> 5, maxStatementsPerConnection -> 0, minPoolSize -> 2, numHelperThreads -> 3, preferredTestQuery -> null, privilegeSpawnedThreads -> false, properties -> {user=******, password=******}, propertyCycle -> 0, statementCacheNumDeferredCloseThreads -> 0, testConnectionOnCheckin -> false, testConnectionOnCheckout -> true, unreturnedConnectionTimeout -> 0, userOverrides -> {}, usesTraditionalReflectiveProxies -> false ]
+13:30:39,663  INFO Dialect:130 - HHH000400: Using dialect: org.hibernate.dialect.PostgreSQLDialect
+13:30:39,666  INFO LobCreatorBuilder:120 - HHH000424: Disabling contextual LOB creation as createClob() method threw error : java.lang.reflect.InvocationTargetException
+13:30:39,700  INFO TransactionFactoryInitiator:68 - HHH000399: Using default transaction strategy (direct JDBC transactions)
+13:30:39,705  INFO ASTQueryTranslatorFactory:48 - HHH000397: Using ASTQueryTranslatorFactory
+13:30:39,739  WARN CacheManager:611 - Creating a new instance of CacheManager using the diskStorePath "/tmp" which is already used by an existing CacheManager.
+The source of the configuration was net.sf.ehcache.config.generator.ConfigurationSource$URLConfigurationSource@1c00420.
+The diskStore path for this CacheManager will be set to /tmp/ehcache_auto_created_1478842239739.
+To avoid this warning consider using the CacheManager factory methods to create a singleton CacheManager or specifying a separate ehcache configuration (ehcache.xml) for each CacheManager instance.
+13:30:39,743 TRACE TypeFactory:71 - Scoping types to session factory org.hibernate.internal.SessionFactoryImpl@15a329c
+13:30:39,852  INFO HibernateTransactionManager:340 - Using DataSource [com.mchange.v2.c3p0.ComboPooledDataSource[ identityToken -> z8kfsx9kmpqglvsch6br|22ab4d, dataSourceName -> z8kfsx9kmpqglvsch6br|22ab4d ]] of Hibernate SessionFactory for HibernateTransactionManager
+13:30:39,881  INFO BeanNameUrlHandlerMapping:315 - Mapped URL path [/roleController] onto handler '/roleController'
+13:30:39,900  INFO BeanNameUrlHandlerMapping:315 - Mapped URL path [/roleSaveController] onto handler '/roleSaveController'
+13:30:39,971  INFO BeanNameUrlHandlerMapping:315 - Mapped URL path [/personController] onto handler '/personController'
+13:30:39,990  INFO BeanNameUrlHandlerMapping:315 - Mapped URL path [/personSaveController] onto handler '/personSaveController'
+13:30:40,017  INFO BeanNameUrlHandlerMapping:315 - Mapped URL path [/fileUpload] onto handler '/fileUpload'
+13:30:40,030  INFO SimpleUrlHandlerMapping:315 - Mapped URL path [/favicon.ico] onto handler 'org.springframework.web.servlet.resource.ResourceHttpRequestHandler#1'
+13:30:40,036  INFO ControllerClassNameHandlerMapping:315 - Mapped URL path [/role*] onto handler '/roleController'
+13:30:40,038  INFO ControllerClassNameHandlerMapping:315 - Mapped URL path [/rolesave*] onto handler '/roleSaveController'
+13:30:40,040  INFO ControllerClassNameHandlerMapping:315 - Mapped URL path [/person*] onto handler '/personController'
+13:30:40,041  INFO ControllerClassNameHandlerMapping:315 - Mapped URL path [/personsave*] onto handler '/personSaveController'
+13:30:40,042  INFO ControllerClassNameHandlerMapping:315 - Mapped URL path [/fileupload*] onto handler '/fileUpload'
+13:30:40,491  INFO DispatcherServlet:476 - FrameworkServlet 'MvcDispatcher': initialization completed in 2199 ms
+13:30:59,330  INFO UpdateChecker:98 - New update(s) found: 2.4.7 [http://www.terracotta.org/confluence/display/release/Release+Notes+Ehcache+Core+2.4]. Please check http://ehcache.org for the latest version.
+13:30:59,523  INFO UpdateChecker:98 - New update(s) found: 2.4.7 [http://www.terracotta.org/confluence/display/release/Release+Notes+Ehcache+Core+2.4]. Please check http://ehcache.org for the latest version.
+13:32:15,546  INFO XmlWebApplicationContext:1048 - Closing WebApplicationContext for namespace 'MvcDispatcher-servlet': startup date [Fri Nov 11 13:30:38 PHT 2016]; parent: Root WebApplicationContext
+13:32:15,548  INFO DefaultListableBeanFactory:444 - Destroying singletons in org.springframework.beans.factory.support.DefaultListableBeanFactory@134b261: defining beans [org.springframework.web.servlet.resource.ResourceHttpRequestHandler#0,mvcPathMatcher,mvcUrlPathHelper,org.springframework.web.servlet.handler.SimpleUrlHandlerMapping#0,org.springframework.web.servlet.handler.BeanNameUrlHandlerMapping,org.springframework.web.servlet.mvc.HttpRequestHandlerAdapter,org.springframework.web.servlet.mvc.SimpleControllerHandlerAdapter,org.springframework.web.servlet.resource.ResourceHttpRequestHandler#1,org.springframework.web.servlet.handler.SimpleUrlHandlerMapping#1,dataSource,sessionFactory,txManager,txAdvice,org.springframework.aop.config.internalAutoProxyCreator,servicePointCut,org.springframework.aop.support.DefaultBeanFactoryPointcutAdvisor#0,personDao,roleDao,contactDao,person,role,file,contact,personDto,roleDto,fileDto,personOperations,roleOperations,contactOperations,dataParser,fileOperations,/roleController,/roleSaveController,/personController,/personSaveController,org.springframework.web.servlet.mvc.support.ControllerClassNameHandlerMapping#0,multipartResolver,/fileUpload,localeResolver,org.springframework.web.servlet.handler.MappedInterceptor#0,messageSource,viewResolver]; parent: org.springframework.beans.factory.support.DefaultListableBeanFactory@13eca84
+13:32:15,597  INFO XmlWebApplicationContext:1048 - Closing Root WebApplicationContext: startup date [Fri Nov 11 13:30:27 PHT 2016]; root of context hierarchy
+13:32:15,613  INFO DefaultListableBeanFactory:444 - Destroying singletons in org.springframework.beans.factory.support.DefaultListableBeanFactory@13eca84: defining beans [org.springframework.web.servlet.resource.ResourceHttpRequestHandler#0,mvcPathMatcher,mvcUrlPathHelper,org.springframework.web.servlet.handler.SimpleUrlHandlerMapping#0,org.springframework.web.servlet.handler.BeanNameUrlHandlerMapping,org.springframework.web.servlet.mvc.HttpRequestHandlerAdapter,org.springframework.web.servlet.mvc.SimpleControllerHandlerAdapter,org.springframework.web.servlet.resource.ResourceHttpRequestHandler#1,org.springframework.web.servlet.handler.SimpleUrlHandlerMapping#1,dataSource,sessionFactory,txManager,txAdvice,org.springframework.aop.config.internalAutoProxyCreator,servicePointCut,org.springframework.aop.support.DefaultBeanFactoryPointcutAdvisor#0,personDao,roleDao,contactDao,person,role,file,contact,personDto,roleDto,fileDto,personOperations,roleOperations,contactOperations,dataParser,fileOperations,/roleController,/roleSaveController,/personController,/personSaveController,org.springframework.web.servlet.mvc.support.ControllerClassNameHandlerMapping#0,multipartResolver,/fileUpload,localeResolver,org.springframework.web.servlet.handler.MappedInterceptor#0,messageSource,viewResolver,org.springframework.aop.support.DefaultBeanFactoryPointcutAdvisor#1]; root of factory hierarchy

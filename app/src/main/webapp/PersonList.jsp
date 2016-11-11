@@ -1,5 +1,6 @@
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %> 
+<%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
 
 <html>
     <head>
@@ -16,37 +17,38 @@
                 </c:if>
             </div>   
             <form:form name="personList" action="/personController" method="GET">
-                View Person List by:
+                <spring:message code="lbl.view.person.list" text="View Person List by:" />
                 <select name="list">
-                    <option value="1" checked>GWA<br/>
-                    <option value="2">Last Name
-                    <option value="3">Date Hired
-                    <option value="4">Person ID
+                    <option value="1" checked><spring:message code="lbl.gwa" text="GWA" />
+                    <option value="2"><spring:message code="lbl.lastname" text="LAST NAME" />
+                    <option value="3"><spring:message code="lbl.datehired" text="DATE HIRED" />
+                    <option value="4"><spring:message code="lbl.personid" text="PERSON ID" />
                 </select>
-                Sort By: 
+                <spring:message code="lbl.sort" text="Sort by:" />  
                 <select name="order">
-                    <option value="1" checked>Ascending
-                    <option value="2">Descending
+                    <option value="1" checked><spring:message code="lbl.asc" text="Ascending" />
+                    <option value="2"><spring:message code="lbl.desc" text="Descending" />
                 </select>
                 
-                <input type="submit" name="action" value="LIST"><br/><br/>
+                <button type="submit" name="action" value="LIST"><spring:message code="lbl.list" text="LIST" /></button>
+                <br/><br/>
                 <input type="hidden" id="personId" name="personId">
                 
                 <table border="1" style="width: fixed"> 
                     <tr>
-                        <td>PERSON ID</td>
-                        <td>FIRST NAME</td>
-                        <td>MIDDLE NAME</td>
-                        <td>LAST NAME</td>
-                        <td>TITLE</td>
-                        <td>BIRTH DATE</td>
-                        <td>STREET</td>
-                        <td>BRGY</td>
-                        <td>CITY</td>
-                        <td>ZIP</td>
-                        <td>GWA</td>
-                        <td>EMPLOYED?</td>
-                        <td>DATE HIRED</td>
+                        <td><spring:message code="lbl.personid" text="PERSON ID" /></td>
+                        <td><spring:message code="lbl.firstname" text="FIRST NAME" /></td>
+                        <td><spring:message code="lbl.middlename" text="MIDDLE NAME" /></td>
+                        <td><spring:message code="lbl.lastname" text="LAST NAME" /></td>
+                        <td><spring:message code="lbl.title" text="TITLE" /></td>
+                        <td><spring:message code="lbl.birthdate" text="BIRTH DATE" /></td>
+                        <td><spring:message code="lbl.street" text="STREET" /></td>
+                        <td><spring:message code="lbl.brgy" text="BRGY" /></td>
+                        <td><spring:message code="lbl.city" text="CITY" /></td>
+                        <td><spring:message code="lbl.zip" text="ZIP" /></td>
+                        <td><spring:message code="lbl.gwa" text="GWA" /></td>
+                        <td><spring:message code="lbl.employed" text="EMPLOYED" /></td>
+                        <td><spring:message code="lbl.datehired" text="DATE HIRED" /></td>
                     </tr>
                     <c:forEach items="${personDto.personIdList}" var="person" varStatus="ctr">
                         <tr>
@@ -72,8 +74,8 @@
                                 </c:otherwise>
                             </c:choose>
                             <td>
-                                <button type="submit" onclick="getSelectedValue('${ctr.index}')" name="action" value="SEARCH">EDIT</button>
-                                <button type="submit" onclick="getSelectedValue('${ctr.index}')" name="action" value="DELETE">DELETE</button>
+                                <button type="submit" onclick="getSelectedValue('${ctr.index}')" name="action" value="SEARCH"><spring:message code="lbl.edit" text="EDIT" /></button>
+                                <button type="submit" onclick="getSelectedValue('${ctr.index}')" name="action" value="DELETE"><spring:message code="lbl.delete" text="DELETE" /></button>
                             </td>
                         </tr>
                     </c:forEach>
@@ -81,8 +83,8 @@
                 <br/><br/>
             </form:form>
             <div>
-                <a href="../PersonMain.jsp"><button type="button">BACK TO PERSON</button></a>
-                <a href="../index.jsp"><button type="button">BACK TO MAIN</button></a>
+                <a href="../PersonMain.jsp"><button type="button"><spring:message code="lbl.back.person" text="BACK TO PERSON" /></button></a>
+                <a href="../index.jsp"><button type="button"><spring:message code="lbl.back.main" text="BACK TO MAIN" /></button></a>
             </div>
        </div>
     </body>

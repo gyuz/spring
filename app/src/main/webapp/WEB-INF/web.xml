@@ -26,7 +26,6 @@
         <param-value>
           /WEB-INF/MvcDispatcher-servlet.xml,
           /WEB-INF/data-source-cfg.xml,
-          /WEB-INF/objectBeans-cfg.xml,
           /WEB-INF/transaction-cfg.xml
         </param-value>   
     </context-param>

@@ -8,13 +8,15 @@ import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.SimpleFormController;
 import org.springframework.web.bind.ServletRequestDataBinder;
-import java.io.File;
+import org.springframework.web.multipart.support.ByteArrayMultipartFileEditor;
 import java.io.IOException;
-import org.springframework.util.FileCopyUtils;
+
 import crud.core.model.FileUploadDto;
+import crud.core.service.FileService;
 
 public class FileUploadController extends SimpleFormController{
 	private FileUploadDto fileDto;
+	private FileService fileOps; 
 	
 	public FileUploadController(){
 		setCommandClass(FileUploadDto.class);
@@ -24,34 +26,30 @@ public class FileUploadController extends SimpleFormController{
 	public void setFileUploadDto(FileUploadDto fileDto){
 	    this.fileDto = fileDto;
 	}
+	
+	public void setFileService(FileService fileOps){
+        this.fileOps = fileOps;
+    }
  
 	@Override
 	protected ModelAndView onSubmit(HttpServletRequest request, HttpServletResponse response, Object command, BindException errors)
 		throws ServletException, IOException {
-        String fileName= "";
-		String saveDirectory = "/uploads/"; 	
-		String actualPath = request.getServletContext().getRealPath(saveDirectory);
-		
-		if(! new File(actualPath).exists()) {
-            new File(actualPath).mkdir();
-        }
-
+		fileDto = (FileUploadDto) command;
+		MultipartFile multipartFile = fileDto.getFile();
+		String fileName = multipartFile.getOriginalFilename();
         if(!errors.hasErrors()){
-            /*
-		    fileDto = (FileUploadDto) command;
-		    MultipartFile multipartFile = fileDto.getFile();
-		    File file = fileDto.getFile();
-		    
-		    if(file != null){
-			    fileName = file.getOriginalFilename();
-			    multipartFile.transferTo(new File(actualPath + File.separator + fileName));
+		    String saveDirectory = "/uploads/"; 	
+		    String actualPath = request.getServletContext().getRealPath(saveDirectory);
+		    if(!(fileOps.save(multipartFile, actualPath, fileName))){
+		        errors.reject("upload.error");
 		    }
-		    */
-		    fileDto = (FileUploadDto) command;
-		    MultipartFile file = fileDto.getFile();
-		    fileName = file.getOriginalFilename();
-		    FileCopyUtils.copy(file.getBytes(), new File(actualPath + File.separator + fileName));
 		}
 		return new ModelAndView("index","fileName", fileName);
+	}
+	
+	@Override
+	protected void initBinder(HttpServletRequest request, ServletRequestDataBinder binder)
+		throws ServletException {
+		binder.registerCustomEditor(byte[].class, new ByteArrayMultipartFileEditor());
 	}
 }

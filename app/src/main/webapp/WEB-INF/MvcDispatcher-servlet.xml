@@ -11,13 +11,41 @@
         http://www.springframework.org/schema/mvc/spring-mvc.xsd">
         
     <mvc:resources mapping="/js/**" location="/js/"/>
-    <mvc:resources mapping="../resources/**" location="../resources/"/>
+    <!--mvc:resources mapping="../resources/**" location="../resources/"/-->
     <mvc:resources mapping="/favicon.ico" location="/favicon.ico" />
-  
-    <bean id="viewResolver" class="org.springframework.web.servlet.view.InternalResourceViewResolver">
-        <property name="prefix" value="/"/>
-        <property name="suffix" value=".jsp"/>
+    
+    <import resource="data-source-cfg.xml"/>
+    <import resource="transaction-cfg.xml"/>
+	
+    <bean id="personDao" class="crud.core.dao.PersonDao">
+         <property name="sessionFactory" ref="sessionFactory" />
     </bean>
+    <bean id="roleDao" class="crud.core.dao.RoleDao">
+         <property name="sessionFactory" ref="sessionFactory" />
+    </bean>
+    <bean id="contactDao" class="crud.core.dao.ContactDao">
+         <property name="sessionFactory" ref="sessionFactory" />
+    </bean>
+     
+    <bean id="person" class="crud.core.model.Person" lazy-init="true" />
+    <bean id="role" class="crud.core.model.Role" lazy-init="true" />
+    <bean id="file" class="crud.core.model.FileUpload" lazy-init="true" />
+    <bean id="contact" class="crud.core.model.Contact" lazy-init="true" />  
+    <bean id="personDto" class="crud.core.model.PersonDto" scope="prototype"/>
+    <bean id="roleDto" class="crud.core.model.RoleDto" />   
+    <bean id="fileDto" class="crud.core.model.FileUploadDto" />    
+    
+    <bean id="personOperations" class="crud.core.service.PersonOperations" autowire="byType">
+        <property name="crudInterface" ref="personDao"/>
+    </bean>
+    <bean id="roleOperations" class="crud.core.service.RoleOperations" autowire="byType">
+        <property name="crudInterface" ref="roleDao"/>
+    </bean>
+    <bean id="contactOperations" class="crud.core.service.ContactOperations" autowire="byType">
+         <property name="crudInterface" ref="contactDao"/>
+    </bean>
+    <bean id="dataParser" class="crud.core.service.DataParser" lazy-init="true"/>
+    <bean id="fileOperations" class="crud.core.service.FileOperations" lazy-init="true" autowire="byType" />
 
     <bean name="/roleController" class="crud.app.RoleController" autowire="byType"/>
     <bean name="/roleSaveController" class="crud.app.RoleSaveController"  autowire="byType" />
@@ -30,11 +58,41 @@
     
     <bean class="org.springframework.web.servlet.mvc.support.ControllerClassNameHandlerMapping" />
     <bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver"/>
-
 	<bean name="/fileUpload" class="crud.app.FileUploadController" autowire="byType" p:formView="index" p:successView="index">
 		<property name="validator">
 			<bean class="crud.app.FileUploadValidator" />
 		</property>
 	</bean>
+
+    <bean id="localeResolver"
+		class="org.springframework.web.servlet.i18n.SessionLocaleResolver">
+		<property name="defaultLocale" value="zh_CN" />
+	</bean>
+
+    <mvc:interceptors>
+        <mvc:interceptor>
+        <mvc:mapping path="/**" />
+	    <bean id="localeChangeInterceptor"
+		    class="org.springframework.web.servlet.i18n.LocaleChangeInterceptor">
+		    <property name="paramName" value="language" />
+	    </bean>
+	    </mvc:interceptor>
+    </mvc:interceptors>
+	
+	<bean name="/index" class="crud.app.LocaleController" />
+	
+	<!--bean id="localeResolver" class="org.springframework.web.servlet.i18n.CookieLocaleResolver">
+        <property name="defaultLocale" value="zh_CN" />
+    </bean-->
+	
+	<bean id="messageSource" class="org.springframework.context.support.ReloadableResourceBundleMessageSource">
+		<property name="basename" value="classpath:message" />
+		<property name="defaultEncoding" value="UTF-8"/>
+	</bean>
+	
+	<bean id="viewResolver" class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+        <property name="prefix" value="/"/>
+        <property name="suffix" value=".jsp"/>
+    </bean>
 	
 </beans>

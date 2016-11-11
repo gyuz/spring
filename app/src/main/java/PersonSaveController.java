@@ -8,6 +8,8 @@ import org.springframework.web.servlet.mvc.SimpleFormController;
 import org.springframework.validation.BindException;
 import java.util.List;
 import java.util.ArrayList;
+import java.util.Map;
+import java.util.HashMap;
 import crud.core.service.PersonService;
 import crud.core.service.RoleService;
 import crud.core.model.PersonDto;
@@ -15,6 +17,7 @@ import crud.core.model.RoleDto;
 import crud.core.service.DataParser;
 import org.joda.time.LocalDate;
 import org.apache.commons.validator.routines.EmailValidator;
+import org.springframework.validation.Errors;
 
 
 @SuppressWarnings("deprecation")
@@ -68,7 +71,7 @@ public class PersonSaveController extends SimpleFormController {
             if(id != 0) { 
                 if(deletedRoles != null){
 	                for(String r: deletedRoles) {
-s	                    int roleId = dataParser.stringToInt(r);
+	                    int roleId = dataParser.stringToInt(r);
 	                    if(roleId != 0){
                              if (roleOps.idExist(roleId) && personOps.roleExistInSet(roleId)) {
                                 personOps.deleteRole(roleOps.getRole());
@@ -138,20 +141,28 @@ s	                    int roleId = dataParser.stringToInt(r);
         List titleList = personOps.printTitleList();
         List contactTypes = personOps.printTypeList();
         roleDto = roleOps.printRoleList();
-        mav.addObject("errMsgs", errMsgs);
         mav.addObject("titles", titleList);
         mav.addObject("typeList", contactTypes); 
         mav.addObject("roleDto", roleDto); 
+        mav.addObject("errMsgs", errMsgs);
         mav.addObject("personDto", personDto);  
         return mav;        
 	}
+	
+	@Override
+	protected Map referenceData(HttpServletRequest request, Object command, Errors errors) 
+	    throws Exception {
 
-    protected boolean alphabetOnly(String text){
-       if(text.equals("") || !text.matches("[a-zA-Z ]*")) {
-            return false;
-        }   
-        return true; 
-    }
+		Map referenceData = new HashMap();
+		List titleList = personOps.printTitleList();
+        List contactTypes = personOps.printTypeList();
+        roleDto = roleOps.printRoleList();
+		referenceData.put("titles", titleList);
+		referenceData.put("typeList", contactTypes);
+		referenceData.put("roleDto", roleDto);
+		return referenceData;
+	}
+
     protected boolean numericOnly(String number, int type){
         if(!number.matches(("[0-9]+")) || detailInvalid(number, type)) {
             return false;

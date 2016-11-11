@@ -31,7 +31,7 @@ public class RolePersonValidator implements Validator {
             if(!alphabetOnly(personDto.getLastName().trim())){
                 errors.rejectValue("lastName", "invalid.name");
             }
-            if(personDto.getBirthDate() == null && !validDate(dataParser.stringToDate(personDto.getBirthDate()))){
+            if(personDto.getBirthDate() == null || !validDate(dataParser.stringToDate(personDto.getBirthDate()))){
                 errors.rejectValue("birthDate", "invalid.date");
             } 
             if(!(personDto.getDateHired().equals("")) && !validDate(dataParser.stringToDate(personDto.getDateHired()))){
@@ -42,7 +42,7 @@ public class RolePersonValidator implements Validator {
     
    protected boolean validDate(LocalDate date){
         LocalDate current = new LocalDate();
-        if(date.getYear() < 1970 || date.getYear() > current.getYear()) {
+        if(date == null || date.getYear() < 1970 || date.getYear() > current.getYear()) {
             return false;
         }    
         return true;
