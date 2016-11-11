@@ -5,19 +5,7 @@
 <html>
     <head>
         <title>Crud Application</title>
-        <style>
-        .errorblock{
-	        color: #000;
-	        background-color: #ffEEEE;
-	        border: 2px solid #ff0000;
-	        padding:6px;
-	        margin:12px;
-        }
-        .lang{
-          background:none;
-          border:none;
-        }
-        </style>
+        <link href="<c:url value='/css/styles.css' />" rel="stylesheet"/>
     </head>
     <body>
         <div>
@@ -25,15 +13,17 @@
                     <span><strong>${fileName}</strong> successfully uploaded. </span>
             </c:if>
             <div>
-                <form:form action="index" method="GET">
-                    Language : <button type="submit" class="lang" name="lang" value="en"><spring:message code="lbl.en" text="ENGLISH" /></button></a> | 
-                              <button type ="submit" class="lang" name="lang" value="ch"><spring:message code="lbl.ch" text="CHINESE" /></button></a>
-                    Current Locale : ${pageContext.response.locale}
+                <form:form action="/locale" method="GET">
+                    <input type="hidden" name="page" value="index"/>
+                    Language : <button type="submit" class="lang" name="lang" value="en"><spring:message code="lbl.en" text="ENGLISH" /></button> | 
+                              <button type ="submit" class="lang" name="lang" value="ch"><spring:message code="lbl.ch" text="CHINESE" /></button>
                 </form:form>
             </div>
             <div align="center">
-                <h3><spring:message code="lbl.index.hdr" text="Make Changes to:" /></h3>
-                <a href="PersonMain.jsp"><button size="20"><spring:message code="lbl.person" text="PERSON" /></button></a><br>
+                 <form:form action="/redirect" method="GET">
+                    <h3><spring:message code="lbl.index.hdr" text="Make Changes to:" /></h3>
+                    <button type=submit name="view" value="PersonMain" size="20"><spring:message code="lbl.person" text="PERSON" /></button>
+                </form:form> 
                 <form:form action="roleController" method="GET">
                     <button type="submit" size="20"><spring:message code="lbl.role" text="ROLE" /></button>
                 </form:form>

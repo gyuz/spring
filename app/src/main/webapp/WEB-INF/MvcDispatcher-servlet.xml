@@ -11,7 +11,7 @@
         http://www.springframework.org/schema/mvc/spring-mvc.xsd">
         
     <mvc:resources mapping="/js/**" location="/js/"/>
-    <!--mvc:resources mapping="../resources/**" location="../resources/"/-->
+    <mvc:resources mapping="/css/**" location="/css/"/>
     <mvc:resources mapping="/favicon.ico" location="/favicon.ico" />
     
     <import resource="data-source-cfg.xml"/>
@@ -55,6 +55,8 @@
 			<bean class="crud.app.RolePersonValidator" />
 		</property>
     </bean>
+    <bean name="/locale" class="crud.app.LocaleController" />
+    <bean name="/redirect" class="crud.app.RedirectController" />
     
     <bean class="org.springframework.web.servlet.mvc.support.ControllerClassNameHandlerMapping" />
     <bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver"/>
@@ -78,9 +80,6 @@
 	    </bean>
 	    </mvc:interceptor>
     </mvc:interceptors>
-	
-	<bean name="/index" class="crud.app.LocaleController" />
-	
 	<!--bean id="localeResolver" class="org.springframework.web.servlet.i18n.CookieLocaleResolver">
         <property name="defaultLocale" value="zh_CN" />
     </bean-->

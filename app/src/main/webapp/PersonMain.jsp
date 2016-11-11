@@ -1,24 +1,28 @@
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
 <html>
     <head>
-        <title>Crud Application</title>   
+        <title>Crud Application</title>
+        <link href="<c:url value='/css/styles.css' />" rel="stylesheet"/>   
     </head>
     <body>
         <div id="body">
-            <div style="color:red;">
+            <div class="errorblock">
                 <c:if test="${!errMsgs.isEmpty()}">
                     ${errMsgs.get(0)}
                 </c:if>
             </div>
             <div id="header">
                 <h1><spring:message code="lbl.person" text="PERSON" /></h1>
-                 <div>
-                Language : <a href="?language=en">English</a> | <a href="?language=zh_CN">Chinese</a>
-                Current Locale : ${pageContext.request.locale}
-            </div>
+                <div>
+                    <form:form action="/locale" method="GET">
+                        <input type="hidden" name="page" value="PersonMain"/>
+                        Language : <button type="submit" class="lang" name="lang" value="en"><spring:message code="lbl.en" text="ENGLISH" /></button> | 
+                                  <button type ="submit" class="lang" name="lang" value="ch"><spring:message code="lbl.ch" text="CHINESE" /></button>
+                    </form:form>
+                </div>
             </div>   
             <div>
-                <form action="/personController" method="GET">   
+                <form:form action="/personController" method="GET">   
                     <button type="submit" name="action" value="CREATE"><spring:message code="lbl.create" text="CREATE" /></button>
                     <br><br>   
                     <spring:message code="lbl.enter.personId" text="Enter Person ID:" /> <input type="number" name="personId" placeholder="##">
@@ -40,9 +44,11 @@
                         
                         <button type="submit" name="action" value="LIST"><spring:message code="lbl.list" text="LIST" /></button>
                       </div>
-                    <br><br>
-                </form> 
-                <a href="index.jsp?language=${pageContext.request.locale.language}"><button type="submit" name="action" value="BACK"><spring:message code="lbl.back.main" text="BACK TO MAIN" /></button></a> 
+                </form:form> 
+                <br/><br/>
+                <form:form action="/redirect" method="GET">
+                    <button type="submit" name="view" value="index"><spring:message code="lbl.back.main" text="BACK TO MAIN" /></button>
+                </form:form>
             </div>
         </div>
     </body>

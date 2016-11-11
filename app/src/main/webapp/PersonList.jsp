@@ -5,17 +5,26 @@
 <html>
     <head>
         <title>Crud Application</title>
-        <script src="<c:url value='/js/tableFunctions.js'/>"></script> 
+        <script src="<c:url value='/js/tableFunctions.js'/>"></script>
+        <link href="<c:url value='/css/styles.css' />" rel="stylesheet"/> 
     </head>
     <body>
         <div> 
-             <div style="color:blue;">
+             <div class="success">
                 <c:if test="${!successMsgs.isEmpty()}">
                     <c:forEach items="${successMsgs}" var="msg">
                         ${msg} <br/>
                     </c:forEach>
                 </c:if>
-            </div>   
+            </div>
+            <div>
+                <form:form action="/locale" method="GET">
+                    <input type="hidden" name="page" value="index"/>
+                    Language : <button type="submit" class="lang" name="lang" value="en"><spring:message code="lbl.en" text="ENGLISH" /></button> | 
+                              <button type ="submit" class="lang" name="lang" value="ch"><spring:message code="lbl.ch" text="CHINESE" /></button>
+                </form:form>
+            </div>  
+            <br/><br/> 
             <form:form name="personList" action="/personController" method="GET">
                 <spring:message code="lbl.view.person.list" text="View Person List by:" />
                 <select name="list">
@@ -83,8 +92,10 @@
                 <br/><br/>
             </form:form>
             <div>
-                <a href="../PersonMain.jsp"><button type="button"><spring:message code="lbl.back.person" text="BACK TO PERSON" /></button></a>
-                <a href="../index.jsp"><button type="button"><spring:message code="lbl.back.main" text="BACK TO MAIN" /></button></a>
+                <form:form action="/redirect" method="GET">
+                    <button type="submit" name="view" value="PersonMain"><spring:message code="lbl.back.person" text="BACK TO PERSON" /></button>
+                    <button type="submit" name="view" value="index"><spring:message code="lbl.back.main" text="BACK TO MAIN" /></button>
+                 </form:form>
             </div>
        </div>
     </body>

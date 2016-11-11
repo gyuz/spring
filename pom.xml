@@ -187,7 +187,7 @@
                 <activeByDefault>true</activeByDefault>
             </activation>
             <properties>
-                <connection.url>jdbc:postgresql://localhost:5433/hr</connection.url>
+                <connection.url>jdbc:postgresql://localhost:5432/hr</connection.url>
                 <dialect>org.hibernate.dialect.PostgreSQLDialect</dialect>
                 <connection.driver>org.postgresql.Driver</connection.driver>
                 <connection.username>ecc</connection.username>

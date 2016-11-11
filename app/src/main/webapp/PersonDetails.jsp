@@ -5,11 +5,12 @@
 <html>
     <head>
         <title>Crud Application</title>
-        <script src="js/tableFunctions.js"></script>  
+        <script src="js/tableFunctions.js"></script>
+        <link href="<c:url value='/css/styles.css' />" rel="stylesheet"/>  
     </head>
     <body>
         <div>
-            <div style="color:red;">
+            <div class="errorblock">
                 <form:errors path="*"/>
                   <c:choose>
                     <c:when test="${!errMsgs.isEmpty()}">
@@ -18,7 +19,7 @@
                         </c:forEach>
                     </c:when>
                     <c:otherwise>
-                        <div style="color:blue;">
+                        <div class="success">
                             SAVED
                         </div>
                     </c:otherwise>
@@ -254,8 +255,10 @@
                         <button type="submit" name="action" value="LIST"><spring:message code="lbl.go.list" text="GO TO LIST" /></button>
                  </form:form>
              </div>
-             <a href="../PersonMain.jsp"><button type="button"><spring:message code="lbl.back.person" text="BACK TO PERSON" /></button></a>
-             <a href="../index.jsp"><button type="button"><spring:message code="lbl.back.main" text="BACK TO MAIN" /></button></a>       
+             <form:form action="/redirect" method="GET">
+                 <button type="submit" name="view" value="PersonMain"><spring:message code="lbl.back.person" text="BACK TO PERSON" /></button>
+                <button type="submit" name="view" value="index"><spring:message code="lbl.back.main" text="BACK TO MAIN" /></button>
+             </form:form>     
          </div>
        </div>
     </body>

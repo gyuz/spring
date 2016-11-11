@@ -6,17 +6,18 @@
     <head>
         <title>Crud Application</title>
         <script src="<c:url value='/js/tableFunctions.js'/>"></script>
+        <link href="<c:url value='/css/styles.css' />" rel="stylesheet"/>
     </head>
     <body>
         <div>
-            <div style="color:red;">
+            <div class="errorblock">
                 <c:if test="${!errMsgs.isEmpty()}">
                     <c:forEach items="${errMsgs}" var="err">
                         ${err} <br/>
                     </c:forEach>
                 </c:if>
             </div>
-            <div style="color:blue;">
+            <div class="succuess">
                 <c:if test="${!successMsgs.isEmpty()}">
                     <c:forEach items="${successMsgs}" var="msg">
                         ${msg} <br/>
@@ -24,6 +25,13 @@
                 </c:if>
             </div>
             <div>
+                <div>
+                <form:form action="/locale" method="GET">
+                    <input type="hidden" name="page" value="RoleDetails"/>
+                    Language : <button type="submit" class="lang" name="lang" value="en"><spring:message code="lbl.en" text="ENGLISH" /></button> | 
+                              <button type ="submit" class="lang" name="lang" value="ch"><spring:message code="lbl.ch" text="CHINESE" /></button>
+                </form:form>
+            </div>
                 <h1><spring:message code="lbl.role" text="ROLE" /></h1>
             </div>
             <div>
@@ -47,12 +55,14 @@
                     </table>
                     <button type="button" onclick="addRow('roles', '1', 'role')"><spring:message code="lbl.add.role" text="ADD ROLE" /></button>
                     <br/><br/>
-                    <input type="submit" value="SAVE">
+                    <button type="submit" value="SAVE"><spring:message code="lbl.save" text="SAVE" /></button>
                 </form:form>
                 <br/><br/>
             </div>
             <div>
-                 <a href="../index.jsp"><button type="button"><spring:message code="lbl.bacl.main" text="BACK TO MAIN" /></button></a>
+                <form:form action="/redirect" method="GET">
+                    <button type="submit" name="view" value="index"><spring:message code="lbl.back.main" text="BACK TO MAIN" /></button>
+                </form:form> 
             </div>
         </div>
     </body>

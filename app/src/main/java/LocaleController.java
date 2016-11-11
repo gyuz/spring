@@ -14,7 +14,9 @@ public class LocaleController extends SimpleFormController {
     @Override
    public ModelAndView handleRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException {
+        String view = request.getParameter("page");
         String language = request.getParameter("lang");
+        
         if(language != null){
             if(language.equals("en")){    
                 RequestContextUtils.getLocaleResolver(request).setLocale(request, response, Locale.ENGLISH);
@@ -22,8 +24,12 @@ public class LocaleController extends SimpleFormController {
                 RequestContextUtils.getLocaleResolver(request).setLocale(request, response, Locale.CHINA);
             }
         } else {
-            RequestContextUtils.getLocaleResolver(request).setLocale(request, response, Locale.CHINA);
+            RequestContextUtils.getLocaleResolver(request).setLocale(request, response, Locale.ENGLISH);
         }
-        return new ModelAndView("index");
+        
+        if(view == null){
+            view = "index";
+        }
+        return new ModelAndView(view);
     }
 }
