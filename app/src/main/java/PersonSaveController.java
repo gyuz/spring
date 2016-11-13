@@ -12,12 +12,12 @@ import java.util.Map;
 import java.util.HashMap;
 import crud.core.service.PersonService;
 import crud.core.service.RoleService;
+import crud.core.service.DataParser;
 import crud.core.model.PersonDto;
 import crud.core.model.RoleDto;
-import crud.core.service.DataParser;
-import org.joda.time.LocalDate;
 import org.apache.commons.validator.routines.EmailValidator;
 import org.springframework.validation.Errors;
+import org.apache.log4j.Logger;
 
 
 @SuppressWarnings("deprecation")
@@ -27,6 +27,8 @@ public class PersonSaveController extends SimpleFormController {
 	private PersonDto personDto;
 	private RoleDto roleDto;
 	private DataParser dataParser;
+	
+	private static final Logger logger = Logger.getLogger(PersonSaveController.class);
 
 	public PersonSaveController() {
 		setCommandClass(PersonDto.class);
@@ -99,6 +101,7 @@ public class PersonSaveController extends SimpleFormController {
                     if(!updatedRoleNames.get(i).equals("") && updatedRoleIds.get(i).equals("")){
                         if(!personOps.addRole(roleOps.getRoleByName(updatedRoleNames.get(i)))){
                            errMsgs.add(updatedRoleNames.get(i) + " role already exist for this person");
+                           logger.error(updatedRoleNames.get(i) + " role already exist for this person", new Exception("PersonRole"));
                         }
                     }
                 }    
@@ -110,24 +113,18 @@ public class PersonSaveController extends SimpleFormController {
 	                String details = updatedContactDetails.get(i);
 	                if(updatedContactIds.get(i).equals("")){
                         if(!contactType.equals("0")){
-                            if(validateContact(contactType, details)){
-                                if(!personOps.addContact(contactType, details)){
-                                    errMsgs.add("Add Contact: " + contactType + " - " + details + " failed. Contact already exist!");
-                                } 
-                             } else {
-                                errMsgs.add("Add Contact: " + contactType + " - " + details + " failed. Invalid contact details.");
-                             }  
+                            if(!personOps.addContact(contactType, details)){
+                                errMsgs.add("Add Contact: " + contactType + " - " + details + " failed. Contact already exist!");
+                                logger.error(updatedRoleNames.get(i) + " contact already exist for this person", new Exception("PersonContact"));
+                            } 
                         }  
                     } else {
                         if(!contactType.equals("0")) {
-                            if(validateContact(contactType, details)){
-                                if(personOps.contactIdExist(dataParser.stringToInt(updatedContactIds.get(i)))){
-                                    if(!personOps.updateContact(details)){
-                                        errMsgs.add("Update Contact: " + contactType + " - " + details + " failed. Contact already exist!");
-                                    } 
-                                 } else {
-                                    errMsgs.add("Update Contact: " + contactType + " - " + details + " failed. Invalid contact details.");
-                                 }
+                            if(personOps.contactIdExist(dataParser.stringToInt(updatedContactIds.get(i)))){
+                                if(!personOps.updateContact(details)){
+                                    errMsgs.add("Update Contact: " + contactType + " - " + details + " failed. Contact already exist!");
+                                    logger.error(updatedRoleNames.get(i) + " contact already exist for this person", new Exception("PersonContact"));
+                                } 
                             }
                         }
                     }
@@ -162,40 +159,5 @@ public class PersonSaveController extends SimpleFormController {
 		referenceData.put("roleDto", roleDto);
 		return referenceData;
 	}
-
-    protected boolean numericOnly(String number, int type){
-        if(!number.matches(("[0-9]+")) || detailInvalid(number, type)) {
-            return false;
-        }    
-        return true;
-    }
-
-    protected boolean validateEmail(String email){
-        EmailValidator emailValidator = EmailValidator.getInstance();
-        if(!emailValidator.isValid(email) || email.length() > 20) {
-            return false;
-        }    
-        return true;
-    }
-    
-    private boolean detailInvalid(String number, int type){
-        if(type == 1 && number.length() != 7){
-            return true;        
-        } else if (type == 2 && number.length() != 11){
-            return true;        
-        }
-        return false;
-    }
-    
-    protected boolean validateContact(String contactType, String contactDetail){
-        if(contactType.equals("LANDLINE") && !numericOnly(contactDetail, 1)) {
-            return false;
-        } else if (contactType.equals("MOBILE") && !numericOnly(contactDetail, 2)){
-            return false;
-        } else if (contactType.equals("EMAIL") && !validateEmail(contactDetail)) { 
-            return false;
-        }
-        return true;
-    }
     
 }

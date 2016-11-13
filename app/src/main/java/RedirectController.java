@@ -12,7 +12,7 @@ public class RedirectController extends SimpleFormController {
     @Override
    public ModelAndView handleRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException {
-        String view = request.getParameter("view");;
+        String view = request.getParameter("view");
         return new ModelAndView(view);
     }
 }

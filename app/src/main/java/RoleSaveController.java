@@ -11,13 +11,16 @@ import java.util.ArrayList;
 import crud.core.service.RoleService;
 import crud.core.model.RoleDto;
 import crud.core.service.DataParser;
+import org.apache.log4j.Logger;
 
 @SuppressWarnings("deprecation")
 public class RoleSaveController extends SimpleFormController {
 	private RoleService roleOps;
 	private RoleDto roleDto;
 	private DataParser dataParser;
-
+	
+    private static final Logger logger = Logger.getLogger(RoleSaveController.class);
+    
 	public RoleSaveController() {
 		setCommandClass(RoleDto.class);
 		setCommandName("roleDto");
@@ -53,6 +56,7 @@ public class RoleSaveController extends SimpleFormController {
 	        for(String r: deletedRoles) {
                 if(!roleOps.delete(dataParser.stringToInt(r))){
                     errMsgs.add("Error deleting role#"+r+". Role may still be associated with a person");
+                    logger.error("Error deleting role#"+r+". Role may still be associated with a person", new Exception("RoleDelete"));
                 } else {
                     success.add(r);
                 }
@@ -71,16 +75,19 @@ public class RoleSaveController extends SimpleFormController {
 	                if(id != 0 && !dbRoles.contains(roleName)) {
 	                    roleOps.update(id, roleName);  
 	                    successMsgs.add("Role id#"+id+" updated with new role name: "+roleName);
+	                    
 	                } else if(id == 0) {
 	                    if(!dbRoles.contains(roleName)) {
 	                        roleOps.add(roleName); 
 	                        success.add(roleName);
 	                    } else {
                             errMsgs.add("Role "+roleName+" already exists!");
+                            logger.error("Role "+roleName+" already exists!", new Exception("RoleExists"));
                         }   
 	                } else {
                         if(!dbIds.get(dbRoles.indexOf(roleName)).equals(updatedId.get(i))){
                             errMsgs.add("Update failed. Role "+roleName+" already exists!");
+                            logger.error("Role "+roleName+" already exists!", new Exception("RoleExists"));
                         }
                     } 
 	            }

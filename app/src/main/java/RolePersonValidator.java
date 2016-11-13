@@ -5,13 +5,15 @@ import org.springframework.validation.ValidationUtils;
 import org.springframework.validation.Validator;
 import org.apache.commons.validator.routines.EmailValidator;
 import org.joda.time.LocalDate;
-
+import org.apache.log4j.Logger;
+import java.util.List;
 import crud.core.model.PersonDto;
 import crud.core.model.RoleDto;
 import crud.core.service.DataParser;
 
 public class RolePersonValidator implements Validator {
-   
+    private static final Logger logger = Logger.getLogger(RolePersonValidator.class);
+    
     @Override
     public boolean supports(Class c) {
         return PersonDto.class.equals(c) || RoleDto.class.equals(c);
@@ -22,21 +24,46 @@ public class RolePersonValidator implements Validator {
         DataParser dataParser = new DataParser();
         if(command instanceof PersonDto){
             PersonDto personDto = (PersonDto) command;
+            List<String> updatedContactIds = personDto.getPersonContactIds();
+	        List<String> updatedContactTypes = personDto.getPersonContactTypes();
+	        List<String> updatedContactDetails = personDto.getPersonContactDetails();
+	        
             if(!alphabetOnly(personDto.getFirstName().trim())){
+                logger.error("Error in first name: "+ personDto.getFirstName(), new Exception("PersonDetails"));
                 errors.rejectValue("firstName", "invalid.name");
             }
             if(!alphabetOnly(personDto.getMiddleName().trim())){
+                logger.error("Error in middle name: "+ personDto.getMiddleName(), new Exception("PersonDetails"));
                 errors.rejectValue("middleName", "invalid.name");
             }
             if(!alphabetOnly(personDto.getLastName().trim())){
+                logger.error("Error in last name: "+ personDto.getLastName(), new Exception("PersonDetails"));
                 errors.rejectValue("lastName", "invalid.name");
             }
             if(personDto.getBirthDate() == null || !validDate(dataParser.stringToDate(personDto.getBirthDate()))){
+                logger.error("Error in birth date: "+ personDto.getBirthDate(), new Exception("PersonDetails"));
                 errors.rejectValue("birthDate", "invalid.date");
             } 
             if(!(personDto.getDateHired().equals("")) && !validDate(dataParser.stringToDate(personDto.getDateHired()))){
+                logger.error("Error in date hired: "+ personDto.getDateHired(), new Exception("PersonDetails"));
                 errors.rejectValue("hiredDate", "invalid.date");
             }
+            
+            if(!updatedContactIds.isEmpty()){
+	            for(int i = 0; i<updatedContactIds.size(); i++){
+	                String contactType = updatedContactTypes.get(i);
+	                String details = updatedContactDetails.get(i);
+	                if(contactType.equals("0") && !(details.equals(""))){
+	                    logger.error("Error in contact details: Empty contact type for detail " + details , new Exception("PersonContact"));
+	                    errors.rejectValue("PersonContactTypes", "invalid.contact");
+	                } else if(!contactType.equals("0")){
+                        if(!validateContact(contactType, details)){
+                            logger.error("Error in contact details: " + contactType + ", " + details , new Exception("PersonContact"));
+                            errors.rejectValue("PersonContactDetails", "invalid.contact");
+                        } 
+                    }
+                }
+            }    
         }
     }
     

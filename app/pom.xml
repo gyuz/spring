@@ -73,6 +73,16 @@
                 <groupId>commons-io</groupId>
                 <artifactId>commons-io</artifactId>
          </dependency>
+         <dependency>
+                <groupId>org.apache.logging.log4j</groupId>
+                <artifactId>log4j-core</artifactId>
+                <version>${log4j.version}</version>
+         </dependency>
+         <dependency>
+                <groupId>org.slf4j</groupId>
+                <artifactId>slf4j-log4j12</artifactId>
+                <version>${sl4j.version}</version>
+         </dependency>
 	</dependencies>
 
 	<build>

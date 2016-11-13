@@ -1,4 +1,7 @@
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %> 
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
+
 <html>
     <head>
         <title>Crud Application</title>
@@ -6,22 +9,29 @@
     </head>
     <body>
         <div id="body">
-            <div class="errorblock">
+            <div>
                 <c:if test="${!errMsgs.isEmpty()}">
-                    ${errMsgs.get(0)}
+                    <div>
+                        <c:forEach items="${errMsgs}" var="err">
+                            <span class="errorblock">${err}</span>
+                            <br/>
+                        </c:forEach>
+                    </div>
                 </c:if>
             </div>
-            <div id="header">
-                <h1><spring:message code="lbl.person" text="PERSON" /></h1>
+            <br/>
+            <div clas="header">
                 <div>
                     <form:form action="/locale" method="GET">
                         <input type="hidden" name="page" value="PersonMain"/>
-                        Language : <button type="submit" class="lang" name="lang" value="en"><spring:message code="lbl.en" text="ENGLISH" /></button> | 
+                        <spring:message code="lbl.lang" text="LANGUAGE" /> : <button type="submit" class="lang" name="lang" value="en"><spring:message code="lbl.en" text="ENGLISH" /></button> | 
                                   <button type ="submit" class="lang" name="lang" value="ch"><spring:message code="lbl.ch" text="CHINESE" /></button>
                     </form:form>
                 </div>
+                <br/>
+                <h1><spring:message code="lbl.person" text="PERSON" /></h1>
             </div>   
-            <div>
+            <div class="content">
                 <form:form action="/personController" method="GET">   
                     <button type="submit" name="action" value="CREATE"><spring:message code="lbl.create" text="CREATE" /></button>
                     <br><br>   
