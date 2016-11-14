@@ -58,7 +58,7 @@
     border: none;
 }
 
-#contactHdr td, #contacts td, #newContacts td, #roleHdr td, #role td, #newRoles td,
+#contacts td, #newContacts td, #role td, #newRoles td,
 #contactHdr th, #contacts th, #newContacts th, #roleHdr th, #role th, #newRoles th{
   border-left: 1px solid black;
   margin-left: 1px;

@@ -149,6 +149,7 @@
                             <th style="width: 100px;"><spring:message code="lbl.id" text="ID" /></th>
                             <th style="width: 250px;"><spring:message code="lbl.ctype" text="CONTACT TYPE" /></th>
                             <th style="width: 250px;"><spring:message code="lbl.cdetails" text="CONTACT DETAILS" /></th>
+                            <th></th>
                        </tr>
                     </table>
                     <c:if test="${!personDto.personContactIds.isEmpty()}">
@@ -195,6 +196,7 @@
                         <tr>
                             <th style="width: 150px;"><spring:message code="lbl.id" text="ID" /></th>
                             <th style="width: 200px;"><spring:message code="lbl.rolename" text="ROLE NAME" /></th>
+                            <th></th>
                         </tr>
                     </table>
                     <c:if test="${!personDto.personRoleIds.isEmpty()}">
