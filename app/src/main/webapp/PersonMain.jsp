@@ -13,13 +13,11 @@
                 <c:if test="${!errMsgs.isEmpty()}">
                     <div>
                         <c:forEach items="${errMsgs}" var="err">
-                            <span class="errorblock">${err}</span>
-                            <br/>
+                            <div class="errorblock">${err}</div>
                         </c:forEach>
                     </div>
                 </c:if>
             </div>
-            <br/>
             <div clas="header">
                 <div>
                     <form:form action="/locale" method="GET">

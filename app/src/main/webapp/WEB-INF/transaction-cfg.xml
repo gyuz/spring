@@ -30,7 +30,7 @@
 
 	<aop:config>
 	    <aop:pointcut id="servicePointCut"
-		expression="execution(* crud.core.service.*Service.*(..))" />
+		expression="execution(* crud.core.service.*Service.*(..)) and !execution(* crud.core.service.File*.*(..))" />
 	    <aop:advisor advice-ref="txAdvice" pointcut-ref="servicePointCut" />
 	</aop:config>
 

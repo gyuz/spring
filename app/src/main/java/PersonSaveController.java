@@ -115,7 +115,7 @@ public class PersonSaveController extends SimpleFormController {
                         if(!contactType.equals("0")){
                             if(!personOps.addContact(contactType, details)){
                                 errMsgs.add("Add Contact: " + contactType + " - " + details + " failed. Contact already exist!");
-                                logger.error(updatedRoleNames.get(i) + " contact already exist for this person", new Exception("PersonContact"));
+                                logger.error(contactType + " - " + details + " contact already exist for this person", new Exception("PersonContact"));
                             } 
                         }  
                     } else {
@@ -123,7 +123,7 @@ public class PersonSaveController extends SimpleFormController {
                             if(personOps.contactIdExist(dataParser.stringToInt(updatedContactIds.get(i)))){
                                 if(!personOps.updateContact(details)){
                                     errMsgs.add("Update Contact: " + contactType + " - " + details + " failed. Contact already exist!");
-                                    logger.error(updatedRoleNames.get(i) + " contact already exist for this person", new Exception("PersonContact"));
+                                    logger.error(contactType + " - " + details + " contact already exist for this person", new Exception("PersonContact"));
                                 } 
                             }
                         }

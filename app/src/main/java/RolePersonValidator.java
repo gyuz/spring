@@ -56,10 +56,12 @@ public class RolePersonValidator implements Validator {
 	                if(contactType.equals("0") && !(details.equals(""))){
 	                    logger.error("Error in contact details: Empty contact type for detail " + details , new Exception("PersonContact"));
 	                    errors.rejectValue("PersonContactTypes", "invalid.contact");
+	                    break;
 	                } else if(!contactType.equals("0")){
                         if(!validateContact(contactType, details)){
                             logger.error("Error in contact details: " + contactType + ", " + details , new Exception("PersonContact"));
                             errors.rejectValue("PersonContactDetails", "invalid.contact");
+                            break;
                         } 
                     }
                 }

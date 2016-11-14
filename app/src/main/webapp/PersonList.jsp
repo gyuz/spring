@@ -13,8 +13,7 @@
              <div>
                 <c:if test="${!successMsgs.isEmpty()}">
                     <c:forEach items="${successMsgs}" var="msg">
-                        <span class="success">${msg}</span>
-                        <br/>
+                        <div class="success">${msg}</div>
                     </c:forEach>
                 </c:if>
             </div>

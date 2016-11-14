@@ -34,6 +34,7 @@
         <c3p0.version>0.9.5.2</c3p0.version>
         <commons.fileupload.version>1.3.2</commons.fileupload.version>
         <commons.io.version>2.5</commons.io.version>
+        <maven.compiler.version>3.6.0</maven.compiler.version>
   	</properties>
 
 	<modules>
@@ -176,6 +177,15 @@
                     <artifactId>jetty-maven-plugin</artifactId>
                     <version>${jetty.version}</version>
                 </plugin>
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-compiler-plugin</artifactId>
+                    <version>${maven.compiler.version}</version>
+                    <configuration>
+                      <source>1.8</source>
+                      <target>1.8</target>
+                    </configuration>
+               </plugin>
 		    </plugins>        
         </pluginManagement>
     </build>
@@ -187,7 +197,7 @@
                 <activeByDefault>true</activeByDefault>
             </activation>
             <properties>
-                <connection.url>jdbc:postgresql://localhost:5432/hr</connection.url>
+                <connection.url>jdbc:postgresql://localhost:5433/hr</connection.url>
                 <dialect>org.hibernate.dialect.PostgreSQLDialect</dialect>
                 <connection.driver>org.postgresql.Driver</connection.driver>
                 <connection.username>ecc</connection.username>

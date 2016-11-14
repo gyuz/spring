@@ -14,22 +14,18 @@
                 <c:if test="${!errMsgs.isEmpty()}">
                     <div>
                         <c:forEach items="${errMsgs}" var="err">
-                            <span class="errorblock">${err}</span>
-                            <br/>
+                            <div class="errorblock">${err}</div>
                         </c:forEach>
                     </div>
                 </c:if>
             </div>
-            <br/>
             <div>
                 <c:if test="${!successMsgs.isEmpty()}">
                     <c:forEach items="${successMsgs}" var="msg">
-                        <span  class="success">${msg}</span>
-                        <br/>
+                        <div  class="success">${msg}</div>
                     </c:forEach>
                 </c:if>
             </div>
-            <br/>
             <div clas="header">
                 <h1><spring:message code="lbl.role" text="ROLE" /></h1>
             </div>
@@ -52,6 +48,7 @@
                             </tr>
                         </c:forEach>
                     </table>
+                    <br/>
                     <button type="button" onclick="addRow('roles', '1', 'role')"><spring:message code="lbl.add.role" text="ADD ROLE" /></button>
                     <br/><br/>
                     <button type="submit" value="SAVE"><spring:message code="lbl.save" text="SAVE" /></button>

@@ -9,9 +9,6 @@
     </head>
     <body>
         <div>
-            <c:if test="${not empty fileName}">
-                    <span><strong>${fileName}</strong> successfully uploaded. </span>
-            </c:if>
             <div clas="header">
                 <div>
                     <form:form action="/locale" method="GET">
@@ -40,7 +37,12 @@
                 <h3><spring:message code="lbl.fileupload" text="File Upload:" /></h3>
                 <form:form action="fileUpload" method="POST" commandName="fileDto" enctype="multipart/form-data" class="upload">
                 <form:errors path="*" cssClass="errorblock" element="div"/>
-                &nbsp&nbsp&nbsp<spring:message code="lbl.selectfile" text="Select a file to upload:" /> <input name="file"  type="file" />
+                <div>
+                    <c:if test="${not empty fileName}">
+                            <div class="success"><strong>${fileName}</strong> successfully uploaded. </div>
+                    </c:if>
+                </div>
+                &nbsp&nbsp&nbsp<spring:message code="lbl.selectfile" text="Select a file to upload" /> : <input name="file"  type="file" />
                 <br/><br/>
                 &nbsp&nbsp&nbsp<button type="submit"><spring:message code="lbl.upload" text="Upload" /></button> 
                 </form:form>

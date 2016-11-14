@@ -16,19 +16,17 @@
                     <c:when test="${!errMsgs.isEmpty()}">
                         <div>
                             <c:forEach items="${errMsgs}" var="err">
-                                <span class="errorblock">${err}</span>
-                                <br/>
+                                <div class="errorblock">${err}</div>
                             </c:forEach>
                         </div>
                     </c:when>
                     <c:otherwise>
                         <div>
-                            <span class="success">SAVED</span>
+                            <div class="success">SAVED</div>
                         </div>
                     </c:otherwise>
                 </c:choose>
-            </div>  
-            <br/>
+            </div> 
             <div clas="header">
                 <c:choose>
                     <c:when test="${not empty personDto.id}">
@@ -186,6 +184,7 @@
                             <td style="width: 100px;"><button type="button" onclick="deleteRow(this, 'newContacts', 'personDetails', '')"><spring:message code="lbl.delete" text="DELETE" /></button></td>
                         </tr>
                     </table>
+                    <br/>
                     <button type="button" onclick="addRow('newContacts', '0', 'person')"><spring:message code="lbl.add.contact" text="ADD CONTACT" /></button>
                </div>
                <br/><br/>
@@ -231,6 +230,7 @@
                         <td style="width: 100px;"><button type="button" onclick="deleteRow(this, 'newRoles', 'personDetails', '')"><spring:message code="lbl.delete" text="DELETE" /></button></td>
                      </tr>
                    </table>
+                   <br/>
                    <button type="button" onclick="addRow('newRoles', '0', 'person')"><spring:message code="lbl.add.role" text="ADD ROLE" /></button>
                 </div>
                 <br/><br/>
