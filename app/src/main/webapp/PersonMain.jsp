@@ -30,7 +30,7 @@
                 <h1><spring:message code="lbl.person" text="PERSON" /></h1>
             </div>   
             <div class="content">
-                <form:form action="/personController" method="GET">   
+                <form:form action="/person" method="GET">   
                     <button type="submit" name="action" value="CREATE"><spring:message code="lbl.create" text="CREATE" /></button>
                     <br><br>   
                     <spring:message code="lbl.enter.personId" text="Enter Person ID:" /> <input type="number" name="personId" placeholder="##">

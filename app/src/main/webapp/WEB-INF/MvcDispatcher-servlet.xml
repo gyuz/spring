@@ -47,10 +47,10 @@
     <bean id="dataParser" class="crud.core.service.DataParser" lazy-init="true"/>
     <bean id="fileOperations" class="crud.core.service.FileOperations" lazy-init="true" autowire="byType" />
 
-    <bean name="/roleController" class="crud.app.RoleController" autowire="byType"/>
-    <bean name="/roleSaveController" class="crud.app.RoleSaveController"  autowire="byType" />
-    <bean name="/personController" class="crud.app.PersonController" autowire="byType"/>
-    <bean name="/personSaveController" class="crud.app.PersonSaveController"  autowire="byType" p:formView="PersonDetails" p:successView="PersonDetails">
+    <bean name="/role" class="crud.app.RoleController" autowire="byType"/>
+    <bean name="/roleSave" class="crud.app.RoleSaveController"  autowire="byType" />
+    <bean name="/person" class="crud.app.PersonController" autowire="byType"/>
+    <bean name="/personSave" class="crud.app.PersonSaveController"  autowire="byType" p:formView="PersonDetails" p:successView="PersonDetails">
         <property name="validator">
 			<bean class="crud.app.RolePersonValidator" />
 		</property>

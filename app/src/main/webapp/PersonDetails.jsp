@@ -40,7 +40,7 @@
                 </c:choose>       
             </div>
             <div class="content">
-                <form:form name="personDetails" action="/personSaveController" method="POST" commandName="personDto">
+                <form:form name="personDetails" action="/personSave" method="POST" commandName="personDto">
                 <table id="person">
                     <tr>
                         <td><spring:message code="lbl.personid" text="PERSON ID" />:</td>
@@ -241,7 +241,7 @@
              <br/>
              <div>
                  <div>
-                     <form:form action="/personController" method="GET">
+                     <form:form action="/person" method="GET">
                             <input type="hidden" name="list" value="4">
                             <input type="hidden" name="order" value="1">
                             <button type="submit" name="action" value="LIST"><spring:message code="lbl.go.list" text="GO TO LIST" /></button>

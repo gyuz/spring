@@ -21,7 +21,7 @@
                 <h1><spring:message code="lbl.personlist.hdr" text="Person List"/></h1>
             </div>
             <div class="content">
-                <form:form name="personList" action="/personController" method="GET">
+                <form:form name="personList" action="/person" method="GET">
                     <spring:message code="lbl.view.person.list" text="View Person List by:" />
                     <select name="list">
                         <option value="1" checked><spring:message code="lbl.gwa" text="GWA" />
