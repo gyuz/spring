@@ -9,43 +9,18 @@
         http://www.springframework.org/schema/context/spring-context-3.0.xsd
         http://www.springframework.org/schema/mvc
         http://www.springframework.org/schema/mvc/spring-mvc.xsd">
-      
+    
+    <context:component-scan base-package="crud.core.dao"/>  
+    <context:component-scan base-package="crud.core.service"/>
+    <context:component-scan base-package="crud.core.model"/>
+    
+    <mvc:annotation-driven/>
     <mvc:resources mapping="/js/**" location="/js/"/>
     <mvc:resources mapping="/css/**" location="/css/"/>
     <mvc:resources mapping="/favicon.ico" location="/favicon.ico" />
     
     <import resource="data-source-cfg.xml"/>
     <import resource="transaction-cfg.xml"/>
-	
-    <bean id="personDao" class="crud.core.dao.PersonDao">
-         <property name="sessionFactory" ref="sessionFactory" />
-    </bean>
-    <bean id="roleDao" class="crud.core.dao.RoleDao">
-         <property name="sessionFactory" ref="sessionFactory" />
-    </bean>
-    <bean id="contactDao" class="crud.core.dao.ContactDao">
-         <property name="sessionFactory" ref="sessionFactory" />
-    </bean>
-     
-    <bean id="person" class="crud.core.model.Person" lazy-init="true" />
-    <bean id="role" class="crud.core.model.Role" lazy-init="true" />
-    <bean id="file" class="crud.core.model.FileUpload" lazy-init="true" />
-    <bean id="contact" class="crud.core.model.Contact" lazy-init="true" />  
-    <bean id="personDto" class="crud.core.model.PersonDto" scope="prototype"/>
-    <bean id="roleDto" class="crud.core.model.RoleDto" />   
-    <bean id="fileDto" class="crud.core.model.FileUploadDto" />    
-    
-    <bean id="personOperations" class="crud.core.service.PersonOperations" autowire="byType">
-        <property name="crudInterface" ref="personDao"/>
-    </bean>
-    <bean id="roleOperations" class="crud.core.service.RoleOperations" autowire="byType">
-        <property name="crudInterface" ref="roleDao"/>
-    </bean>
-    <bean id="contactOperations" class="crud.core.service.ContactOperations" autowire="byType">
-         <property name="crudInterface" ref="contactDao"/>
-    </bean>
-    <bean id="dataParser" class="crud.core.service.DataParser" lazy-init="true"/>
-    <bean id="fileOperations" class="crud.core.service.FileOperations" lazy-init="true" autowire="byType" />
 
     <bean name="/role" class="crud.app.RoleController" autowire="byType"/>
     <bean name="/roleSave" class="crud.app.RoleSaveController"  autowire="byType" />

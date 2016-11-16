@@ -5,7 +5,9 @@ import java.util.Map;
 import java.util.ArrayList;
 import java.util.HashMap;
 import org.joda.time.LocalDate;
+import org.springframework.stereotype.Component;
 
+@Component
 public class PersonDto{
     private int id;
     private String firstName;

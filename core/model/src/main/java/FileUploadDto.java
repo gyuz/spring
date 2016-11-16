@@ -1,7 +1,9 @@
 package crud.core.model;
 
 import org.springframework.web.multipart.MultipartFile;
+import org.springframework.stereotype.Component;
 
+@Component
 public class FileUploadDto{
 	
 	MultipartFile file;

@@ -16,17 +16,33 @@ import java.util.Map;
 import java.util.HashMap;
 import java.util.Collections;
 import org.joda.time.LocalDate;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Propagation;
+import org.springframework.transaction.annotation.Transactional;
+import org.springframework.context.annotation.Scope;
 
+@Service
 public class PersonOperations extends GenericServiceImpl<Person> implements PersonService {   
     private PersonInterface personDao;
     private Person person;
     private PersonDto personDto;
     private ContactService contactOps;
 
+    @Autowired
+    public PersonOperations(
+            @Qualifier("personDao") CrudInterface<Person> genericDao) {
+        super(genericDao);
+        this.personDao = (PersonInterface) genericDao;
+    }
+
     public PersonDto getPersonDto() {
         return personDto;
     }
     
+    @Autowired
+    @Scope("prototype")
     public void setPersonDto(PersonDto personDto) {
         this.personDto = personDto;
     }
@@ -51,10 +67,12 @@ public class PersonOperations extends GenericServiceImpl<Person> implements Pers
         return contactOps;
     } 
     
+    @Autowired
     public void setContactService(ContactService contactOps) {
         this.contactOps = contactOps;
     }
     
+    @Transactional(propagation = Propagation.REQUIRED, readOnly = true)
     public boolean idExist(int id) {
        person = personDao.getPersonById(id);
        if (person != null) {
@@ -64,6 +82,7 @@ public class PersonOperations extends GenericServiceImpl<Person> implements Pers
        return false;     
     }
     
+    @Transactional(propagation = Propagation.REQUIRED)
     public void delete(int id) {
         person = personDao.getPersonById(id);
         personDao.delete(person);
@@ -132,6 +151,7 @@ public class PersonOperations extends GenericServiceImpl<Person> implements Pers
         return false;  
     }    
     
+    @Transactional(propagation = Propagation.REQUIRED, readOnly = true)
     public boolean isDuplicate(String firstName, String lastName, String middleName){
         List<Person> personList = personDao.getList("Person where name.firstName = '"+firstName.toUpperCase()+"' AND name.lastName='"+lastName.toUpperCase()+"' AND name.middleName='"+middleName.toUpperCase()+"'"); 
        if(personList.isEmpty()) {
@@ -148,6 +168,7 @@ public class PersonOperations extends GenericServiceImpl<Person> implements Pers
         return titleList;
     }  
     
+    @Transactional(propagation = Propagation.REQUIRED, readOnly = true)
     public PersonDto printPersonList(int listChoice, int order){
        List<Person> personList = new ArrayList<Person>();
        personDto = new PersonDto();
@@ -204,6 +225,7 @@ public class PersonOperations extends GenericServiceImpl<Person> implements Pers
        return personDto;
     }
 
+    @Transactional(propagation = Propagation.REQUIRED, readOnly = true)
     public boolean addRole(Role role){
         if(person.getRoles().contains(role)) { 
             return false;
@@ -213,10 +235,12 @@ public class PersonOperations extends GenericServiceImpl<Person> implements Pers
         return true;
     }
 
+    @Transactional(propagation = Propagation.REQUIRED)
     public void deleteRole(Role role){
         person.getRoles().remove(role);    
     }
 
+    @Transactional(propagation = Propagation.REQUIRED, readOnly = true)
     public boolean roleExistInSet(int roleId){
         Set<Role> roleSet = person.getRoles();
         for(Role r : roleSet){
@@ -227,6 +251,7 @@ public class PersonOperations extends GenericServiceImpl<Person> implements Pers
         return false; 
     }
 
+    @Transactional(propagation = Propagation.REQUIRED, readOnly = true)
     public void printPersonRoleList(){
         Set<Role> roleSet = person.getRoles();
         List roleIds = new ArrayList();
@@ -243,6 +268,7 @@ public class PersonOperations extends GenericServiceImpl<Person> implements Pers
         return person.getContacts().contains(contact);
     }
 
+    @Transactional(propagation = Propagation.REQUIRED)
     public boolean addContact(String type, String detail){
         contactOps.setContactDetails(type, detail, person);
         Contact contact = contactOps.getContact();
@@ -254,6 +280,7 @@ public class PersonOperations extends GenericServiceImpl<Person> implements Pers
         return true;
     } 
     
+    @Transactional(propagation = Propagation.REQUIRED)
     public boolean updateContact(String detail){
         Contact contact = contactOps.getContact();
         person.getContacts().remove(contact);
@@ -267,12 +294,14 @@ public class PersonOperations extends GenericServiceImpl<Person> implements Pers
         return true;
     }
 
+    @Transactional(propagation = Propagation.REQUIRED)
     public void deleteContact(){
         Contact contact = contactOps.getContact();
         person.getContacts().remove(contact);
         contactOps.delete(contact); 
     }
 
+    @Transactional(propagation = Propagation.REQUIRED, readOnly = true)
     public boolean contactIdExist(int contactId){
         Set<Contact> contactSet = person.getContacts();
         for(Contact c : contactSet){
@@ -292,6 +321,7 @@ public class PersonOperations extends GenericServiceImpl<Person> implements Pers
         return typeList; 
     }  
     
+    @Transactional(propagation = Propagation.REQUIRED, readOnly = true)
     public void printContactList(){
         Set<Contact> contactSet = person.getContacts();
         List contactIds = new ArrayList();

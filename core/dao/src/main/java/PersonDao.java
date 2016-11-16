@@ -5,9 +5,11 @@ import org.hibernate.Session;
 import org.hibernate.Transaction;
 import org.hibernate.Criteria;
 import org.hibernate.criterion.Order;
+import org.springframework.stereotype.Repository;
 import java.util.Date;
 import java.util.List;
 
+@Repository
 public class PersonDao extends CrudImpl<Person> implements PersonInterface {
     public PersonDao(){ 
     }   

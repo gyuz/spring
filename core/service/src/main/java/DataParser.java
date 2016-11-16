@@ -2,7 +2,9 @@ package crud.core.service;
 
 import org.joda.time.LocalDate;
 import org.joda.time.format.DateTimeFormat;
+import org.springframework.stereotype.Service;
 
+@Service
 public class DataParser{
      public int stringToInt(String value){
         int n = 0;

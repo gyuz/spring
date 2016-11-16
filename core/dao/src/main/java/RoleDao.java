@@ -3,7 +3,9 @@ package crud.core.dao;
 import crud.core.model.Role;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
+import org.springframework.stereotype.Repository;
 
+@Repository
 public class RoleDao extends CrudImpl<Role> implements RoleInterface {   
     public RoleDao(){  
     }  

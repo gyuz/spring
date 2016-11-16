@@ -8,11 +8,15 @@ import java.io.FileOutputStream;
 import java.io.BufferedOutputStream;
 import java.io.File;
 import java.io.IOException;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
+@Service
 public class FileOperations implements FileService {
    private FileUploadDto fileDto;
    private FileUpload file;
    
+   @Autowired
    public void setFileDto(FileUploadDto fileDto){
         this.fileDto = fileDto;
    }
