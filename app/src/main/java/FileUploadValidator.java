@@ -2,9 +2,10 @@ package crud.app;
 
 import org.springframework.validation.Errors;
 import org.springframework.validation.Validator;
-
+import org.springframework.stereotype.Component;
 import crud.core.model.FileUploadDto;
 
+@Component
 public class FileUploadValidator implements Validator{
 
 	@Override

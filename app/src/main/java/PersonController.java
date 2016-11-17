@@ -2,10 +2,15 @@ package crud.app;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.ServletException;
-import java.io.IOException;
-import org.springframework.web.servlet.ModelAndView;
-import org.springframework.web.servlet.mvc.SimpleFormController;
+import org.springframework.validation.BindingResult;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.apache.log4j.Logger;
 import crud.core.service.PersonService;
 import crud.core.service.RoleService;
 import crud.core.service.DataParser;
@@ -14,43 +19,48 @@ import crud.core.model.RoleDto;
 import java.util.List;
 import java.util.ArrayList;
 
-@SuppressWarnings("deprecation")
-public class PersonController extends SimpleFormController {
+@Controller
+public class PersonController {
 	private PersonService personOps;
 	private RoleService roleOps;
 	private DataParser dataParser;
 	private PersonDto personDto;
 	private RoleDto roleDto;
+	private static final Logger logger = Logger.getLogger(PersonController.class);
+    private RolePersonValidator personValidator;
 
-	public PersonController() {
-		setCommandClass(PersonDto.class);
-		setCommandName("personDto");
-	}
-
+    @Autowired
 	public void setPersonService(PersonService personOps) {
 		this.personOps = personOps;
 	}
 	
+	@Autowired
 	public void setPersonDto(PersonDto personDto) {
 	    this.personDto = personDto;
 	}
 	
+	@Autowired
 	public void setRoleService(RoleService roleOps) {
 		this.roleOps = roleOps;
 	}
 	
+	@Autowired
 	public void setRoleDto(RoleDto roleDto) {
 	    this.roleDto = roleDto;
 	}
 	
+	@Autowired
 	public void setDataParser(DataParser dataParser) {
 	    this.dataParser = dataParser;
 	}
 	
-	@Override
-    public ModelAndView handleRequest(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
-        ModelAndView mav = new ModelAndView("PersonDetails");
+	@Autowired
+	public void setRolePersonValidator(RolePersonValidator personValidator){
+	    this.personValidator = personValidator;
+	}
+	
+	@RequestMapping(value = "/person", method = RequestMethod.GET) 
+    public String personRedirect(HttpServletRequest request, Model model) {
         String action = request.getParameter("action");
         String list = request.getParameter("list");
         String order = request.getParameter("order");
@@ -62,38 +72,131 @@ public class PersonController extends SimpleFormController {
             if(id != 0){
                 if(!personOps.idExist(id)){
                     errMsgs.add("ID#"+id+" does not exist!");
-                    mav.addObject("errMsgs", errMsgs);
-                    mav.setViewName("PersonMain");   
+                    model.addAttribute("errMsgs", errMsgs);
+                    return "PersonMain";   
                 } else {
                     personDto = personOps.getPersonDto();
-                    mav.addObject("personDto", personDto);
+                    model.addAttribute("list", list);
+                    model.addAttribute("order", order);
+                    model.addAttribute("personDto", personDto);
                 }
             } else {
                 errMsgs.add("Enter ID number to search");
-                mav.addObject("errMsgs", errMsgs);
-                mav.setViewName("PersonMain"); 
+                model.addAttribute("errMsgs", errMsgs);
+                return "PersonMain"; 
             }  
         } else if ("LIST".equals(action) || "DELETE".equals(action)) {
             if("DELETE".equals(action)){
                 id = dataParser.stringToInt(request.getParameter("personId"));
                 personOps.delete(id);  
                 successMsgs.add("Successfully deleted Person ID#"+id);
-                mav.addObject("successMsgs", successMsgs); 
+                model.addAttribute("successMsgs", successMsgs); 
             }
-            personDto = personOps.printPersonList(dataParser.stringToInt(list), dataParser.stringToInt(order));
-            mav.addObject("personDto", personDto);  
-            mav.setViewName("PersonList");    
-        }     
-        
-        if(errMsgs.isEmpty() && "CREATE".equals(action) || "SEARCH".equals(action)){
-            List titleList = personOps.printTitleList();
-            List contactTypes = personOps.printTypeList();
-            roleDto = roleOps.printRoleList();
-            mav.addObject("titles", titleList);
-            mav.addObject("typeList", contactTypes); 
-            mav.addObject("roleDto", roleDto);   
+            
+            model.addAttribute("list", list);
+            model.addAttribute("order", order);
+            model.addAttribute("personDto", this.personOps.printPersonList(dataParser.stringToInt(list), dataParser.stringToInt(order)));  
+            return "PersonList";   
         } 
+        return "PersonDetails";
+    }
+    
+    @RequestMapping(value = "/personSave", method = RequestMethod.POST) 
+    public String saveChanges(HttpServletRequest request, Model model, @ModelAttribute("personDto") PersonDto personDto, BindingResult result){
+        personValidator.validate(personDto, result);
+        if(!result.hasErrors()){ 
+            List errMsgs = new ArrayList();
+	        String[] deletedContacts = request.getParameterValues("contactsDeleted");
+	        String[] deletedRoles = request.getParameterValues("rolesDeleted");
+	        List<String> updatedRoleIds = personDto.getPersonRoleIds();
+	        List<String> updatedRoleNames = personDto.getPersonRoleNames();
+	        List<String> updatedContactIds = personDto.getPersonContactIds();
+	        List<String> updatedContactTypes = personDto.getPersonContactTypes();
+	        List<String> updatedContactDetails = personDto.getPersonContactDetails();
+            int id = dataParser.stringToInt(request.getParameter("id"));
         
-        return mav;
+            if(id != 0) { 
+                if(deletedRoles != null){
+	                for(String r: deletedRoles) {
+	                    int roleId = dataParser.stringToInt(r);
+	                    if(roleId != 0){
+                             if (roleOps.idExist(roleId) && personOps.roleExistInSet(roleId)) {
+                                personOps.deleteRole(roleOps.getRole());
+                             }
+                        }
+                    }
+	            }
+	            
+	            if(deletedContacts != null){
+	                for(String r: deletedContacts) {
+	                    int contactId = dataParser.stringToInt(r);
+	                    if(contactId != 0){
+                            if(personOps.contactIdExist(contactId)){
+                                personOps.deleteContact();
+                            } 
+                        }
+                    }
+	            }
+	        }
+	        
+	        personOps.saveDetails(dataParser.stringToDate(personDto.getBirthDate()), dataParser.stringToDate(personDto.getDateHired()), personDto);
+	            
+	        if(!updatedRoleIds.isEmpty()){
+	            for(int i = 0; i<updatedRoleNames.size(); i++){
+                    if(!updatedRoleNames.get(i).equals("") && updatedRoleIds.get(i).equals("")){
+                        if(!personOps.addRole(roleOps.getRoleByName(updatedRoleNames.get(i)))){
+                           errMsgs.add(updatedRoleNames.get(i) + " role already exist for this person");
+                           logger.error(updatedRoleNames.get(i) + " role already exist for this person", new Exception("PersonRole"));
+                        }
+                    }
+                }    
+            }
+            
+            if(!updatedContactIds.isEmpty()){
+	            for(int i = 0; i<updatedContactIds.size(); i++){
+	                String contactType = updatedContactTypes.get(i);
+	                String details = updatedContactDetails.get(i);
+	                if(updatedContactIds.get(i).equals("")){
+                        if(!contactType.equals("0")){
+                            if(!personOps.addContact(contactType, details)){
+                                errMsgs.add("Add Contact: " + contactType + " - " + details + " failed. Contact already exist!");
+                                logger.error(contactType + " - " + details + " contact already exist for this person", new Exception("PersonContact"));
+                            } 
+                        }  
+                    } else {
+                        if(!contactType.equals("0")) {
+                            if(personOps.contactIdExist(dataParser.stringToInt(updatedContactIds.get(i)))){
+                                if(!personOps.updateContact(details)){
+                                    errMsgs.add("Update Contact: " + contactType + " - " + details + " failed. Contact already exist!");
+                                    logger.error(contactType + " - " + details + " contact already exist for this person", new Exception("PersonContact"));
+                                } 
+                            }
+                        }
+                    }
+                }    
+            }
+            
+            personOps.savePerson(); 
+            personOps.entityToDto(); 
+            model.addAttribute("errMsgs", errMsgs);   
+        }
+        
+        model.addAttribute("personDto", personDto);  
+        return "PersonDetails";   
+    } 
+    
+    @ModelAttribute("titles")
+    public List<String> titleList(){
+        return personOps.printTitleList();
+    }
+    
+    @ModelAttribute("typeList")
+    public List<String> typeList(){
+        return personOps.printTypeList();
+    }
+    
+    @ModelAttribute("roleDto")
+    public RoleDto masterRoleList(){
+        return roleOps.printRoleList();
     }
 }

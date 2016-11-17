@@ -121,6 +121,7 @@ public class PersonOperations extends GenericServiceImpl<Person> implements Pers
         printPersonRoleList();
     }
     
+    @Transactional(propagation = Propagation.REQUIRED)
     public void savePerson(){
         add(person); 
     }

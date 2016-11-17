@@ -10,9 +10,8 @@
         http://www.springframework.org/schema/mvc
         http://www.springframework.org/schema/mvc/spring-mvc.xsd">
     
-    <context:component-scan base-package="crud.core.dao"/>  
-    <context:component-scan base-package="crud.core.service"/>
-    <context:component-scan base-package="crud.core.model"/>
+    <context:component-scan base-package="crud.core"/>
+    <context:component-scan base-package="crud.app"/>
     
     <mvc:annotation-driven/>
     <mvc:resources mapping="/js/**" location="/js/"/>
@@ -21,26 +20,8 @@
     
     <import resource="data-source-cfg.xml"/>
     <import resource="transaction-cfg.xml"/>
-
-    <bean name="/role" class="crud.app.RoleController" autowire="byType"/>
-    <bean name="/roleSave" class="crud.app.RoleSaveController"  autowire="byType" />
-    <bean name="/person" class="crud.app.PersonController" autowire="byType"/>
-    <bean name="/personSave" class="crud.app.PersonSaveController"  autowire="byType" p:formView="PersonDetails" p:successView="PersonDetails">
-        <property name="validator">
-			<bean class="crud.app.RolePersonValidator" />
-		</property>
-    </bean>
-    <bean name="/locale" class="crud.app.LocaleController" />
-    <bean name="/redirect" class="crud.app.RedirectController" />
-    
-    <!--bean class="org.springframework.web.servlet.mvc.support.ControllerClassNameHandlerMapping" /-->
     
     <bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver"/>
-	<bean name="/fileUpload" class="crud.app.FileUploadController" autowire="byType" p:formView="index" p:successView="index">
-		<property name="validator">
-			<bean class="crud.app.FileUploadValidator" />
-		</property>
-	</bean>
 
     <bean id="localeResolver"
 		class="org.springframework.web.servlet.i18n.SessionLocaleResolver">

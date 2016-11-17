@@ -26,6 +26,7 @@ public class FileOperations implements FileService {
    }   
    
    public boolean save(MultipartFile multipartFile, String saveDirectory, String fileName){
+		file = new FileUpload();
 		file.setFile(multipartFile);
 		
 		if(! new File(saveDirectory).exists()) {

@@ -3,6 +3,7 @@ package crud.app;
 import org.springframework.validation.Errors;
 import org.springframework.validation.ValidationUtils;
 import org.springframework.validation.Validator;
+import org.springframework.stereotype.Component;
 import org.apache.commons.validator.routines.EmailValidator;
 import org.joda.time.LocalDate;
 import org.apache.log4j.Logger;
@@ -11,6 +12,7 @@ import crud.core.model.PersonDto;
 import crud.core.model.RoleDto;
 import crud.core.service.DataParser;
 
+@Component
 public class RolePersonValidator implements Validator {
     private static final Logger logger = Logger.getLogger(RolePersonValidator.class);
     

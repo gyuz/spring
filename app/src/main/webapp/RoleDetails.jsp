@@ -27,6 +27,18 @@
                 </c:if>
             </div>
             <div clas="header">
+                <div>
+                    <form:form action="/locale" method="GET">
+                        <input type="hidden" name="page" value="role"/>
+                        <spring:message code="lbl.lang" text="LANGUAGE" /> : 
+                        <button type="submit" class="lang" name="lang" value="en">
+                            <spring:message code="lbl.en" text="ENGLISH" />
+                        </button> | 
+                        <button type ="submit" class="lang" name="lang" value="ch">
+                            <spring:message code="lbl.ch" text="CHINESE" />
+                        </button>
+                    </form:form>
+                </div>
                 <h1><spring:message code="lbl.role" text="ROLE" /></h1>
             </div>
             <div class="content">
@@ -44,7 +56,10 @@
                               <td style="display:none;"><input type="text" id="${roleId}" name="roleIdList" value="${roleId}" readonly/></td>
                               <td style="width:150px">${roleId}</td>
                               <td><input type="text" name="roleNameList" value="${roleDto.roleNameList.get(ctr.index)}"/></td>
-                              <td><button type="button" onclick="deleteRow(this, 'roles', 'roleDetails', '${roleId}')"><spring:message code="lbl.delete" text="DELETE" /></button></td>
+                              <td>
+                                <button type="button" onclick="deleteRow(this, 'roles', 'roleDetails', '${roleId}')"><spring:message code="lbl.delete" text="DELETE" />
+                                </button>
+                              </td>
                             </tr>
                         </c:forEach>
                     </table>

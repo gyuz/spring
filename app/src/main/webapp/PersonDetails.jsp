@@ -30,10 +30,36 @@
             <div clas="header">
                 <c:choose>
                     <c:when test="${not empty personDto.id}">
+                        <div>
+                            <form:form action="/locale" method="GET">
+                                <input type="hidden" name="page" value="person"/>
+                                <input type="hidden" name="action" value="SEARCH"/>
+                                <input type="hidden" name="personId" value="${personDto.id}">
+                                <spring:message code="lbl.lang" text="LANGUAGE" /> : 
+                                <button type="submit" class="lang" name="lang" value="en">
+                                    <spring:message code="lbl.en" text="ENGLISH" />
+                                </button> | 
+                                <button type ="submit" class="lang" name="lang" value="ch">
+                                    <spring:message code="lbl.ch" text="CHINESE" />
+                                </button>
+                            </form:form>
+                        </div>
                         <h1><spring:message code="lbl.view.person" text="VIEW PERSON" /></h1>
                         <c:set var="personId" value="${personDto.id}"/>
                     </c:when>
                     <c:otherwise>
+                        <div>
+                            <form:form action="/locale" method="GET">
+                                <input type="hidden" name="page" value="PersonDetails"/>
+                                <spring:message code="lbl.lang" text="LANGUAGE" /> : 
+                                <button type="submit" class="lang" name="lang" value="en">
+                                    <spring:message code="lbl.en" text="ENGLISH" />
+                                </button> | 
+                                <button type ="submit" class="lang" name="lang" value="ch">
+                                    <spring:message code="lbl.ch" text="CHINESE" />
+                                </button>
+                            </form:form>
+                        </div>
                         <h1><spring:message code="lbl.create.person" text="CREATE PERSON" /></h1>
                         <c:set var="personId" value="0"/>
                     </c:otherwise>
@@ -242,8 +268,8 @@
              <div>
                  <div>
                      <form:form action="/person" method="GET">
-                            <input type="hidden" name="list" value="4">
-                            <input type="hidden" name="order" value="1">
+                            <input type="hidden" name="list" value="${list}">
+                            <input type="hidden" name="order" value="${order}">
                             <button type="submit" name="action" value="LIST"><spring:message code="lbl.go.list" text="GO TO LIST" /></button>
                      </form:form>
                  </div>

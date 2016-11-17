@@ -29,9 +29,7 @@
                  <form:form action="/redirect" method="GET">
                     <button type=submit name="view" value="PersonMain" size="20"><spring:message code="lbl.person" text="PERSON" /></button>
                 </form:form> 
-                <form:form action="role" method="GET">
-                    <button type="submit" size="20"><spring:message code="lbl.role" text="ROLE" /></button>
-                </form:form>
+                <a href="<c:url value='/role' />"><button type="button" size="20"><spring:message code="lbl.role" text="ROLE" /></button></a>
             </div> 
             <div>
                 <h3><spring:message code="lbl.fileupload" text="File Upload:" /></h3>

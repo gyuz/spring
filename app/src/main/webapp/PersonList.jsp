@@ -18,20 +18,57 @@
                 </c:if>
             </div>
             <div clas="header">
+                <div>
+                    <form:form action="/locale" method="GET">
+                        <input type="hidden" name="page" value="person"/>
+                        <input type="hidden" name="action" value="LIST"/>
+                        <input type="hidden" name="list" value="${list}">
+                        <input type="hidden" name="order" value="${order}">
+                        <spring:message code="lbl.lang" text="LANGUAGE" /> : 
+                        <button type="submit" class="lang" name="lang" value="en">
+                            <spring:message code="lbl.en" text="ENGLISH" />
+                        </button> | 
+                        <button type ="submit" class="lang" name="lang" value="ch">
+                            <spring:message code="lbl.ch" text="CHINESE" />
+                        </button>
+                    </form:form>
+                </div>
                 <h1><spring:message code="lbl.personlist.hdr" text="Person List"/></h1>
             </div>
             <div class="content">
                 <form:form name="personList" action="/person" method="GET">
                     <spring:message code="lbl.view.person.list" text="View Person List by:" />
                     <select name="list">
-                        <option value="1" checked><spring:message code="lbl.gwa" text="GWA" />
+                        <c:choose>
+                            <c:when test="${list == 1}">
+                                <option value="1" checked><spring:message code="lbl.gwa" text="GWA" />
+                            </c:when>
+                            <c:when test="${list == 2}">
+                                <option value="2" checked><spring:message code="lbl.lastname" text="LAST NAME" />
+                            </c:when>
+                            <c:when test="${list == 3}">
+                                <option value="3" checked><spring:message code="lbl.datehired" text="DATE HIRED" />
+                            </c:when>
+                            <c:when test="${list == 4}">
+                                <option value="4" checked><spring:message code="lbl.personid" text="PERSON ID" />
+                            </c:when>
+                        </c:choose>
+                        <option value="1"><spring:message code="lbl.gwa" text="GWA" />
                         <option value="2"><spring:message code="lbl.lastname" text="LAST NAME" />
                         <option value="3"><spring:message code="lbl.datehired" text="DATE HIRED" />
                         <option value="4"><spring:message code="lbl.personid" text="PERSON ID" />
                     </select>
                     <spring:message code="lbl.sort" text="Sort by:" />  
                     <select name="order">
-                        <option value="1" checked><spring:message code="lbl.asc" text="Ascending" />
+                        <c:choose>
+                            <c:when test="${order == 1}">
+                                <option value="1" checked><spring:message code="lbl.asc" text="Ascending" />
+                            </c:when> 
+                            <c:when test="${order == 2}">
+                                <option value="2" checked><spring:message code="lbl.desc" text="Descending" />
+                            </c:when> 
+                        </c:choose>
+                        <option value="1"><spring:message code="lbl.asc" text="Ascending" />
                         <option value="2"><spring:message code="lbl.desc" text="Descending" />
                     </select>
                     
