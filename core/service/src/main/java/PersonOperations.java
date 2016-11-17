@@ -107,10 +107,10 @@ public class PersonOperations extends GenericServiceImpl<Person> implements Pers
         personDto.setBrgy(person.getAddress().getBrgy());
         personDto.setCity(person.getAddress().getCity());
         personDto.setZip(person.getAddress().getZip());
-        personDto.setBirthDate(person.getBirthDate().toString("MM/dd/yyyy"));
+        personDto.setBirthDate(person.getBirthDate());
         personDto.setGwa(person.getGwa());
         if(person.getDateHired() != null){
-            personDto.setDateHired(person.getDateHired().toString("MM/dd/yyyy"));
+            personDto.setDateHired(person.getDateHired());
         }
         if(person.getEmployed()) {
             personDto.setEmployed('Y');
@@ -126,7 +126,7 @@ public class PersonOperations extends GenericServiceImpl<Person> implements Pers
         add(person); 
     }
     
-    public void saveDetails(LocalDate birth, LocalDate hired, PersonDto personDto){
+    public void saveDetails(PersonDto personDto){
         this.personDto = personDto;
         if(personDto.getId() == 0){
             person = new Person();
@@ -140,10 +140,10 @@ public class PersonOperations extends GenericServiceImpl<Person> implements Pers
         person.getAddress().setCity(personDto.getCity().toUpperCase().trim());
         person.getAddress().setZip(personDto.getZip());
         person.setGwa(personDto.getGwa());    
-        person.setBirthDate(birth);     
+        person.setBirthDate(personDto.getBirthDate());     
         person.setEmployed(parseEmployed(personDto.getEmployed()));     
         if(personDto.getEmployed() == 'Y' && personDto.getDateHired() != null) {
-            person.setDateHired(hired);
+            person.setDateHired(personDto.getDateHired());
         }         
     }    
    

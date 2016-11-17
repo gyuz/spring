@@ -139,7 +139,7 @@ public class PersonController {
 	            }
 	        }
 	        
-	        personOps.saveDetails(dataParser.stringToDate(personDto.getBirthDate()), dataParser.stringToDate(personDto.getDateHired()), personDto);
+	        personOps.saveDetails(personDto);
 	            
 	        if(!updatedRoleIds.isEmpty()){
 	            for(int i = 0; i<updatedRoleNames.size(); i++){

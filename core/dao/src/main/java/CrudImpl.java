@@ -13,7 +13,6 @@ public abstract class CrudImpl<T> implements CrudInterface<T> {
     private SessionFactory sessionFactory;
     
     protected Session getSession() {
-        System.out.println(sessionFactory);
         Session sess = sessionFactory.getCurrentSession();
         if (sess == null) {
             sess = sessionFactory.openSession();

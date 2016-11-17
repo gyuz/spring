@@ -111,7 +111,7 @@
                     </tr>
                     <tr>
                         <td><spring:message code="lbl.birthdate" text="BIRTH DATE" />:</td> 
-                        <td><input type="date" name="birthDate" value="${personDto.birthDate}" required placeholder="MM/DD/YYYY"></td>
+                        <td><input type="date" name="birthDate" value="${personDto.birthDate.toString('MM/dd/yyyy')}" required placeholder="MM/DD/YYYY"></td>
                         <td>
                             <font color="red"><form:errors path="birthDate"/></font>
                         </td>
@@ -152,7 +152,7 @@
                         <td>
                             <c:choose>
                                 <c:when test="${personDto.employed eq 'Y'.charAt(0)}">
-                                     <input type="date" name="dateHired" value="${personDto.dateHired}" >
+                                     <input type="date" name="dateHired" value="${personDto.dateHired.toString('MM/dd/yyyy')}" >
                                 </c:when>
                                 <c:otherwise>
                                      <input type="date" name="dateHired" placeholder="MM/DD/YYYY">

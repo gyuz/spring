@@ -10,7 +10,6 @@ import org.apache.log4j.Logger;
 import java.util.List;
 import crud.core.model.PersonDto;
 import crud.core.model.RoleDto;
-import crud.core.service.DataParser;
 
 @Component
 public class RolePersonValidator implements Validator {
@@ -23,7 +22,6 @@ public class RolePersonValidator implements Validator {
 
     @Override
     public void validate(Object command, Errors errors) {
-        DataParser dataParser = new DataParser();
         if(command instanceof PersonDto){
             PersonDto personDto = (PersonDto) command;
             List<String> updatedContactIds = personDto.getPersonContactIds();
@@ -42,11 +40,11 @@ public class RolePersonValidator implements Validator {
                 logger.error("Error in last name: "+ personDto.getLastName(), new Exception("PersonDetails"));
                 errors.rejectValue("lastName", "invalid.name");
             }
-            if(personDto.getBirthDate() == null || !validDate(dataParser.stringToDate(personDto.getBirthDate()))){
+            if(personDto.getBirthDate() == null || !validDate(personDto.getBirthDate())){
                 logger.error("Error in birth date: "+ personDto.getBirthDate(), new Exception("PersonDetails"));
                 errors.rejectValue("birthDate", "invalid.date");
             } 
-            if(!(personDto.getDateHired().equals("")) && !validDate(dataParser.stringToDate(personDto.getDateHired()))){
+            if(personDto.getDateHired() != null && !validDate(personDto.getDateHired())){
                 logger.error("Error in date hired: "+ personDto.getDateHired(), new Exception("PersonDetails"));
                 errors.rejectValue("hiredDate", "invalid.date");
             }

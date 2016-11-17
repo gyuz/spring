@@ -6,6 +6,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import org.joda.time.LocalDate;
 import org.springframework.stereotype.Component;
+import org.springframework.format.annotation.DateTimeFormat;
 
 @Component
 public class PersonDto{
@@ -18,9 +19,11 @@ public class PersonDto{
     private String city;
     private String brgy;
     private int zip;
-    private String birthDate;
+    @DateTimeFormat(pattern = "MM/dd/yyyy")
+    private LocalDate birthDate;
     private double gwa;
-    private String dateHired;
+    @DateTimeFormat(pattern = "MM/dd/yyyy")
+    private LocalDate dateHired;
     private char employed;
     private List<String> personRoleIds = new ArrayList<String>();
     private List<String> personContactIds = new ArrayList<String>();
@@ -46,7 +49,7 @@ public class PersonDto{
         return id;        
     }
 
-    public String getBirthDate() {
+    public LocalDate getBirthDate() {
         return birthDate;    
     }
 
@@ -54,7 +57,7 @@ public class PersonDto{
         return gwa;    
     }
     
-    public String getDateHired() {
+    public LocalDate getDateHired() {
         return dateHired;    
     }
     
@@ -198,7 +201,7 @@ public class PersonDto{
         this.zip = zip;   
     }
     
-    public void setBirthDate(String birthDate) {
+    public void setBirthDate(LocalDate birthDate) {
         this.birthDate = birthDate;
     }
     
@@ -206,7 +209,7 @@ public class PersonDto{
         this.gwa = gwa;    
     } 
 
-    public void setDateHired(String dateHired) {
+    public void setDateHired(LocalDate dateHired) {
         this.dateHired = dateHired;
     }  
 

@@ -7,14 +7,13 @@ import crud.core.model.Title;
 import crud.core.model.Types;
 import crud.core.model.PersonDto;
 import java.util.List;
-import org.joda.time.LocalDate;
 
 public interface PersonService extends GenericService<Person> {   
     public PersonDto getPersonDto();
     public boolean idExist(int id);
     public boolean titleExist(String title);
     public void savePerson();
-    public void saveDetails(LocalDate birth, LocalDate hired, PersonDto personDto);
+    public void saveDetails(PersonDto personDto);
     public void delete(int id);
     public void entityToDto();
     public boolean parseEmployed(char employed);
