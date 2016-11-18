@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.support.RequestContextUtils;
 import java.util.Locale;
 
@@ -16,8 +17,7 @@ import java.util.Locale;
 public class RedirectController{
 
    @RequestMapping(value = "/redirect", method = RequestMethod.GET)
-   public String redirect (HttpServletRequest request) {
-        String view = request.getParameter("view");
+   public String redirect (@RequestParam(value="view", required = true) String view) {
         return view;
     }
     

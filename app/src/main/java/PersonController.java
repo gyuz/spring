@@ -1,6 +1,5 @@
 package crud.app;
 
-import javax.servlet.http.HttpServletRequest;
 import org.springframework.validation.BindingResult;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -9,6 +8,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.apache.log4j.Logger;
 import crud.core.service.PersonService;
 import crud.core.service.RoleService;
@@ -59,15 +59,14 @@ public class PersonController {
 	}
 	
 	@RequestMapping(value = "/person", method = RequestMethod.GET) 
-    public String personRedirect(HttpServletRequest request, Model model) {
-        String action = request.getParameter("action");
-        String list = request.getParameter("list");
-        String order = request.getParameter("order");
-        int id = 0;
+    public String personRedirect(@RequestParam(value="action", required = true) String action,
+                                 @RequestParam(value="list", required = false) String list,
+                                 @RequestParam(value="order", required = false) String order,
+                                 @RequestParam(value="personId", required = false, defaultValue = "0") int  id,
+                                 Model model) {
         List errMsgs = new ArrayList();
         List successMsgs = new ArrayList();
         if ("SEARCH".equals(action)) {
-            id = dataParser.stringToInt(request.getParameter("personId"));
             if(id != 0){
                 if(!personOps.idExist(id)){
                     errMsgs.add("ID#"+id+" does not exist!");
@@ -86,7 +85,6 @@ public class PersonController {
             }  
         } else if ("LIST".equals(action) || "DELETE".equals(action)) {
             if("DELETE".equals(action)){
-                id = dataParser.stringToInt(request.getParameter("personId"));
                 personOps.delete(id);  
                 successMsgs.add("Successfully deleted Person ID#"+id);
                 model.addAttribute("successMsgs", successMsgs); 
@@ -101,18 +99,20 @@ public class PersonController {
     }
     
     @RequestMapping(value = "/personSave", method = RequestMethod.POST) 
-    public String saveChanges(HttpServletRequest request, Model model, @ModelAttribute("personDto") PersonDto personDto, BindingResult result){
+    public String saveChanges(@RequestParam(value="contactsDeleted", required = false) String[] deletedContacts,
+                              @RequestParam(value="rolesDeleted", required = false) String[] deletedRoles,
+                              @RequestParam(value="id", required = false, defaultValue = "0") int  id,
+                              @ModelAttribute("personDto") PersonDto personDto, 
+                              BindingResult result,
+                              Model model){
         personValidator.validate(personDto, result);
         if(!result.hasErrors()){ 
             List errMsgs = new ArrayList();
-	        String[] deletedContacts = request.getParameterValues("contactsDeleted");
-	        String[] deletedRoles = request.getParameterValues("rolesDeleted");
 	        List<String> updatedRoleIds = personDto.getPersonRoleIds();
 	        List<String> updatedRoleNames = personDto.getPersonRoleNames();
 	        List<String> updatedContactIds = personDto.getPersonContactIds();
 	        List<String> updatedContactTypes = personDto.getPersonContactTypes();
 	        List<String> updatedContactDetails = personDto.getPersonContactDetails();
-            int id = dataParser.stringToInt(request.getParameter("id"));
         
             if(id != 0) { 
                 if(deletedRoles != null){

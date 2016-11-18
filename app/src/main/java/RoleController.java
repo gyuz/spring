@@ -1,7 +1,5 @@
 package crud.app;
 
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -9,6 +7,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import crud.core.service.RoleService;
 import crud.core.model.RoleDto;
 import crud.core.service.DataParser;
@@ -45,7 +44,7 @@ public class RoleController {
     }
     
     @RequestMapping(value = "/roleSave", method = RequestMethod.POST) 
-    public String saveChanges(@ModelAttribute("roleDto") RoleDto roleDtoUpdated, HttpServletRequest request, Model model){
+    public String saveChanges(@ModelAttribute("roleDto") RoleDto roleDtoUpdated, @RequestParam(value="rolesDeleted", required = false) String[] deletedRoles , Model model){
         List errMsgs = new ArrayList();
 	    List successMsgs = new ArrayList();
 	    List success = new ArrayList();
@@ -54,7 +53,6 @@ public class RoleController {
 	    List<String> updatedRoles = roleDtoUpdated.getRoleNameList();
 	    List<String> dbRoles = roleDto.getRoleNameList();
 	    List<String> dbIds = roleDto.getRoleIdList();
-	    String[] deletedRoles = request.getParameterValues("rolesDeleted");
 	    
 	    if(deletedRoles != null){
 	        for(String r: deletedRoles) {
