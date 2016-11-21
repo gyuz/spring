@@ -201,11 +201,7 @@
                 <dialect>org.hibernate.dialect.PostgreSQLDialect</dialect>
                 <connection.driver>org.postgresql.Driver</connection.driver>
                 <connection.username>ecc</connection.username>
-                <connection.password>ex1stgl0bal</connection.password> 
-                <max.pool.size>5</max.pool.size>
-                <min.pool.size>2</min.pool.size>
-                <max.statements>5</max.statements>
-                <test.connection>true</test.connection>           
+                <connection.password>ex1stgl0bal</connection.password>        
             </properties>
         </profile>
     </profiles>

@@ -86,21 +86,18 @@
 	</dependencies>
 
 	<build>
+	    <resources>
+	        <resource>
+	            <directory>${basedir}/src/main/resources/</directory>
+	            <filtering>true</filtering>
+            </resource>
+        </resources>
 		<plugins>
 		    <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-war-plugin</artifactId>
                 <configuration>
-                    <webResources>
-                        <resource>
-                            <directory>${basedir}/src/main/webapp/WEB-INF/</directory>
-                            <filtering>true</filtering>
-                            <includes>
-                                <include>data-source-cfg.xml</include>
-                            </includes>
-                            <targetPath>WEB-INF</targetPath>
-                        </resource>
-                    </webResources>
+                    <failOnMissingWebXml>false</failOnMissingWebXml>
                 </configuration>
             </plugin>
 			<plugin>
