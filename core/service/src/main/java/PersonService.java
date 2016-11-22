@@ -11,6 +11,7 @@ import java.util.List;
 public interface PersonService extends GenericService<Person> {   
     public PersonDto getPersonDto();
     public boolean idExist(int id);
+    public Person findBySso(int id);
     public boolean titleExist(String title);
     public void savePerson();
     public void saveDetails(PersonDto personDto);

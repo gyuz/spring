@@ -34,6 +34,7 @@ import com.mchange.v2.c3p0.ComboPooledDataSource;
 @Configuration
 @ComponentScan(basePackages = {"crud.core", "crud.app"})
 @PropertySource("classpath:datasource.properties")
+@Import({ SecurityConfig.class })
 @EnableTransactionManagement
 public class AppConfig extends WebMvcConfigurerAdapter {
     @Value("${connection.driver}")
@@ -77,8 +78,7 @@ public class AppConfig extends WebMvcConfigurerAdapter {
         return builder.buildSessionFactory();
     }
     
-    private Properties getHibernateProperties() {
-        System.out.println("PROP " + dialect + " " + cacheResource + " " + cacheFactory);  
+    private Properties getHibernateProperties() {  
         Properties prop = new Properties();
         prop.put("hibernate.format_sql", "true");
         prop.put("hibernate.show_sql", "true");
@@ -95,7 +95,6 @@ public class AppConfig extends WebMvcConfigurerAdapter {
 	@Bean(name = "dataSource")
 	public ComboPooledDataSource dataSource() {
 		try {
-		    System.out.println("DATASOURCE " + driverClass + " " + jdbcUrl + " " + user + " " + pass); 
 			ComboPooledDataSource ds = new ComboPooledDataSource();
 			//ds.setDriverClass("org.postgresql.Driver");
 			ds.setDriverClass(driverClass);

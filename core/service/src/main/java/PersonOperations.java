@@ -82,6 +82,10 @@ public class PersonOperations extends GenericServiceImpl<Person> implements Pers
        return false;     
     }
     
+    public Person findBySso(int id){
+        return personDao.getPersonById(id);
+    }
+    
     @Transactional(propagation = Propagation.REQUIRED)
     public void delete(int id) {
         person = personDao.getPersonById(id);

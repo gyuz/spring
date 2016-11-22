@@ -74,6 +74,12 @@ public class Person implements Comparable<Person>{
     @Column(name = "TITLE")
     private Title title;
     
+    @Column( name = "PASSWORD")
+    private String password;
+    
+    @Column( name = "ACTIVE")
+    private boolean active;
+    
     public Person(){
         name = new Name();
         address = new Address();
@@ -111,6 +117,14 @@ public class Person implements Comparable<Person>{
 
     public Address getAddress(){
         return address;    
+    }
+    
+    public String getPassword(){
+        return password;    
+    }
+    
+    public boolean getActive(){
+        return active;
     }
     
     public Set<Contact> getContacts(){
@@ -159,6 +173,14 @@ public class Person implements Comparable<Person>{
 
     public void setRoles(Set roles){
         this.roles = roles;    
+    }
+    
+    public void setPassword(String password){
+        this.password = password;
+    }
+    
+    public void setActive(boolean active){
+        this.active = active;
     }
     
     public int compareTo(Person p){

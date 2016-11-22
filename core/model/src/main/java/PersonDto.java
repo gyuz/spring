@@ -18,6 +18,8 @@ public class PersonDto{
     private String street;
     private String city;
     private String brgy;
+    private String password;
+    private boolean active;
     private int zip;
     @DateTimeFormat(pattern = "MM/dd/yyyy")
     private LocalDate birthDate;
@@ -95,6 +97,14 @@ public class PersonDto{
     
     public int getZip(){
         return zip;
+    }
+    
+    public String getPassword(){
+        return password;
+    }
+    
+    public boolean getActive(){
+        return active;
     }
     
     public List<String> getPersonRoleIds(){
@@ -219,6 +229,14 @@ public class PersonDto{
     
     public void setTitle(String title) {
         this.title = title;
+    }
+    
+    public void setPassword(String password){
+        this.password = password;
+    }
+    
+    public void setActive(boolean active){
+        this.active = active;
     }
     
     public void setPersonIdList(List personIdList){
