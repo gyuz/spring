@@ -16,6 +16,16 @@
     font-size: 12px;
 }
 
+.left{
+    float: left;
+}
+
+.topright{
+    position: fixed;
+    right: 20px;
+    top: 10px;
+}
+
 .lang:hover{
     color: red;
     background: none;
@@ -96,7 +106,7 @@
 }
 
 .header{
-    position: relative;
+    /*position: relative;*/
     margin: 2px;
 }
 

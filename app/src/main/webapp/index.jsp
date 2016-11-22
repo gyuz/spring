@@ -10,7 +10,7 @@
     <body>
         <div>
             <div clas="header">
-                <div>
+                <div clas="left">
                     <form:form action="/locale" method="GET">
                         <input type="hidden" name="page" value="index"/>
                         <spring:message code="lbl.lang" text="LANGUAGE" /> : 
@@ -21,6 +21,13 @@
                             <spring:message code="lbl.ch" text="CHINESE" />
                         </button>
                     </form:form>
+                </div>
+                <div class="topright">
+	                <form action="/logout" method="post" id="logoutForm">
+		                <input type="hidden" name="${_csrf.parameterName}"
+			                value="${_csrf.token}" />
+			            <button type="submit" name="logout" class="lang"><spring:message code="lbl.logout" text="LOGOUT" /></button> 
+	                </form>
                 </div>
             </div>
             <br/><br/><br/>

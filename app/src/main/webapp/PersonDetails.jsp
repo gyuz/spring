@@ -63,7 +63,14 @@
                         <h1><spring:message code="lbl.create.person" text="CREATE PERSON" /></h1>
                         <c:set var="personId" value="0"/>
                     </c:otherwise>
-                </c:choose>       
+                </c:choose> 
+                <div class="topright">
+	                <form action="/logout" method="post" id="logoutForm">
+		                <input type="hidden" name="${_csrf.parameterName}"
+			                value="${_csrf.token}" />
+			            <button type="submit" name="logout" class="lang"><spring:message code="lbl.logout" text="LOGOUT" /></button> 
+	                </form>
+                </div>      
             </div>
             <div class="content">
                 <form:form name="personDetails" action="/personSave" method="POST" commandName="personDto">

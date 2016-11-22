@@ -33,6 +33,13 @@
                         </button>
                     </form:form>
                 </div>
+                <div class="topright">
+	                <form action="/logout" method="post" id="logoutForm">
+		                <input type="hidden" name="${_csrf.parameterName}"
+			                value="${_csrf.token}" />
+			            <button type="submit" name="logout" class="lang"><spring:message code="lbl.logout" text="LOGOUT" /></button> 
+	                </form>
+                </div>
                 <h1><spring:message code="lbl.personlist.hdr" text="Person List"/></h1>
             </div>
             <div class="content">

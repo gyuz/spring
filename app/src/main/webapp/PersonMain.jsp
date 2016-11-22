@@ -26,6 +26,13 @@
                                   <button type ="submit" class="lang" name="lang" value="ch"><spring:message code="lbl.ch" text="CHINESE" /></button>
                     </form:form>
                 </div>
+                <div class="topright">
+	                <form action="/logout" method="post" id="logoutForm">
+		                <input type="hidden" name="${_csrf.parameterName}"
+			                value="${_csrf.token}" />
+			            <button type="submit" name="logout" class="lang"><spring:message code="lbl.logout" text="LOGOUT" /></button> 
+	                </form>
+                </div>
                 <br/>
                 <h1><spring:message code="lbl.person" text="PERSON" /></h1>
             </div>   
