@@ -74,6 +74,7 @@
             </div>
             <div class="content">
                 <form:form name="personDetails" action="/personSave" method="POST" commandName="personDto">
+                <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
                 <table id="person">
                     <tr>
                         <td><spring:message code="lbl.personid" text="PERSON ID" />:</td>
@@ -244,7 +245,7 @@
                                         <td style="width: 200px;">
                                             <input type="text" name="personRoleNames" style="width: 200px;" readonly value="${personDto.personRoleNames.get(ctr.index)}" />
                                         </td>
-                                        <td style="width: 100px;"><button type="button" onclick="deleteRow(this, 'roles', 'personDetails', '${roleId}')"><spring:message code="lbl.delete" text="DELETE" /></button></td>
+                                        <td style="width: 100px;"><button type="button" onclick="deleteRow(this, 'role', 'personDetails', '${roleId}')"><spring:message code="lbl.delete" text="DELETE" /></button></td>
                                     </tr>
                                 </c:if> 
                             </c:forEach>

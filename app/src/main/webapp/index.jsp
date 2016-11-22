@@ -24,8 +24,7 @@
                 </div>
                 <div class="topright">
 	                <form action="/logout" method="post" id="logoutForm">
-		                <input type="hidden" name="${_csrf.parameterName}"
-			                value="${_csrf.token}" />
+		                <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
 			            <button type="submit" name="logout" class="lang"><spring:message code="lbl.logout" text="LOGOUT" /></button> 
 	                </form>
                 </div>
@@ -41,15 +40,16 @@
             <div>
                 <h3><spring:message code="lbl.fileupload" text="File Upload:" /></h3>
                 <form:form action="fileUpload" method="POST" commandName="fileDto" enctype="multipart/form-data" class="upload">
-                <form:errors path="*" cssClass="errorblock" element="div"/>
-                <div>
-                    <c:if test="${not empty fileName}">
-                            <div class="success"><strong>${fileName}</strong> successfully uploaded. </div>
-                    </c:if>
-                </div>
-                &nbsp&nbsp&nbsp<spring:message code="lbl.selectfile" text="Select a file to upload" /> : <input name="file"  type="file" />
-                <br/><br/>
-                &nbsp&nbsp&nbsp<button type="submit"><spring:message code="lbl.upload" text="Upload" /></button> 
+                    <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
+                    <form:errors path="*" cssClass="errorblock" element="div"/>
+                    <div>
+                        <c:if test="${not empty fileName}">
+                                <div class="success"><strong>${fileName}</strong> successfully uploaded. </div>
+                        </c:if>
+                    </div>
+                    &nbsp&nbsp&nbsp<spring:message code="lbl.selectfile" text="Select a file to upload" /> : <input name="file"  type="file" />
+                    <br/><br/>
+                    &nbsp&nbsp&nbsp<button type="submit"><spring:message code="lbl.upload" text="Upload" /></button> 
                 </form:form>
             </div>  
         </div>

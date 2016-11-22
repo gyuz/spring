@@ -18,10 +18,8 @@
 			<div class="msg">${msg}</div>
 		</c:if>
 
-		<form name='loginForm'
-			action="<c:url value='/login' />" method='POST'>
-
-			<table>
+		<form name='loginForm' action="<c:url value='/login' />" method='POST'>
+            <table>
 				<tr>
 					<td>User:</td>
 					<td><input type='text' name='username' size="20"></td>
@@ -35,10 +33,7 @@
 						value="submit" /></td>
 				</tr>
 			</table>
-
-			<input type="hidden" name="${_csrf.parameterName}"
-				value="${_csrf.token}" />
-
+			<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
 		</form>
 	</div>
 

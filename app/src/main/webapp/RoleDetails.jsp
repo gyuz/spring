@@ -50,6 +50,7 @@
             </div>
             <div class="content">
                 <form:form name="roleDetails" action="/roleSave" method="POST" commandName="roleDto">
+                    <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
                     <h3><spring:message code="lbl.rolehdr" text="ADD/UPDATE/DELETE ROLE:" /></h3>
                     <br/><br/>
                     <table id="roles">
