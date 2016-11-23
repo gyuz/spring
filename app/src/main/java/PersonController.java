@@ -100,7 +100,7 @@ public class PersonController {
     
     @RequestMapping(value = "/personSave", method = RequestMethod.POST) 
     public String saveChanges(@RequestParam(value="contactsDeleted", required = false) String[] deletedContacts,
-                              @RequestParam(value="rolesDeleted", required = false) String[] deletedRoles,
+                              @RequestParam(value="roleDeleted", required = false) String[] deletedRoles,
                               @RequestParam(value="id", required = false, defaultValue = "0") int  id,
                               @ModelAttribute("personDto") PersonDto personDto, 
                               BindingResult result,

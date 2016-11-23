@@ -39,8 +39,7 @@
             </div> 
             <div>
                 <h3><spring:message code="lbl.fileupload" text="File Upload:" /></h3>
-                <form:form action="fileUpload" method="POST" commandName="fileDto" enctype="multipart/form-data" class="upload">
-                    <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
+                <form:form action="fileUpload?${_csrf.parameterName}=${_csrf.token}" method="POST" commandName="fileDto" enctype="multipart/form-data" class="upload">
                     <form:errors path="*" cssClass="errorblock" element="div"/>
                     <div>
                         <c:if test="${not empty fileName}">

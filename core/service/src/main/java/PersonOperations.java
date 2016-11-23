@@ -242,7 +242,7 @@ public class PersonOperations extends GenericServiceImpl<Person> implements Pers
 
     @Transactional(propagation = Propagation.REQUIRED)
     public void deleteRole(Role role){
-        person.getRoles().remove(role);    
+        person.getRoles().remove(role);
     }
 
     @Transactional(propagation = Propagation.REQUIRED, readOnly = true)
